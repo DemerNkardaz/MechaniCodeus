@@ -99,15 +99,21 @@ function generateMeaningfulBinaryCode(length) {
 
 $(document).ready(function () {
     var lastModifiedSpan = $('#lastModified');
-    var lastModifiedDate = new Date(document.lastModified);
-    var formattedDate = `${addZero(lastModifiedDate.getDate())}.${addZero(lastModifiedDate.getMonth() + 1)}.${lastModifiedDate.getFullYear()} ${addZero(lastModifiedDate.getHours())}:${addZero(lastModifiedDate.getMinutes())}:${addZero(lastModifiedDate.getSeconds())}`;
-    lastModifiedSpan.text(formattedDate);
+
+    $.ajax({
+        type: 'HEAD', // отправляем только запрос на заголовки
+        url: window.location.href,
+        success: function (data, status, xhr) {
+            var lastModifiedDate = new Date(xhr.getResponseHeader('Last-Modified'));
+            var formattedDate = `${addZero(lastModifiedDate.getDate())}.${addZero(lastModifiedDate.getMonth() + 1)}.${lastModifiedDate.getFullYear()} ${addZero(lastModifiedDate.getHours())}:${addZero(lastModifiedDate.getMinutes())}:${addZero(lastModifiedDate.getSeconds())}`;
+            lastModifiedSpan.text(formattedDate);
+        }
+    });
 });
+
 function addZero(number) {
     return number < 10 ? '0' + number : number;
 }
-
-
 
 
 $(document).ready(function () {
