@@ -29,6 +29,63 @@ video {
     z-index: -1;
 }
 
+.modal-dialog.HelpPopup {
+    max-width: 700px;
+    hyphens: auto;
+}
+
+.modal-content.HelpPopup {
+    border: 1px solid #543e0e;
+    background-color: rgba(70, 37, 5, 0.9);
+
+}
+
+.modal-header.HelpPopup {
+    border-bottom: 1px solid #543e0e;
+}
+
+.modal-header.HelpPopup>:first-child {
+    margin-right: 10px;
+    position: relative;
+}
+
+
+.modal-header.HelpPopup> :first-child::before {
+    border-radius: 15%;
+    content: "";
+    position: absolute;
+    display: block;
+    width: calc(100% - 7px);
+    height: calc(100% - 5px);
+    background-color: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1;
+    top: 50%;
+    left: 48.8%;
+    transform: translate(-50%, -50%);
+}
+
+.modal-header.HelpPopup>:first-child:hover::before {
+    opacity: 1;
+}
+
+#SteamSSLink {
+    background: linear-gradient(#ffffff, #ffffff) 50% 50%/calc(100% - 16px) calc(100% - 16px) no-repeat,
+        conic-gradient(from 278deg, #958ac6 0%, #342c5d 23%, #958ac6 56%, rgba(60, 51, 101, 1) 100%);
+    border-radius: 15%;
+    padding: 3px;
+    box-sizing: border-box;
+    position: relative;
+
+
+}
+
+.modal-body>p.smalltext {
+    font-size: 0.8em;
+}
+
+
 .mecha_header {
     display: block;
     width: 100%;
@@ -141,12 +198,29 @@ video {
     margin-right: 0;
 }
 
-.container.left> :first-child> :nth-child(2)>.btn.btn-primary {
-    padding: 2.5px 5px 2.5px 5px;
-    margin-bottom: 0px;
+.btn.btn-primary {
     background-color: #fcdf20;
     border-color: #fcdf20;
     color: #1b0e06;
+}
+
+.btn.btn-primary:hover {
+    background-color: #be9115;
+    border-color: #be9115;
+    color: #1b0e06;
+}
+
+.btn.btn-primary:focus,
+.btn.btn-primary:active {
+    background-color: #be9115;
+    border-color: #be9115;
+    color: #ffffff;
+}
+
+.container.left> :first-child> :nth-child(2)>.btn.btn-primary {
+    padding: 2.5px 5px 2.5px 5px;
+    margin-bottom: 0px;
+
 }
 
 .container.right {

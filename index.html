@@ -38,6 +38,7 @@
                     <span class="material-icons">
                         <button type="button" class="btn btn-primary">sort_by_alpha</button>
                         <button type="button" class="btn btn-primary">filter_list_off</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#helpModal" style="margin-left: 10px; line-height: 1; font-size: 1em">help_outline</button>
                     </span>
                 </div><hr>
             </div>
@@ -54,5 +55,22 @@
             </div>
         </div>
 
+        <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+            <div class="modal-dialog HelpPopup">
+                <div class="modal-content HelpPopup">
+                    <div class="modal-header HelpPopup">
+                        <a href="https://store.steampowered.com/app/9450/Warhammer_40000_Dawn_of_War__Soulstorm">
+                            <img id="SteamSSLink" src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/9450/d13abadb0f456659a634d2cd8286665a0c76a2c6.jpg">
+                        </a>
+                        <h5 class="modal-title" id="helpModalLabel">МеханиКодеус: описания атрибутов</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>На данном ресурсе располагается информация об атрибутах, задействованных в стратегии «Warhammer 40,000: Dawn of War — Soulstorm».</p>
+                        <p class="smalltext">На фоне изображена запись из игры «Warhammer 40,000: Space Marine (2011)».</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
