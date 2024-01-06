@@ -1,0 +1,18 @@
+{
+    "en": {
+        "InformationHeader": "Information",
+        "InformationDescription": "This item is a unique artifact. <strong>It is powerful</strong> and <em>valuable</em>."
+    },
+    "ru": {
+        "InformationHeader": "Информация",
+        "InformationDescription": "Данный предмет представляет собой уникальный артефакт. <strong>Он мощный</strong> и <em>ценный</em>."
+    },
+    "es": {
+        "InformationHeader": "Información",
+        "InformationDescription": "Este elemento es un artefacto único. <strong>Es poderoso</strong> y <em>valioso</em>."
+    },
+    "fr": {
+        "InformationHeader": "Information",
+        "InformationDescription": "Cet élément est un artefact unique. <strong>Il est puissant</strong> et <em>précieux</em>."
+    }
+}
