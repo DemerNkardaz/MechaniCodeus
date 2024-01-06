@@ -99,49 +99,13 @@ function generateMeaningfulBinaryCode(length) {
 
 $(document).ready(function () {
     var lastModifiedSpan = $('#lastModified');
-
-    if (window.location.protocol === 'file:') {
-        var lastModifiedDate = new Date(document.lastModified);
-        var formattedDate = `${addZero(lastModifiedDate.getDate())}.${addZero(lastModifiedDate.getMonth() + 1)}.${lastModifiedDate.getFullYear()} ${addZero(lastModifiedDate.getHours())}:${addZero(lastModifiedDate.getMinutes())}:${addZero(lastModifiedDate.getSeconds())}`;
-        lastModifiedSpan.text(formattedDate);
-    } else {
-        var filesToCheck = [
-            'ss/default.js',
-            'ss/default.css',
-            'ss/lang_*.json'
-        ];
-
-        var lastModifiedDates = [];
-
-        function updateLastModifiedDate() {
-            var validDates = lastModifiedDates.filter(Boolean);
-
-            if (validDates.length > 0) {
-                var maxLastModifiedDate = new Date(Math.max.apply(null, validDates));
-                var formattedDate = `${addZero(maxLastModifiedDate.getDate())}.${addZero(maxLastModifiedDate.getMonth() + 1)}.${maxLastModifiedDate.getFullYear()} ${addZero(maxLastModifiedDate.getHours())}:${addZero(maxLastModifiedDate.getMinutes())}:${addZero(maxLastModifiedDate.getSeconds())}`;
-
-                lastModifiedSpan.text(formattedDate);
-            } else {
-                lastModifiedSpan.text('Error retrieving last modified dates');
-            }
-        }
-
-        function addTimestampTag(file) {
-            var script = document.createElement('script');
-            script.src = file + '?timestamp=' + new Date().getTime();
-            document.body.appendChild(script);
-        }
-
-        filesToCheck.forEach(function (file) {
-            addTimestampTag(file);
-        });
-    }
+    var lastModifiedDate = new Date(document.lastModified);
+    var formattedDate = `${addZero(lastModifiedDate.getDate())}.${addZero(lastModifiedDate.getMonth() + 1)}.${lastModifiedDate.getFullYear()} ${addZero(lastModifiedDate.getHours())}:${addZero(lastModifiedDate.getMinutes())}:${addZero(lastModifiedDate.getSeconds())}`;
+    lastModifiedSpan.text(formattedDate);
 });
-
 function addZero(number) {
     return number < 10 ? '0' + number : number;
 }
-
 
 
 
