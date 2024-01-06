@@ -196,10 +196,21 @@ a>.material-icons.external:hover {
     text-decoration: none;
 }
 
-.mecha_header>*>a>*>* {
+.mecha_header>*>#MechaHeader>#LexMechanicus {
+    white-space: nowrap;
+}
+
+.mecha_header>*>#MechaHeader>#LexMechanicus>:nth-child(1),
+.mecha_header>*>#MechaHeader>#LexMechanicus>:nth-child(2) {
     font-size: 1em;
     font-family: 'Cormorant Garamond', serif;
     font-variant: small-caps;
+}
+
+.mecha_header>*>#MechaHeader>#LexMechanicus>:nth-child(3) {
+    font-size: 0.42em;
+    font-family: 'Tektur', sans-serif;
+    letter-spacing: 0.15em;
 }
 
 .mecha_header>*>.input-group {
@@ -270,6 +281,12 @@ a>.material-icons.external:hover {
 }
 
 #LexMechanicus {
+    position: relative;
+    max-width: 25ch;
+}
+
+#MechaHeader {
+    position: relative;
     max-width: 25ch;
 }
 

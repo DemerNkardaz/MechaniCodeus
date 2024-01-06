@@ -15,7 +15,8 @@ $(document).ready(function () {
 $(document).ready(function () {
     const originalText = $('#LexMechanicus span:first').text();
     const binaryCodeElement = $('#LexMechanicus').find('span:first');
-    const dotsElement = $('#LexMechanicus').find('span:last');
+    const dotsElement = $('#LexMechanicus').find('span').eq(1);
+
     let binaryCodeIntervalId, dotsIntervalId;
     let numDots = 1;
 
