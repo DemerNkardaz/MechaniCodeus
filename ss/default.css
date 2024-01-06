@@ -147,9 +147,15 @@ a:focus {
     margin: 25px 0 10px 0;
 }
 
-.mecha_header>*>h1>* {
+.mecha_header>*>a {
+    color: #ffd228;
+    text-decoration: none;
+}
+
+.mecha_header>*>a>*>* {
     font-size: 1em;
     font-family: 'Cormorant SC', serif;
+
 }
 
 .mecha_header>*>.input-group {
