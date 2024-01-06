@@ -387,3 +387,14 @@ a>.material-icons.external:hover {
 .container.right>hr:nth-of-type(1) {
     margin-top: 2px;
 }
+
+
+
+
+.child_attributes_list {
+    font-size: 0.8em;
+}
+
+.child_list_highlight {
+    color: #fae3be;
+}

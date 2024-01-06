@@ -11,7 +11,14 @@
             "Help_Description_4": "最新のアップデート：",
             "Help_Resources": "リソース",
             "Help_Main": "基本",
-            "Help_Main_VK": "フコンタクテ"
+            "Help_Main_VK": "フコンタクテ",
+            "child_attributes": "子属性",
+            "ebpextension": "<i>エンティティブループリント拡張</i>",
+            "ebp_ui_ext_description": "ゲームインターフェース上で主にエンティティに表示される情報を保存します：アイコン、名前、「ヒーロー」として表示、ツールチップの説明など、さらにホットキーも含まれます。",
+            "ebp_ui_info": "インターフェースの共通情報を保存します。",
+            "ebp_help_text_list": "補助テキストのローカリゼーションコードのリスト。",
+            "ebp_help_text_num": "01 から 08 まで（デフォルト）は、<i>$000（.ucs ファイル内の番号）</i> の形式でローカリゼーションコードを示しています。",
+            "ebp_icon_name": "エンティティアイコンのパスは「フォルダ/アイコン名」の形式です（保存先は data/art/ui/ingame/フォルダ/アイコン名.tga）。"
         },
         {
             "inputSearchTextPlaceholder": "属性で検索。。。"
