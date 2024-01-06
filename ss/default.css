@@ -384,7 +384,7 @@ a>.material-icons.external:hover {
     margin-top: 10px;
 }
 
-.container.right>hr:nth-of-type(1) {
+.container.right>*>hr:nth-of-type(1) {
     margin-top: 2px;
 }
 
