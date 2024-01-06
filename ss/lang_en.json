@@ -1,0 +1,20 @@
+{
+    "items": [
+        {
+            "MechaTitle": "MechaniCodeus",
+            "Class_Attributes": "Attributes",
+            "Class_Structure": "Structure",
+            "Help_Title": "MechaniCodeus: The attributes list",
+            "Help_Description_1": "The information about the attributes used in the strategy game “Warhammer 40,000: Dawn of War – Soulstorm” is located on this resource.",
+            "Help_Description_2": "You can suggest corrections/additions at <a href='https: //github.com/DemerNkardaz/MechaniCodeus/issues'>Issues GitHub page</a>.",
+            "Help_Description_3": "In the background, there is a depiction of a scene from the “Warhammer 40,000: Space Marine (2011)” game.",
+            "Help_Description_4": "Latest update: ",
+            "Help_Resources": "Resources",
+            "Help_Main": "Main",
+            "Help_Main_VK": "VKontakte"
+        },
+        {
+            "inputSearchTextPlaceholder": "Search in Attributes..."
+        }
+    ]
+}

@@ -13,7 +13,6 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
-    const originalText = $('#LexMechanicus span:first').text();
     const binaryCodeElement = $('#LexMechanicus').find('span:first');
     const dotsElement = $('#LexMechanicus').find('span').eq(1);
 
@@ -62,6 +61,9 @@ $(document).ready(function () {
             clearInterval(dotsIntervalId);
 
             let remainingTime = 700;
+            const originalTextElement = $('#LexMechanicus span:first');
+            const dataKey = originalTextElement.data('key');
+
             const generateAfterMouseout = function () {
                 if (remainingTime > 0) {
                     updateBinaryCode();
@@ -69,19 +71,23 @@ $(document).ready(function () {
                     remainingTime -= 50;
                     setTimeout(generateAfterMouseout, 50);
                 } else {
-                    binaryCodeElement.text(originalText);
-                    dotsElement.text('');
+                    const selectedLanguage = localStorage.getItem('selectedLanguage') || 'ru';
+                    $.getJSON('ss/lang_' + selectedLanguage + '.json', function (data) {
+                        originalTextElement.text(data.items[0][dataKey]);
+                        dotsElement.text('');
 
-                    binaryCodeElement.css({
-                        'font-family': '',
-                        'font-size': ''
-                    });
-                    dotsElement.css({
-                        'font-family': '',
-                        'font-size': ''
+                        binaryCodeElement.css({
+                            'font-family': '',
+                            'font-size': ''
+                        });
+                        dotsElement.css({
+                            'font-family': '',
+                            'font-size': ''
+                        });
                     });
                 }
             };
+
 
             setTimeout(generateAfterMouseout, 50);
         }
@@ -96,6 +102,8 @@ function generateMeaningfulBinaryCode(length) {
     }
     return binaryCode;
 }
+
+
 
 
 $(document).ready(function () {
@@ -129,8 +137,7 @@ $(document).ready(function () {
     var languages = [
         { code: 'en', name: 'English', flag: '🇺🇸' },
         { code: 'ru', name: 'Русский', flag: '🇷🇺' },
-        { code: 'es', name: 'Español', flag: '🇪🇸' },
-        { code: 'fr', name: 'Français', flag: '🇫🇷' },
+        { code: 'jp', name: '日本語', flag: '🇯🇵' },
     ];
 
     var selectedLanguage = localStorage.getItem('selectedLanguage') || 'ru';
@@ -144,10 +151,36 @@ $(document).ready(function () {
 
     $('#languageSelectorContainer').html(selectHtml);
 
-    $('#languageSelect').change(function () {
+    function updateLanguage(selectedLanguage) {
+        // Изменяем язык в теге <html>
+        var htmlElement = document.querySelector('html');
+        htmlElement.setAttribute('lang', selectedLanguage);
+
+        // Загрузка данных для выбранного языка
+        $.getJSON('ss/lang_' + selectedLanguage + '.json', function (data) {
+            $('[data-key]').each(function () {
+                var dataKey = $(this).data('key');
+                $(this).html(data.items[0][dataKey]);
+            });
+            updatePlaceholderText(data);
+        });
+    }
+
+    function updatePlaceholderText(data) {
+        var inputSearchTextPlaceholder = data.items[1].inputSearchTextPlaceholder;
+        $('#searchAttrib').attr('placeholder', inputSearchTextPlaceholder);
+    }
+
+    $('#languageSelectorContainer').on('change', '#languageSelect', function () {
         var selectedLanguage = $(this).val();
         localStorage.setItem('selectedLanguage', selectedLanguage);
+        updateLanguage(selectedLanguage);
     });
+
+    updateLanguage(selectedLanguage);
 });
+
+
+
 
 

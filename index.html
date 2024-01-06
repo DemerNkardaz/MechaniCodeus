@@ -23,7 +23,7 @@
                 </span>
                 <a href="index.html" id="MechaHeader">
                     <h1 id="LexMechanicus">
-                        <span>МеханиКодеус</span><span></span>
+                        <span data-key="MechaTitle">МеханиКодеус</span><span></span>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             DEV
                         </span>
@@ -34,7 +34,7 @@
                     <span class="input-group-text material-icons">
                         search
                     </span>
-                    <input type="text" class="form-control" placeholder="Поиск по атрибутам..." aria-label="Search" aria-describedby="button-addon">
+                    <input type="text" class="form-control" id="searchAttrib" aria-label="Search" aria-describedby="button-addon">
                 </div>
             </div>
 
@@ -48,15 +48,14 @@
                             <button class="material-icons">expand_more</button>
                         </div>
                         <div class="SelectItems">
-                            Атрибуты
-                            Структура
+                            <span data-key="Class_Attributes">Атрибуты</span>
+                            <span data-key="Class_Structure">Структура</span>
                         </div>
                     </div>
 
-                    <span class="material-icons">
-                        <button type="button" class="btn btn-primary">sort_by_alpha</button>
-                        <button type="button" class="btn btn-primary">filter_list_off</button>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#helpModal" style="margin-left: 10px; line-height: 1; font-size: 1em">help_outline</button>
+                    <span class="material-icons" style="user-select: none;">
+                        <button type="button" class="btn btn-primary">sort_by_alpha</button>&#x2006;<button type="button" class="btn btn-primary">filter_list_off</button>&ensp;<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#helpModal"
+                            style="margin-left: 10px; line-height: 1; font-size: 1em">help_outline</button>
                     </span>
                 </div><hr>
             </div>
@@ -80,22 +79,22 @@
                         <a href="https://store.steampowered.com/app/9450/Warhammer_40000_Dawn_of_War__Soulstorm">
                             <img id="SteamSSLink" src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/9450/d13abadb0f456659a634d2cd8286665a0c76a2c6.jpg">
                         </a>
-                        <h5 class="modal-title" id="helpModalLabel">МеханиКодеус: описания атрибутов</h5>
+                        <h5 class="modal-title" id="helpModalLabel" data-key="Help_Title">МеханиКодеус: описания атрибутов</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p>На данном ресурсе располагается информация об атрибутах, задействованных в стратегии «Warhammer 40,000: Dawn of War — Soulstorm».</p>
-                        <p class="smalltext">Предлагать исправления/дополнения вы можете на <a href="https://github.com/DemerNkardaz/MechaniCodeus/issues">странице Issues GitHub</a>.</p>
-                        <p class="smalltext">На фоне изображена запись из игры «Warhammer 40,000: Space Marine (2011)».</p>
-                        <p class="smalltext">Последнее изменение: <span id="lastModified"></span>.</p>
+                        <p data-key="Help_Description_1">На данном ресурсе располагается информация об атрибутах, задействованных в стратегии «Warhammer 40,000: Dawn of War — Soulstorm».</p>
+                        <p class="smalltext" data-key="Help_Description_2">Предлагать исправления/дополнения вы можете на <a href="https://github.com/DemerNkardaz/MechaniCodeus/issues">странице Issues GitHub</a>.</p>
+                        <p class="smalltext" data-key="Help_Description_3">На фоне изображена запись из игры «Warhammer 40,000: Space Marine (2011)».</p>
+                        <p class="smalltext"><span data-key="Help_Description_4">Последнее изменение: </span><span id="lastModified"></span>.</p>
 
                         <div class="container additional">
-                            <h5>Ресурсы</h5>
+                            <h5 data-key="Help_Resources">Ресурсы</h5>
                             <hr>
-                            <h6>Основное</h6>
+                            <h6 data-key="Help_Main">Основное</h6>
                             <ul class="list-group">
                                 <li class="list-group-item"><a href="https://modstudio.corsix.org">Corsix's Mod Studio</a></li>
-                                <li class="list-group-item"><a href="https://vk.com/dowmod">«Dawn Of War 1,2,3 - Создание карт, модов» ВКонтакте</a></li>
+                                <li class="list-group-item"><a href="https://vk.com/dowmod">«Dawn Of War 1,2,3 - Создание карт, модов» <span data-key="Help_Main_VK">ВКонтакте</span></a></li>
                                 <li class="list-group-item"><a href="http://forums.warforge.ru/index.php?showforum=97">«Warhammer 40,000: Dawn of War > Лаборатория модификаций» WARFORGE</a></li>
                                 <li class="list-group-item"><a href="http://www.mediafire.com/view/jj35xkeyt3z56jx">3ds Max 2008 Santos Tools</a></li>
                                 <li class="list-group-item"><a href="https://www.moddb.com/games/dawn-of-war-dark-crusade/downloads/dark-crusade-mod-tools">Dark Crusade Mod Tools</a></li>
