@@ -108,6 +108,16 @@ function generateMeaningfulBinaryCode(length) {
 
 
 
+
+
+
+
+
+
+
+
+
+
 $(document).ready(function () {
     var languages = [
         { code: 'en', name: 'English', flag: '🇺🇸' },

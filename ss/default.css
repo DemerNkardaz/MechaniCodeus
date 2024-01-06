@@ -29,6 +29,61 @@ video {
     z-index: -1;
 }
 
+a {
+    color: #ff6b10;
+}
+
+a:hover {
+    color: #ffa771;
+}
+
+a:active {
+    color: #d36e30;
+}
+
+a:focus {
+    color: #d36e30;
+}
+
+
+
+.ClassesTypeSelector {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ClassesTypeSelector .material-icons {
+    font-size: 18px;
+
+}
+
+.ClassesTypeSelector .material-icons {
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0;
+    outline: inherit;
+    left: 0;
+}
+
+.ClassesTypeSelector {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+}
+
+.ClassesTypeSelector .SelectChange {
+    display: flex;
+    flex-direction: column;
+}
+
+.ClassesTypeSelector .SelectItems {
+    margin-left: 5px;
+}
+
+
 .modal-dialog.HelpPopup {
     max-width: 700px;
     hyphens: auto;
@@ -182,6 +237,10 @@ video {
     max-width: 400px;
 }
 
+.container.left>hr:nth-of-type(1) {
+    margin-top: 11.2px;
+}
+
 .container.left> :first-child {
     display: flex;
     justify-content: flex-start;
@@ -191,7 +250,7 @@ video {
 
 .container.left> :first-child> :nth-child(1) {
     margin-right: auto;
-    padding-top: 8px;
+
 }
 
 .container.left> :first-child> :nth-child(2) {
