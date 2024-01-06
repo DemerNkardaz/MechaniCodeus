@@ -1,8 +1,8 @@
 $(document).ready(function () {
     $(':header').each(function () {
-        var headerLevel = parseInt(this.tagName.substring(1)); // Получаем уровень заголовка (1, 2, 3, ...)
-        var baseSize = 1.75; // Базовый размер шрифта
-        var newSize = baseSize - (headerLevel - 1) * 0.15; // Рассчитываем новый размер
+        var headerLevel = parseInt(this.tagName.substring(1));
+        var baseSize = 1.75;
+        var newSize = baseSize - (headerLevel - 1) * 0.15;
 
         $(this).css({
             'font-size': 'calc(' + newSize + 'em)',
@@ -38,7 +38,6 @@ $(document).ready(function () {
             binaryCodeElement.addClass('animated');
             dotsElement.addClass('animated');
 
-            // Change font and size during mouseover
             binaryCodeElement.css({
                 'font-family': 'Tektur',
                 'font-size': '0.6em'
@@ -48,10 +47,10 @@ $(document).ready(function () {
                 'font-size': '0.6em'
             });
 
-            updateBinaryCode(); // Update initially
+            updateBinaryCode();
             binaryCodeIntervalId = setInterval(updateBinaryCode, 50);
 
-            updateDots(); // Update initially
+            updateDots();
             dotsIntervalId = setInterval(updateDots, 500);
         },
         mouseout: function () {
@@ -61,19 +60,17 @@ $(document).ready(function () {
             clearInterval(binaryCodeIntervalId);
             clearInterval(dotsIntervalId);
 
-            // Продолжаем генерацию бинарного кода и точек ещё секунду после ухода курсора
-            let remainingTime = 700; // Время в миллисекундах
+            let remainingTime = 700;
             const generateAfterMouseout = function () {
                 if (remainingTime > 0) {
                     updateBinaryCode();
                     updateDots();
-                    remainingTime -= 50; // Интервал генерации
+                    remainingTime -= 50;
                     setTimeout(generateAfterMouseout, 50);
                 } else {
                     binaryCodeElement.text(originalText);
                     dotsElement.text('');
 
-                    // Remove font style and size after 700ms
                     binaryCodeElement.css({
                         'font-family': '',
                         'font-size': ''
@@ -93,26 +90,57 @@ $(document).ready(function () {
 function generateMeaningfulBinaryCode(length) {
     let binaryCode = '';
     for (let i = 0; i < length; i++) {
-        // Генерируем случайный бит (0 или 1)
         const randomBit = Math.round(Math.random());
-
-        // Просто добавляем этот бит к общей последовательности
         binaryCode += randomBit;
     }
-
     return binaryCode;
 }
 
 
+$(document).ready(function () {
+    var lastModifiedSpan = $('#lastModified');
 
+    if (window.location.protocol === 'file:') {
+        var lastModifiedDate = new Date(document.lastModified);
+        var formattedDate = `${addZero(lastModifiedDate.getDate())}.${addZero(lastModifiedDate.getMonth() + 1)}.${lastModifiedDate.getFullYear()} ${addZero(lastModifiedDate.getHours())}:${addZero(lastModifiedDate.getMinutes())}:${addZero(lastModifiedDate.getSeconds())}`;
+        lastModifiedSpan.text(formattedDate);
+    } else {
+        var filesToCheck = [
+            'ss/default.js',
+            'ss/default.css',
+            'ss/lang_*.json'
+        ];
 
+        var lastModifiedDates = [];
 
+        function updateLastModifiedDate() {
+            var validDates = lastModifiedDates.filter(Boolean);
 
+            if (validDates.length > 0) {
+                var maxLastModifiedDate = new Date(Math.max.apply(null, validDates));
+                var formattedDate = `${addZero(maxLastModifiedDate.getDate())}.${addZero(maxLastModifiedDate.getMonth() + 1)}.${maxLastModifiedDate.getFullYear()} ${addZero(maxLastModifiedDate.getHours())}:${addZero(maxLastModifiedDate.getMinutes())}:${addZero(maxLastModifiedDate.getSeconds())}`;
 
+                lastModifiedSpan.text(formattedDate);
+            } else {
+                lastModifiedSpan.text('Error retrieving last modified dates');
+            }
+        }
 
+        function addTimestampTag(file) {
+            var script = document.createElement('script');
+            script.src = file + '?timestamp=' + new Date().getTime();
+            document.body.appendChild(script);
+        }
 
+        filesToCheck.forEach(function (file) {
+            addTimestampTag(file);
+        });
+    }
+});
 
-
+function addZero(number) {
+    return number < 10 ? '0' + number : number;
+}
 
 
 

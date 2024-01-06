@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Tektur&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600;700&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 body {
     height: 100vh;
@@ -154,8 +154,8 @@ a:focus {
 
 .mecha_header>*>a>*>* {
     font-size: 1em;
-    font-family: 'Cormorant SC', serif;
-
+    font-family: 'Cormorant Garamond', serif;
+    font-variant: small-caps;
 }
 
 .mecha_header>*>.input-group {
