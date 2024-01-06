@@ -101,7 +101,7 @@ $(document).ready(function () {
     var lastModifiedSpan = $('#lastModified');
 
     $.ajax({
-        type: 'HEAD', // отправляем только запрос на заголовки
+        type: 'HEAD',
         url: window.location.href,
         success: function (data, status, xhr) {
             var lastModifiedDate = new Date(xhr.getResponseHeader('Last-Modified'));
@@ -115,6 +115,14 @@ function addZero(number) {
     return number < 10 ? '0' + number : number;
 }
 
+$(document).ready(function () {
+    $('a[href^="http://"], a[href^="https://"]').each(function () {
+        if ($(this).contents().length === 1 && $(this).contents().get(0).nodeType === 3) {
+            $(this).append('<span class="material-icons external">launch</span>');
+        }
+    });
+});
+
 
 $(document).ready(function () {
     var languages = [
@@ -124,7 +132,6 @@ $(document).ready(function () {
         { code: 'fr', name: 'Français', flag: '🇫🇷' },
     ];
 
-    // Получаем текущий выбранный язык из локального хранилища
     var selectedLanguage = localStorage.getItem('selectedLanguage') || 'ru';
 
     var selectHtml = '<select class="form-select" id="languageSelect">';
@@ -139,7 +146,6 @@ $(document).ready(function () {
     $('#languageSelect').change(function () {
         var selectedLanguage = $(this).val();
         localStorage.setItem('selectedLanguage', selectedLanguage);
-        // Дополнительные действия при изменении языка (если необходимо)
     });
 });
 

@@ -14,6 +14,16 @@ body {
 
 * {
     font-family: 'IBM Plex Mono', 'Noto Color Emoji', sans-serif;
+    scrollbar-width: thin;
+    scrollbar-color: #ffd228 rgba(0, 0, 0, 0.2);
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #ffd228 rgba(0, 0, 0, 0.2);
+    }
 }
 
 
@@ -45,7 +55,15 @@ a:focus {
     color: #d36e30;
 }
 
+a>.material-icons.external {
+    margin-left: 5px;
+    font-size: 1.2em;
+    color: #ffd228;
+}
 
+a>.material-icons.external:hover {
+    color: #ffedae;
+}
 
 .ClassesTypeSelector {
     position: relative;
@@ -138,6 +156,32 @@ a:focus {
 
 .modal-body>p.smalltext {
     font-size: 0.8em;
+}
+
+.container.additional {
+    max-height: 300px;
+    overflow: auto;
+}
+
+.container.additional>.list-group {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 0.8em;
+}
+
+.container.additional>.list-group:last-of-type {
+    margin-bottom: 0;
+
+}
+
+.container.additional>.list-group>li>a {
+    text-decoration: none;
+}
+
+.container.additional>.list-group>* {
+    background-color: transparent;
+    color: inherit;
+    border-color: #543e0e;
 }
 
 
