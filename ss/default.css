@@ -7,6 +7,7 @@ body {
     margin: 0;
     background-color: #1b0e06;
     color: #ffd228;
+    overflow: hidden;
 }
 
 * {
@@ -41,6 +42,7 @@ video {
     margin-left: auto;
 }
 
+
 .input-group-text.material-icons {
     border: 1px solid #543e0e;
     background-color: rgba(70, 37, 5, 0.98);
@@ -60,8 +62,21 @@ video {
     border-left: none;
 }
 
+.form-control:focus {
+    border: 1px solid #543e0e;
+    background-color: rgba(70, 37, 5, 0.98);
+    border-left: none;
+    box-shadow: 0 0 0 0.25rem rgba(255, 210, 40, 0.5);
+
+}
+
 .form-control::placeholder {
-    color: #c3c3c3;
+    color: rgba(195, 195, 195, 0.5);
+    ;
+}
+
+.form-control:focus::placeholder {
+    color: rgba(255, 220, 40, 0.75);
 }
 
 .flex-container {
