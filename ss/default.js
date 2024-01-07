@@ -224,17 +224,22 @@ $(document).ready(function () {
     $('#contentAreaContainer').load('wikies/testpage.html', function () {
         initializePage();
     });
-    $('#randomPage').on('click', function () {
-        $.ajax({
-            url: 'wikies/',
-            success: function (data) {
-                var files = $(data).find('a[href$=".html"]').map(function () {
-                    return $(this).attr('href');
-                }).get();
 
+    $('#randomPage').on('click', function () {
+        // Запрос к GitHub API для получения содержимого директории
+        $.ajax({
+            url: 'https://api.github.com/repos/demernkardaz/MechaniCodeus/contents/wikies',
+            success: function (data) {
+                // Извлекаем имена файлов из полученных данных
+                var files = data.map(function (file) {
+                    return file.name;
+                });
+
+                // Выбираем случайный файл из списка
                 var randomFile = files[Math.floor(Math.random() * files.length)];
 
-                $('#contentAreaContainer').load(randomFile, function () {
+                // Загрузка случайного файла и вызов функции initializePage
+                $('#contentAreaContainer').load('wikies/' + randomFile, function () {
                     initializePage();
                 });
             }
