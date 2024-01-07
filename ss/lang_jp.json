@@ -2,6 +2,7 @@
     "items": [
         {
             "MechaTitle": "メカニカル・神",
+            "File404": "ファイルは存在しません",
             "Class_Attributes": "属性",
             "Class_Structure": "構造",
             "Help_Title": "メカニカル・神：属性の説明",

@@ -2,6 +2,7 @@
     "items": [
         {
             "MechaTitle": "МеханиКодеус",
+            "File404": "Файл отсутствует",
             "Class_Attributes": "Атрибуты",
             "Class_Structure": "Структура",
             "Help_Title": "МеханиКодеус: описания атрибутов",

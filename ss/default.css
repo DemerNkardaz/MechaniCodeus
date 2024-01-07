@@ -236,6 +236,7 @@ a>.material-icons.external:hover {
     border: 1px solid #543e0e;
     background-color: rgba(70, 37, 5, 0.98);
     border-left: none;
+    color: #bcbcbc;
 }
 
 .form-control:focus {
@@ -243,6 +244,7 @@ a>.material-icons.external:hover {
     background-color: rgba(70, 37, 5, 0.98);
     border-left: none;
     box-shadow: 0 0 0 0.25rem rgba(255, 210, 40, 0.5);
+    color: #e8e8e8;
 
 }
 
@@ -254,6 +256,9 @@ a>.material-icons.external:hover {
 .form-control:focus::placeholder {
     color: rgba(255, 220, 40, 0.75);
 }
+
+
+
 
 .flex-container {
     display: flex;
@@ -397,4 +402,69 @@ a>.material-icons.external:hover {
 
 .child_list_highlight {
     color: #fae3be;
+}
+
+#hierarchyAtrributes {
+    position: relative;
+}
+
+#hierarchyAtrributes {
+    font-size: 0.8em;
+}
+
+#hierarchyAtrributes * {
+    text-indent: 0;
+    list-style-type: none;
+}
+
+
+#hierarchyAtrributes li {
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    list-style-type: none;
+}
+
+
+
+#hierarchyAtrributes li>span:last-of-type:hover {
+    color: #ff6b10;
+    text-decoration: underline;
+}
+
+#hierarchyAtrributes li>span:last-of-type:active {
+    color: #ffa771;
+}
+
+#hierarchyAtrributes li>span:last-of-type:focus {
+    color: #d36e30;
+}
+
+#hierarchyAtrributes>ul {
+    margin: 10px;
+    padding: 0;
+}
+
+.hierarchical_arrow {
+    position: relative;
+    color: #fae3be;
+    font-size: 1.2em;
+    top: 2.5px;
+    left: -5px;
+    transition: transform 0.3s ease;
+}
+
+.hierarchical_arrow.rotated {
+    transform: rotate(90deg);
+}
+
+.hierarchical_arrow::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    opacity: 0;
 }

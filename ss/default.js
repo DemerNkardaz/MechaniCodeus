@@ -104,10 +104,6 @@ function initializePage() {
         return binaryCode;
     }
 
-
-
-
-
     $(document).ready(function () {
         $('a[href^="http://"], a[href^="https://"]').each(function () {
             if ($(this).contents().length === 1 && $(this).contents().get(0).nodeType === 3) {
@@ -115,6 +111,11 @@ function initializePage() {
             }
         });
     });
+
+
+
+
+
 
 
     $(document).ready(function () {
@@ -194,9 +195,6 @@ function initializePage() {
 
 
 
-
-
-
     $(document).ready(function () {
         var lastModifiedSpan = $('#lastModified');
 
@@ -226,4 +224,83 @@ $(document).ready(function () {
     $('#contentAreaContainer').load('wikies/testpage.html', function () {
         initializePage();
     });
+});
+
+
+
+$(document).ready(function () {
+    $('#hierarchyAtrributes li').each(function () {
+        if ($(this).find('ul').length > 0) {
+            $(this).prepend('<span class="material-icons hierarchical_arrow">chevron_right</span>');
+            $(this).addClass('has-child');
+        }
+    });
+
+    $('#hierarchyAtrributes li.has-child').each(function () {
+        var $ul = $(this).children('ul');
+        $ul.hide();
+
+        $(this).children('.hierarchical_arrow').click(function (e) {
+            e.stopPropagation();
+            $ul.slideToggle();
+            $(this).toggleClass('rotated');
+        });
+
+
+    });
+
+    var lastLoadedWikiePath = ''; // Переменная для хранения последнего загруженного файла
+
+    $('#hierarchyAtrributes li').each(function () {
+        $(this).children('span').last().each(function () {
+            if (!$(this).attr('data-wikie')) {
+                $(this).attr('data-wikie', 'wikies\\404.html');
+            }
+        });
+
+        $('span[data-wikie]').on('click', function () {
+            var wikiePath = $(this).data('wikie');
+
+            // Проверяем, был ли уже загружен такой файл
+            if (wikiePath !== lastLoadedWikiePath) {
+                $('#contentAreaContainer').load(wikiePath, function () {
+                    initializePage();
+                    lastLoadedWikiePath = wikiePath; // Обновляем переменную после успешной загрузки
+                });
+            }
+        });
+    });
+
+
+});
+
+$(document).ready(function () {
+    // Обработчик события ввода текста в поле поиска
+    $('#searchAttrib').on('input', function () {
+        var searchText = $(this).val().toLowerCase();
+
+        // Скрываем все элементы списка
+        $('#hierarchyMain li').hide();
+
+        // Отображаем элементы, которые соответствуют введенному тексту или имеют дочерние элементы, соответствующие тексту
+        $('#hierarchyMain li:containsOrInChildren("' + searchText + '")').show();
+
+        // Сохраняем текст поиска в localStorage
+        localStorage.setItem('lastSearch', searchText);
+    });
+
+    // При загрузке страницы восстанавливаем последний поиск
+    var lastSearch = localStorage.getItem('lastSearch');
+    if (lastSearch) {
+        $('#searchAttrib').val(lastSearch).trigger('input');
+    }
+});
+
+// Расширение :containsOrInChildren для регистронезависимого поиска с учетом дочерних элементов
+$.expr[":"].containsOrInChildren = $.expr.createPseudo(function (text) {
+    return function (elem) {
+        return $(elem).find('*').addBack().filter(function () {
+            return $(this).text().toLowerCase().indexOf(text.toLowerCase()) !== -1;
+        }).length > 0;
+    };
 });
