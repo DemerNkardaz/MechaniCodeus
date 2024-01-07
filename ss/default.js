@@ -1,3 +1,5 @@
+
+
 function initializePage() {
     $(document).ready(function () {
         $(':header').each(function () {
@@ -343,7 +345,6 @@ function initializeRoot() {
 
         });
 
-
         $(document).ready(function () {
             $('span[data-wikie]').on('mouseover', function () {
                 $(this).siblings('span.hierarchical_arrow').addClass('listElement_Arrow');
@@ -364,11 +365,25 @@ function initializeRoot() {
             });
         });
 
-
-
-
-
     });
+
+    var isAllOpen = false;
+
+    $('#collapseShowAllLists').click(function (e) {
+        var $elements = $('#hierarchyAtrributes li.has-child ul');
+        var $button = $(this);
+
+        if (isAllOpen) {
+            $elements.slideUp();
+            $button.text('unfold_more');
+        } else {
+            $elements.slideDown();
+            $button.text('unfold_less');
+        }
+
+        isAllOpen = !isAllOpen;
+    });
+
 
 }
 
