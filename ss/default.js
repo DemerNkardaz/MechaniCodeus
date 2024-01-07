@@ -224,6 +224,22 @@ $(document).ready(function () {
     $('#contentAreaContainer').load('wikies/testpage.html', function () {
         initializePage();
     });
+    $('#randomPage').on('click', function () {
+        $.ajax({
+            url: 'wikies/',
+            success: function (data) {
+                var files = $(data).find('a[href$=".html"]').map(function () {
+                    return $(this).attr('href');
+                }).get();
+
+                var randomFile = files[Math.floor(Math.random() * files.length)];
+
+                $('#contentAreaContainer').load(randomFile, function () {
+                    initializePage();
+                });
+            }
+        });
+    });
 });
 
 
@@ -246,10 +262,9 @@ $(document).ready(function () {
             $(this).toggleClass('rotated');
         });
 
-
     });
 
-    var lastLoadedWikiePath = ''; // Переменная для хранения последнего загруженного файла
+    var lastLoadedWikiePath = '';
 
     $('#hierarchyAtrributes li').each(function () {
         $(this).children('span').last().each(function () {
@@ -261,11 +276,10 @@ $(document).ready(function () {
         $('span[data-wikie]').on('click', function () {
             var wikiePath = $(this).data('wikie');
 
-            // Проверяем, был ли уже загружен такой файл
             if (wikiePath !== lastLoadedWikiePath) {
                 $('#contentAreaContainer').load(wikiePath, function () {
                     initializePage();
-                    lastLoadedWikiePath = wikiePath; // Обновляем переменную после успешной загрузки
+                    lastLoadedWikiePath = wikiePath;
                 });
             }
         });
@@ -275,28 +289,19 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    // Обработчик события ввода текста в поле поиска
     $('#searchAttrib').on('input', function () {
         var searchText = $(this).val().toLowerCase();
-
-        // Скрываем все элементы списка
         $('#hierarchyMain li').hide();
-
-        // Отображаем элементы, которые соответствуют введенному тексту или имеют дочерние элементы, соответствующие тексту
         $('#hierarchyMain li:containsOrInChildren("' + searchText + '")').show();
-
-        // Сохраняем текст поиска в localStorage
         localStorage.setItem('lastSearch', searchText);
     });
 
-    // При загрузке страницы восстанавливаем последний поиск
     var lastSearch = localStorage.getItem('lastSearch');
     if (lastSearch) {
         $('#searchAttrib').val(lastSearch).trigger('input');
     }
 });
 
-// Расширение :containsOrInChildren для регистронезависимого поиска с учетом дочерних элементов
 $.expr[":"].containsOrInChildren = $.expr.createPseudo(function (text) {
     return function (elem) {
         return $(elem).find('*').addBack().filter(function () {
