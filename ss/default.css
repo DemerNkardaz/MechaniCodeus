@@ -307,6 +307,9 @@ a>.material-icons.external:hover {
 
 .container.left {
     max-width: 400px;
+    overflow: hidden;
+    white-space: nowrap;
+
 }
 
 .container.left>hr:nth-of-type(1) {
@@ -322,7 +325,7 @@ a>.material-icons.external:hover {
 
 .container.left> :first-child> :nth-child(1) {
     margin-right: auto;
-    max-width: 150px;
+    max-width: 250px;
 }
 
 .container.left> :first-child> :nth-child(2) {
@@ -438,22 +441,61 @@ a>.material-icons.external:hover {
 
 
 
-#hierarchyAtrributes li>span:last-of-type:hover {
-    color: #ff6b10;
-    text-decoration: underline;
-}
-
-#hierarchyAtrributes li>span:last-of-type:active {
-    color: #ffa771;
-}
-
-#hierarchyAtrributes li>span:last-of-type:focus {
-    color: #d36e30;
-}
 
 #hierarchyAtrributes>ul {
     margin: 10px;
     padding: 0;
+}
+
+#hierarchyAtrributes li {
+    position: relative;
+    z-index: 1;
+
+}
+
+#hierarchyAtrributes .listElement_Arrow {
+    font-weight: 800;
+    color: #4c10ff;
+}
+
+#hierarchyAtrributes .listElement_Arrow:hover {
+    font-weight: 800;
+    color: #9d7cff;
+}
+
+#hierarchyAtrributes li span:last-of-type {
+    font-family: 'Tektur', sans-serif !important;
+}
+
+#hierarchyAtrributes li span::before {
+    content: "";
+    position: absolute;
+    transform: scaleX(150%);
+    width: 100%;
+    height: 1.65em;
+    right: 20px;
+    background-color: transparent;
+    z-index: -2;
+
+}
+
+#hierarchyAtrributes li span.hovered::before,
+#hierarchyAtrributes li span:hover::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1.65em;
+    background-color: #face27;
+    z-index: -2;
+}
+
+
+#hierarchyAtrributes li span.hovered,
+#hierarchyAtrributes li span:hover {
+    letter-spacing: 0.15em;
+
+    font-weight: 800;
+    color: #271405;
 }
 
 .hierarchical_arrow {
@@ -478,4 +520,132 @@ a>.material-icons.external:hover {
     height: 40px;
     cursor: pointer;
     opacity: 0;
+}
+
+
+.iron_border {
+    position: relative;
+    background:
+        conic-gradient(from 162deg at 37% 89%, rgba(74, 55, 55, 0.59) 0%, #574937 9%, #484533 16%, rgba(85, 59, 59, 0) 36%, rgba(212, 198, 175, 0.78) 54%, rgba(190, 180, 171, 0.95) 71%, rgba(64, 0, 0, 0.95) 71%, rgba(210, 202, 190, 0.95) 80%, rgba(173, 162, 147, 1) 87%) 61% 75%/168% 198%,
+        conic-gradient(from 277deg at 4% 29%, #b0b0b0 0%, #737373 100%) 96% 77%/114% 103%;
+    border-radius: 12px 12px 15px 15px;
+    padding: 2px;
+    background-blend-mode: difference;
+    box-sizing: border-box;
+    box-shadow: 0 2px 10px #00000018, 0 0 20px #00000027, 10px 15px 10px rgb(42, 18, 1);
+    border-bottom: 6px solid #2b1704;
+}
+
+
+.iron_border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px 12px 15px 15px;
+    padding: 6px;
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px) 0 0,
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px) 0 0,
+        linear-gradient(rgba(0, 0, 0, 0.1) 2px, transparent 2px) 0 0,
+        linear-gradient(90deg, rgba(0, 0, 0, 0.1) 2px, transparent 2px) 0 0,
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.48" numOctaves="3" stitchTiles="stitch" /></filter><rect width="89%" height="89%" filter="url(%23noiseFilter)" /></svg>') repeat;
+    background-size: 50px 50px;
+    background-color: #9335197b;
+    mix-blend-mode: hard-light;
+    box-shadow: inset 0 0 2px #b41111cb;
+    z-index: 0;
+}
+
+
+#hierarchyMain {
+    position: relative;
+    padding: 10px 5px 10px 5px;
+    height: calc(87vh - 102px);
+    background: #cec109 repeating-linear-gradient(to bottom, #55555596, #55555575 5px, #7777777f 5px, #77777757 6px);
+    background-blend-mode: multiply;
+    filter: contrast(240%) hue-rotate(100deg);
+    border-radius: 7px 7px 10px 10px;
+    overflow: auto;
+    overflow-x: hidden;
+    hyphens: auto;
+}
+
+#hierarchyMain>* {
+    filter: contrast(130%);
+
+}
+
+#hierarchyMain::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #8f593058;
+    box-shadow: inset 0 0 120px #9f2525a9;
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+#hierarchyMain::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 20px #00000083;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.cogitatorInterface {
+    font-family: 'Tektur', sans-serif;
+    font-size: 0.8em;
+    position: absolute;
+    width: 95.5%;
+    bottom: 10px;
+    text-align: center;
+
+
+}
+
+
+
+.noise-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    opacity: 0;
+    background:
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" /></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" /></svg>') repeat;
+    animation: noiseAnimation var(--animation-duration-3to30) ease-in infinite;
+}
+
+@keyframes noiseAnimation {
+    0% {
+        top: -100px;
+    }
+
+    23% {
+        top: 98%;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 98%;
+        opacity: 0;
+
+    }
+
 }

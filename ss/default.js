@@ -191,6 +191,20 @@ function initializePage() {
     });
 
 
+    $(document).ready(function () {
+        var $firstSpan = $('#hierarchyAtrributes li').children('span').first();
+        var $lastSpan = $('#hierarchyAtrributes li').children('span').last();
+
+        $firstSpan.mouseover(function () {
+            if ($(this).hasClass('hierarchical_arrow')) {
+                $(this).addClass('listElement_Arrow');
+            }
+        });
+        $firstSpan.mouseout(function () {
+            $(this).removeClass('listElement_Arrow');
+        });
+
+    });
 
 
 
@@ -212,6 +226,11 @@ function initializePage() {
     function addZero(number) {
         return number < 10 ? '0' + number : number;
     }
+
+
+
+
+
 }
 
 $(document).ready(function () {
@@ -220,78 +239,6 @@ $(document).ready(function () {
 
 
 
-$(document).ready(function () {
-    $('#contentAreaContainer').load('wikies/testpage.html', function () {
-        initializePage();
-    });
-
-    $('#randomPage').on('click', function () {
-        // Запрос к GitHub API для получения содержимого директории
-        $.ajax({
-            url: 'https://api.github.com/repos/demernkardaz/MechaniCodeus/contents/wikies',
-            success: function (data) {
-                // Извлекаем имена файлов из полученных данных
-                var files = data.map(function (file) {
-                    return file.name;
-                });
-
-                // Выбираем случайный файл из списка
-                var randomFile = files[Math.floor(Math.random() * files.length)];
-
-                // Загрузка случайного файла и вызов функции initializePage
-                $('#contentAreaContainer').load('wikies/' + randomFile, function () {
-                    initializePage();
-                });
-            }
-        });
-    });
-});
-
-
-
-$(document).ready(function () {
-    $('#hierarchyAtrributes li').each(function () {
-        if ($(this).find('ul').length > 0) {
-            $(this).prepend('<span class="material-icons hierarchical_arrow">chevron_right</span>');
-            $(this).addClass('has-child');
-        }
-    });
-
-    $('#hierarchyAtrributes li.has-child').each(function () {
-        var $ul = $(this).children('ul');
-        $ul.hide();
-
-        $(this).children('.hierarchical_arrow').click(function (e) {
-            e.stopPropagation();
-            $ul.slideToggle();
-            $(this).toggleClass('rotated');
-        });
-
-    });
-
-    var lastLoadedWikiePath = '';
-
-    $('#hierarchyAtrributes li').each(function () {
-        $(this).children('span').last().each(function () {
-            if (!$(this).attr('data-wikie')) {
-                $(this).attr('data-wikie', 'wikies\\404.html');
-            }
-        });
-
-        $('span[data-wikie]').on('click', function () {
-            var wikiePath = $(this).data('wikie');
-
-            if (wikiePath !== lastLoadedWikiePath) {
-                $('#contentAreaContainer').load(wikiePath, function () {
-                    initializePage();
-                    lastLoadedWikiePath = wikiePath;
-                });
-            }
-        });
-    });
-
-
-});
 
 $(document).ready(function () {
     $('#searchAttrib').on('input', function () {
@@ -314,3 +261,131 @@ $.expr[":"].containsOrInChildren = $.expr.createPseudo(function (text) {
         }).length > 0;
     };
 });
+
+
+
+
+
+function initializeRoot() {
+    var lastLoadedWikiePath = '';
+    $('#hierarchyAtrributes li').each(function () {
+        $(this).children('span').last().each(function () {
+            if (!$(this).attr('data-wikie')) {
+                $(this).attr('data-wikie', 'wikies\\404.html');
+            }
+        });
+
+        $('span[data-wikie]').on('click', function () {
+            var wikiePath = $(this).data('wikie');
+
+            if (wikiePath !== lastLoadedWikiePath) {
+                $('#contentAreaContainer').load(wikiePath, function () {
+                    initializePage();
+                    lastLoadedWikiePath = wikiePath;
+                });
+            }
+        });
+    });
+
+
+
+    $(document).ready(function () {
+        $('#contentAreaContainer').load('wikies/testpage.html', function () {
+            initializePage();
+        });
+
+        $('#randomPage').on('click', function () {
+            // Запрос к GitHub API для получения содержимого директории
+            $.ajax({
+                url: 'https://api.github.com/repos/demernkardaz/MechaniCodeus/contents/wikies',
+                success: function (data) {
+                    // Извлекаем имена файлов из полученных данных
+                    var files = data.map(function (file) {
+                        return file.name;
+                    });
+
+                    // Выбираем случайный файл из списка
+                    var randomFile = files[Math.floor(Math.random() * files.length)];
+
+                    // Загрузка случайного файла и вызов функции initializePage
+                    $('#contentAreaContainer').load('wikies/' + randomFile, function () {
+                        initializePage();
+                    });
+                }
+            });
+        });
+    });
+
+
+
+    $(document).ready(function () {
+        $('#hierarchyAtrributes li').each(function () {
+            if ($(this).find('ul').length > 0) {
+                $(this).prepend('<span class="material-icons hierarchical_arrow">chevron_right</span>');
+                $(this).addClass('has-child');
+            }
+        });
+
+        $('#hierarchyAtrributes li.has-child').each(function () {
+            var $ul = $(this).children('ul');
+            $ul.hide();
+
+            $(this).children('.hierarchical_arrow').click(function (e) {
+                e.stopPropagation();
+                $ul.slideToggle();
+                $(this).toggleClass('rotated');
+            });
+            $(this).children().next().dblclick(function (e) {
+                e.stopPropagation();
+                $ul.slideToggle();
+            });
+
+
+        });
+
+
+        $(document).ready(function () {
+            $('span[data-wikie]').on('mouseover', function () {
+                $(this).siblings('span.hierarchical_arrow').addClass('listElement_Arrow');
+            });
+            $('span[data-wikie]').on('mouseout', function () {
+                $(this).siblings('span.hierarchical_arrow').removeClass('listElement_Arrow');
+            });
+
+
+
+            $('span.hierarchical_arrow').on('mouseover', function () {
+                $(this).siblings('span[data-wikie]').addClass('hovered');
+                $(this).addClass('listElement_Arrow');
+            });
+            $('span.hierarchical_arrow').on('mouseout', function () {
+                $(this).siblings('span[data-wikie]').removeClass('hovered');
+                $(this).removeClass('listElement_Arrow');
+            });
+        });
+
+
+
+
+
+    });
+
+}
+
+
+
+$(document).ready(function () {
+    $('#hierarchyDeployer').load('hi_attri.html', function () {
+        initializeRoot();
+    });
+});
+
+function setRandomDuration() {
+    var noiseBar = document.querySelector('.noise-bar');
+    var randomDuration = Math.floor(Math.random() * (30 - 3 + 1)) + 3;
+    noiseBar.style.setProperty('--animation-duration-3to30', randomDuration + 's');
+}
+
+document.addEventListener("animationiteration", setRandomDuration);
+
+setTimeout(setRandomDuration, 500);
