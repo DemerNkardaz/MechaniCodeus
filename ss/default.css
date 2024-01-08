@@ -209,6 +209,39 @@ a>.material-icons.external:hover {
     margin-left: 5px;
 }
 
+#selectGame {
+    position: relative;
+    display: flex;
+}
+
+#selectGame img {
+    position: relative;
+    background: linear-gradient(#ffffff, #ffffff) 50% 50%/calc(100% - 16px) calc(100% - 16px) no-repeat,
+        conic-gradient(from 278deg, #c1c637 0%, #6c6b21 23%, #cca436 56%, rgb(112, 93, 24) 100%);
+    border-radius: 15%;
+    padding: 2px;
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+    transition: filter 0.3s ease-in-out;
+}
+
+#selectGame img:hover {
+    filter: brightness(70%);
+}
+
+#selectGame img:active,
+#selectGame img:focus {
+    transition: filter 0.05s ease-in-out;
+    filter: brightness(120%);
+}
+
+#selectGame img.disabled {
+    filter: grayscale();
+    cursor: auto;
+}
+
+
 .modal-dialog.HelpPopup {
     max-width: 700px;
     hyphens: auto;
@@ -800,4 +833,13 @@ a>.material-icons.external:hover {
     width: 100%;
     bottom: 10px;
     text-align: center;
+}
+
+
+.noInformation {
+    display: block;
+    font-family: 'Tektur', sans-serif;
+    font-size: 0.825em;
+    padding: 10px 10px 0px 10px;
+    white-space: pre-wrap;
 }

@@ -477,12 +477,28 @@ function initializeRoot() {
 
     });
 
-}
 
+}
 // Load the common list
 $(document).ready(function () {
-    $('#hierarchyDeployer').load('hi_attri.html', function () {
+    $('#hierarchyDeployer').load('lists/hi_attri.html', function () {
         initializeRoot();
+    });
+});
+
+// Load selected game list
+$(document).ready(function () {
+    $('.attributeLoader img').on('click', function () {
+        var imageUrl = $(this).attr('data-image-url');
+        var fileUrl = $(this).attr('data-file-url');
+
+        if (!fileUrl) {
+            fileUrl = 'lists/404atr.html';
+        }
+
+        $('#hierarchyDeployer').load(fileUrl, function () {
+            initializeRoot();
+        });
     });
 });
 
