@@ -1,7 +1,35 @@
 {
     "items": [
         {
-            "MechaTitle": "Deus Mechanicus"
+            "MechaTitle": "Deus Mechanicus",
+            "File404": "Limen non existit",
+            "System": "Systema",
+            "TutorialAuthor": "Informatio aucta a ",
+            "cogitatorInterface": "Interficiens Cogitator / Accessus Online",
+            "Class_Attributes": "Atributa",
+            "Class_Structure": "Structura",
+            "Help_Title": "Deus Mechanicus: Index attributorum",
+            "Help_Description_1": "Informatio de attributis in ludo strategico “Warhammer 40,000: Dawn of War – Soulstorm” sita est in hoc fonte.",
+            "Help_Description_2": "Corrections/additiones proponere potes ad <a href='https://github.com/DemerNkardaz/MechaniCodeus/issues'>Problemata GitHub pagina</a>.",
+            "Help_Description_3": "In fundo, depictio scenae ex ludo “Warhammer 40,000: Space Marine (2011)” est.",
+            "Help_Description_4": "Ultima emendatio: ",
+            "Help_Resources": "Fontes",
+            "Help_Main": "Principalis",
+            "Help_Main_VK": "In Contactu",
+            "abilextension": "<i>Extensio Schema Facultatis</i>",
+            "addonextension": "<i>Extensio Schema Additi</i>",
+            "ebpextension": "<i>Extensio Schema Entitatis</i>",
+            "raceextension": "<i>Extensio Schema Factionis</i>",
+            "requiredextension": "<i>Extensio Schema Conditionis</i>",
+            "researchextension": "<i>Extensio Schema Investigationis</i>",
+            "sbpextension": "<i>Extensio Schema Cohortis</i>",
+            "weapextension": "<i>Extensio Schema Telorum</i>",
+            "child_attributes": "Atributa Filiorum",
+            "ebp_ui_ext_description": "Fert informationem praecipue monstratam entitati in ludico interfacie: signum imago, nomen, ostentatio ut 'heros', indicium-descriptiones, et alia, una cum clavis instantanea.",
+            "ebp_ui_info": "servat communem informationem pro interficie.",
+            "ebp_help_text_list": "index locutionum pro auxiliaribus textibus.",
+            "ebp_help_text_num": "a 01 ad 08 (defectum), index locutionis in forma <i>$000 (numerus ex .ucs schedario)</i>.",
+            "ebp_icon_name": "via ad entitatem iconem est secundum formam 'tabula\\nomen_signum_imagis' (reconditur in via <span class='path_to_file'>data\\art\\ui\\ingame\\tabula\\nomen_signum_imagis.tga</span>)."
         }
     ]
 }
