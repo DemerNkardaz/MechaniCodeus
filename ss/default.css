@@ -68,6 +68,101 @@ a>.material-icons.external:hover {
     color: #ffedae;
 }
 
+
+.badge.blue {
+    background-color: #0d6efd !important;
+}
+
+.badge.red {
+    background-color: #dc3545 !important;
+}
+
+.badge.purple {
+    background-color: #aa20ca !important;
+}
+
+.badge.green {
+    background-color: #4ae339 !important;
+}
+
+.badge.pink {
+    background-color: #fb6f92 !important;
+}
+
+.badge.yellow {
+    background-color: #e2ad00 !important;
+}
+
+.badge.turquoise {
+    background-color: #0fa3b1 !important;
+}
+
+.badge.darkred {
+    background-color: #910000 !important;
+}
+
+.badge.lightindigo {
+    background-color: #7678ed !important;
+}
+
+.badge.grey {
+    background-color: #6c757d !important;
+}
+
+.badge.lightbrown {
+    background-color: #735751 !important;
+}
+
+.badge.cyan1 {
+    background-color: #52b788 !important;
+}
+
+.badge.lavanda {
+    background-color: #cfbaf0 !important;
+    color: #333;
+}
+
+.badge.lime {
+    background-color: #ccff33 !important;
+    color: #333;
+}
+
+.badge.skyblue {
+    background-color: #e3f2fd !important;
+    color: #333;
+}
+
+.badge.lightpink {
+    background-color: #fcd5ce !important;
+    color: #333;
+}
+
+.badge.lua {
+    background-color: #00007c !important;
+}
+
+.badge.relic {
+    background-color: #fae71f !important;
+    color: black;
+}
+
+.badge.lavandadark {
+    background-color: #2c0735 !important;
+}
+
+.badge.sfx {
+    background-color: #006494 !important;
+}
+
+.badge.guide {
+    background-color: #727d71 !important;
+}
+
+.badge.orange {
+    background-color: #e87d0d !important;
+}
+
+
 .path_to_file {
     background-color: #333;
     color: #fff;
@@ -341,7 +436,9 @@ a>.material-icons.external:hover {
 }
 
 #TutorialAuthor {
-    position: absolute;
+    position: sticky;
+    width: max-content;
+    margin-left: auto;
     right: 8px;
     bottom: 4px;
     font-size: 8pt;
@@ -441,7 +538,7 @@ a>.material-icons.external:hover {
 .select-options.active {
     display: flex;
     flex-direction: column;
-    max-width: 128px;
+    max-width: 150px;
     margin-left: auto;
     margin-right: auto;
 }
