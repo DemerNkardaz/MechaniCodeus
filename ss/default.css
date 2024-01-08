@@ -388,7 +388,7 @@ a>.material-icons.external:hover {
 .hierarchyControls>:first-child .btn.btn-primary {
     color: #ffd228;
     /*color: #4c10ff;*/
-    background-color: transparent;
+    background-color: #be9115cf;
     border-color: #fcdf20;
     padding: 0px 10px 0px 10px;
     line-height: 1;
@@ -574,7 +574,7 @@ a>.material-icons.external:hover {
 
 
 .hierarchyControls {
-    padding: 3px 15px 7.5px 15px;
+    padding: 3px 10px 7.5px 10px;
     border-bottom: 1px solid #face27;
     position: relative;
     display: flex;
