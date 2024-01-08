@@ -54,18 +54,20 @@
                         </div>
                     </div>
 
-                    <span class="material-icons" style="user-select: none;">
-                        <button type="button" class="btn btn-primary" id="collapseShowAllLists">unfold_more</button>&#x2006;<button type="button" class="btn btn-primary" id="alphaSorting">sort_by_alpha</button>&#x2006;<button type="button"
-                            class="btn btn-primary">filter_list_off</button>&ensp;<button type="button"
-                            class="btn btn-primary"
-                            data-bs-toggle="modal" data-bs-target="#helpModal"
-                            style="margin-left: 10px; line-height: 1; font-size: 1em">help_outline</button>
-                    </span>
                 </div><hr>
 
                 <div class="iron_border">
                     <div id="hierarchyMain">
                         <div class="noise-bar"></div>
+                        <div class="hierarchyControls">
+                            <span class="material-icons">
+                                <button type="button" class="btn btn-primary" id="collapseShowAllLists">unfold_more</button>&#x2006;<button type="button" class="btn btn-primary" id="alphaSorting">sort_by_alpha</button>&#x2006;<button type="button"
+                                    class="btn btn-primary">filter_list_off</button>&#x2006;<button id="randomPage" class="btn btn-primary"><span class="material-icons">shuffle</span></button>
+                                <button type="button"
+                                    class="btn btn-primary"
+                                    data-bs-toggle="modal" data-bs-target="#helpModal">help_outline</button>
+                            </span>
+                        </div>
                         <div id="hierarchyDeployer"></div>
                         <div class="cogitatorInterface glitch">+++ <span data-key="cogitatorInterface">Интерфейс Когитатора / Доступ подключен</span> +++</div>
                         <div class="noise_glitch"></div>
@@ -75,7 +77,6 @@
             </div>
             <div class="container right">
                 <div id="contentAreaContainer"></div>
-                <button id="randomPage" class="btn btn-primary"><span class="material-icons">shuffle</span></button>
                 <div class="language-selector" id="languageSelectorContainer"></div>
             </div>
         </div>

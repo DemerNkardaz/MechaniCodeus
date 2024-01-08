@@ -114,7 +114,6 @@ a>.material-icons.external:hover {
     margin-left: 5px;
 }
 
-
 .modal-dialog.HelpPopup {
     max-width: 700px;
     hyphens: auto;
@@ -335,30 +334,6 @@ a>.material-icons.external:hover {
     margin-right: 0;
 }
 
-.btn.btn-primary {
-    background-color: #fcdf20;
-    border-color: #fcdf20;
-    color: #1b0e06;
-}
-
-.btn.btn-primary:hover {
-    background-color: #be9115;
-    border-color: #be9115;
-    color: #1b0e06;
-}
-
-.btn.btn-primary:focus,
-.btn.btn-primary:active {
-    background-color: #be9115;
-    border-color: #be9115;
-    color: #ffffff;
-}
-
-.container.left> :first-child> :nth-child(2)>.btn.btn-primary {
-    padding: 2.5px 5px 2.5px 5px;
-    margin-bottom: 0px;
-}
-
 .container.right {
     max-width: 1000px;
     margin-left: 20px;
@@ -382,17 +357,6 @@ a>.material-icons.external:hover {
     cursor: pointer;
 }
 
-.btn.btn-primary#randomPage {
-    padding-bottom: 2px;
-    padding-left: 5px;
-    padding-right: 5px;
-    line-height: 1;
-    position: absolute;
-    top: 13.15px;
-    right: 165px;
-    z-index: 1000;
-}
-
 .language-selector {
     position: absolute;
     top: 13px;
@@ -414,6 +378,38 @@ a>.material-icons.external:hover {
 
 .child_list_highlight {
     color: #fae3be;
+}
+
+.hierarchyControls>:first-child {
+    display: flex;
+
+}
+
+.hierarchyControls>:first-child .btn.btn-primary {
+    color: #ffd228;
+    /*color: #4c10ff;*/
+    background-color: transparent;
+    border-color: #fcdf20;
+    padding: 0px 10px 0px 10px;
+    line-height: 1;
+    font-size: 1em;
+}
+
+.hierarchyControls>:first-child .btn.btn-primary:last-child {
+    margin-left: auto;
+}
+
+.hierarchyControls>:first-child .btn.btn-primary:hover {
+    background-color: #fcdf20;
+    border-color: white;
+    color: #4c10ff;
+}
+
+.hierarchyControls>:first-child .btn.btn-primary:focus,
+.hierarchyControls>:first-child .btn.btn-primary:active {
+    background-color: #be9115;
+    border-color: #fcdf20;
+    color: #ffffff;
 }
 
 #hierarchyAtrributes {
@@ -574,6 +570,23 @@ a>.material-icons.external:hover {
 #hierarchyMain>* {
     filter: contrast(130%);
 
+}
+
+
+.hierarchyControls {
+    padding: 3px 15px 7.5px 15px;
+    border-bottom: 1px solid #face27;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hierarchyControls>span {
+    display: inline-block;
+    width: 100%;
+    user-select: none;
 }
 
 #hierarchyMain::before {
