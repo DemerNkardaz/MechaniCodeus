@@ -340,28 +340,10 @@ a>.material-icons.external:hover {
     position: relative;
 }
 
-#languageSelect {
-    --bs-form-select-bg-img: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffd228' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
-    border: 0px solid #543e0e;
-    background-color: #a26400;
-    cursor: pointer;
-    color: #ffd228;
-}
+
 
 .form-select::after {
     border-color: #ffd228;
-    /* Замените #yourColor на цвет вашего выбора */
-}
-
-#languageSelect>option {
-    cursor: pointer;
-}
-
-.language-selector {
-    position: absolute;
-    top: 13px;
-    right: 15px;
-    z-index: 1000;
 }
 
 .container.right>:first-child {
@@ -395,21 +377,108 @@ a>.material-icons.external:hover {
     font-size: 1em;
 }
 
+/*
 .hierarchyControls>:first-child .btn.btn-primary:last-child {
     margin-left: auto;
-}
+}*/
 
+#languageSelect:hover,
 .hierarchyControls>:first-child .btn.btn-primary:hover {
     background-color: #fcdf20;
     border-color: white;
     color: #4c10ff;
 }
 
+#languageSelect:focus,
+#languageSelect:active,
 .hierarchyControls>:first-child .btn.btn-primary:focus,
 .hierarchyControls>:first-child .btn.btn-primary:active {
     background-color: #be9115;
     border-color: #fcdf20;
     color: #ffffff;
+}
+
+#languageSelectorContainer {
+    position: relative;
+    display: flex;
+}
+
+.select-styled {
+    display: inline-block;
+    border: 1px solid #fcdf20;
+    cursor: pointer;
+}
+
+.select-styled:after {
+    content: '';
+}
+
+.select-options {
+    position: absolute;
+    top: 32px;
+    max-height: 512px;
+    overflow: hidden;
+    border: 1px solid #fcdf20;
+    box-shadow: 0 0 5px #fcdf20;
+    background: #d7c71acf repeating-linear-gradient(to bottom, #55555596, #55555575 5px, #7777777f 5px, #77777757 6px);
+    backdrop-filter: blur(5px);
+    display: none;
+    font-size: 11pt;
+    z-index: 9999;
+    padding: 0 10px 0 10px;
+    margin: 0;
+}
+
+.select-options.active {
+    display: flex;
+    flex-direction: column;
+    max-width: 128px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.select-options li {
+    font-family: 'Tektur', sans-serif;
+    line-height: 1.8;
+    list-style: none;
+    cursor: pointer;
+}
+
+.select-options li:hover {
+    font-weight: 800;
+    color: #ffffff;
+}
+
+#languageSelect option {
+    background: #00aa0f repeating-linear-gradient(to bottom, #55555596, #55555575 5px, #7777777f 5px, #77777757 6px);
+}
+
+#languageSelect {
+    position: relative;
+    background-color: #be9115cf;
+    border-color: #fcdf20;
+    border-radius: 7px;
+    cursor: pointer;
+    color: #ffd228;
+    font-family: 'Tektur', sans-serif;
+    padding: 0px 10px 0px 10px;
+    line-height: 1.5;
+    font-size: 0.7em;
+    width: 100px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    overflow: hidden;
+}
+
+#languageSelect>option {
+    cursor: pointer;
+}
+
+.language-selector {
+    margin-left: auto;
 }
 
 #hierarchyAtrributes {
@@ -555,12 +624,14 @@ a>.material-icons.external:hover {
     overflow: hidden;
     overflow-x: hidden;
     hyphens: auto;
+    z-index: 0;
 }
 
 #hierarchyDeployer {
     position: relative;
     overflow: auto;
     max-height: 72vh;
+    z-index: 0;
 }
 
 #hierarchyDeployer {
@@ -581,6 +652,7 @@ a>.material-icons.external:hover {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    z-index: 1;
 }
 
 .hierarchyControls>span {

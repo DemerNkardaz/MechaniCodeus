@@ -113,25 +113,61 @@ function initializePage() {
 
         // Language setup
         var languages = [
-            { code: 'en', name: 'English', flag: '🇺🇸' },
-            { code: 'ru', name: 'Русский', flag: '🇷🇺' },
-            { code: 'jp', name: '日本語', flag: '🇯🇵' },
+            { code: 'en', short: 'EN', name: 'English', flag: '🇺🇸' },
+            { code: 'ru', short: 'РУ', name: 'Русский', flag: '🇷🇺' },
+            { code: 'jp', short: '日本語', name: '日本語', flag: '🇯🇵' },
         ];
 
         var selectedLanguage = localStorage.getItem('selectedLanguage') || 'en';
 
-        var selectHtml = '<select class="form-select" id="languageSelect">';
+        var selectHtml = '<div class="custom-select" id="languageSelectWrapper">';
+        selectHtml += '<div class="select-styled" id="languageSelect">' + getSelectedLanguageName(selectedLanguage) + '</div>';
+        selectHtml += '<ul class="select-options">';
         for (var i = 0; i < languages.length; i++) {
             var selected = languages[i].code === selectedLanguage ? 'selected' : '';
-            selectHtml += '<option value="' + languages[i].code + '" ' + selected + '>' + languages[i].flag + ' ' + languages[i].name + '</option>';
+            selectHtml += '<li data-value="' + languages[i].code + '" ' + selected + '>' + languages[i].flag + ' ' + languages[i].name + '</li>';
         }
-        selectHtml += '</select>';
+        selectHtml += '</ul></div>';
 
         $('#languageSelectorContainer').html(selectHtml);
+
+        // Добавляем обработчик события для открытия/закрытия списка
+        $('#languageSelect').on('click', function () {
+            $(this).toggleClass('active');
+            $('.select-options').toggleClass('active');
+        });
+
+        // Добавляем обработчик события для выбора языка
+        $('#languageSelectWrapper li').on('click', function () {
+            var selectedLanguage = $(this).data('value');
+            updateLanguage(selectedLanguage);
+
+            // Закрываем список после выбора
+            $('#languageSelect').removeClass('active');
+            $('.select-options').removeClass('active');
+        });
+
+        // Добавляем обработчик события для скрытия блока выбора языка при клике за его пределами
+        $(document).on('click', function (event) {
+            var languageSelectWrapper = $('#languageSelectWrapper');
+
+            // Проверяем, был ли клик вне блока выбора языка
+            if (!languageSelectWrapper.is(event.target) && languageSelectWrapper.has(event.target).length === 0) {
+                // Если клик был вне блока, скрываем его
+                $('#languageSelect').removeClass('active');
+                $('.select-options').removeClass('active');
+            }
+        });
 
         function updateLanguage(selectedLanguage) {
             var htmlElement = document.querySelector('html');
             htmlElement.setAttribute('lang', selectedLanguage);
+
+            $('#languageSelect').html(getSelectedLanguageName(selectedLanguage));
+
+
+            // Сохраняем выбранный язык в кеше
+            localStorage.setItem('selectedLanguage', selectedLanguage);
 
             $.getJSON('ss/lang_' + selectedLanguage + '.json', function (data) {
                 $('[data-key]').each(function () {
@@ -141,6 +177,18 @@ function initializePage() {
                 updatePlaceholderText(data);
             });
         }
+
+
+        function getSelectedLanguageName(code) {
+            for (var i = 0; i < languages.length; i++) {
+                if (languages[i].code === code) {
+                    return languages[i].flag + '&#8201;' + languages[i].short;
+                }
+            }
+            return '';
+        }
+
+
 
         function updatePlaceholderText(data) {
             var inputSearchTextPlaceholder = data.items[1].inputSearchTextPlaceholder;
