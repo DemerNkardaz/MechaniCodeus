@@ -3,6 +3,8 @@
         {
             "MechaTitle": "MechaniCodeus",
             "File404": "File is not exists",
+            "System": "System",
+            "TutorialAuthor": "Info created by ",
             "cogitatorInterface": "Cogitator Interface / Access Online",
             "Class_Attributes": "Attributes",
             "Class_Structure": "Structure",

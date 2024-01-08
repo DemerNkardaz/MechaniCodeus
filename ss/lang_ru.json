@@ -3,6 +3,8 @@
         {
             "MechaTitle": "МеханиКодеус",
             "File404": "Файл отсутствует",
+            "System": "Система",
+            "TutorialAuthor": "Создано: ",
             "cogitatorInterface": "Интерфейс Когитатора / Доступ подключен",
             "Class_Attributes": "Атрибуты",
             "Class_Structure": "Структура",

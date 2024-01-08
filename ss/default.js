@@ -206,7 +206,7 @@ function initializePage() {
 
     // Adding N/A for undescribed attribs
     $(document).ready(function () {
-        $(".container.right *").each(function () {
+        $(".container.right * li").each(function () {
             var currentText = $(this).text();
             if (currentText && !currentText.replace(/.* — /, '').trim()) {
                 $(this).append(" N/A");

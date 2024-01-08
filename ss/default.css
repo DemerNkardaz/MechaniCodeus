@@ -340,6 +340,15 @@ a>.material-icons.external:hover {
     position: relative;
 }
 
+#TutorialAuthor {
+    position: absolute;
+    right: 8px;
+    bottom: 4px;
+    font-size: 8pt;
+    z-index: 1;
+}
+
+
 
 
 .form-select::after {
@@ -691,7 +700,7 @@ a>.material-icons.external:hover {
     font-family: 'Tektur', sans-serif;
     font-size: 0.8em;
     position: absolute;
-    width: 95.5%;
+    width: 100%;
     bottom: 10px;
     text-align: center;
 }

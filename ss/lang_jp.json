@@ -3,6 +3,8 @@
         {
             "MechaTitle": "メカニカル・神",
             "File404": "ファイルは存在しません",
+            "System": "系統",
+            "TutorialAuthor": "作成者：",
             "cogitatorInterface": "コジテーター インタフェース / アクセス 接続済み",
             "Class_Attributes": "属性",
             "Class_Structure": "構造",
