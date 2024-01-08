@@ -232,8 +232,8 @@ function initializePage() {
 
 
     $(document).ready(function () {
-        var $firstSpan = $('#hierarchyAtrributes li').children('span').first();
-        var $lastSpan = $('#hierarchyAtrributes li').children('span').last();
+        var $firstSpan = $('#hierarchyAttributes li').children('span').first();
+        var $lastSpan = $('#hierarchyAttributes li').children('span').last();
 
         $firstSpan.mouseover(function () {
             if ($(this).hasClass('hierarchical_arrow')) {
@@ -343,15 +343,24 @@ $.expr[":"].containsOrInChildren = $.expr.createPseudo(function (text) {
 });
 
 
+let lastLoadedWikiePath = '';
+let lastLoadedHierarchyPath = '';
+let lastLoadedTypesPath = '';
 
+let cachedWikiePath = localStorage.getItem('lastLoadedWikiePath');
+let cachedHierarchyPath = localStorage.getItem('cachedHierarchyPath');
+let cachedTypesPath = localStorage.getItem('cachedTypesPath');
+
+let cachedGame = localStorage.getItem('cachedGame');
+let lastLoadedGame = cachedGame;
 
 function initializeRoot() {
     // Loading the info pages
-    var lastLoadedWikiePath = '';
-    $('#hierarchyAtrributes li').each(function () {
+
+    $('#hierarchyAttributes li').each(function () {
         $(this).children('span').last().each(function () {
             if (!$(this).attr('data-wikie')) {
-                $(this).attr('data-wikie', 'wikies\\404.html');
+                $(this).attr('data-wikie', 'wikies/404.html');
             }
         });
 
@@ -362,44 +371,44 @@ function initializeRoot() {
                 $('#contentAreaContainer').load(wikiePath, function () {
                     initializePage();
                     lastLoadedWikiePath = wikiePath;
+                    localStorage.setItem('lastLoadedWikiePath', lastLoadedWikiePath);
                 });
             }
         });
     });
 
+    $('#randomPage').on('click', function () {
+        $.ajax({
+            url: 'https://api.github.com/repos/demernkardaz/MechaniCodeus/contents/wikies',
+            success: function (data) {
+                var files = data.map(function (file) {
+                    return file.name;
+                });
+                var randomFile = files[Math.floor(Math.random() * files.length)];
+                var wikiePath = 'wikies/' + randomFile;
 
-    $(document).ready(function () {
-        $('#contentAreaContainer').load('wikies/testpage.html', function () {
-            initializePage();
-        });
+                lastLoadedWikiePath = wikiePath;
+                $('#contentAreaContainer').load(wikiePath, function () {
+                    initializePage();
+                    localStorage.setItem('lastLoadedWikiePath', lastLoadedWikiePath);
+                });
 
-        $('#randomPage').on('click', function () {
-            $.ajax({
-                url: 'https://api.github.com/repos/demernkardaz/MechaniCodeus/contents/wikies',
-                success: function (data) {
-                    var files = data.map(function (file) {
-                        return file.name;
-                    });
-                    var randomFile = files[Math.floor(Math.random() * files.length)];
-                    $('#contentAreaContainer').load('wikies/' + randomFile, function () {
-                        initializePage();
-                    });
-                }
-            });
+            }
         });
     });
+
 
     // List functions
     $(document).ready(function () {
 
-        $('#hierarchyAtrributes li').each(function () {
+        $('#hierarchyAttributes li').each(function () {
             if ($(this).find('ul').length > 0) {
                 $(this).prepend('<span class="material-icons hierarchical_arrow">chevron_right</span>');
                 $(this).addClass('has-child');
             }
         });
 
-        $('#hierarchyAtrributes li.has-child').each(function () {
+        $('#hierarchyAttributes li.has-child').each(function () {
             var $ul = $(this).children('ul');
             $ul.hide();
             var $arrow = $(this).children('.hierarchical_arrow');
@@ -424,7 +433,7 @@ function initializeRoot() {
             var isAllOpen = false;
 
             $('#collapseShowAllLists').click(function (e) {
-                var $elements = $('#hierarchyAtrributes li.has-child ul');
+                var $elements = $('#hierarchyAttributes li.has-child ul');
                 var $button = $(this);
 
                 if (isAllOpen) {
@@ -477,37 +486,67 @@ function initializeRoot() {
 
     });
 
-
 }
 // Load the common list
 $(document).ready(function () {
-    $('#hierarchyDeployer').load('lists/hi_attri.html', function () {
+    $('#hierarchyDeployer').load(cachedHierarchyPath || 'lists/dowss_attrib.html', function () {
+
+    });
+    $('#attributeTypesDeploy').load(cachedTypesPath || 'lists/dowss_opts.html', function () {
         initializeRoot();
     });
-});
+    $('#contentAreaContainer').load(cachedWikiePath || 'wikies/testpage.html', function () {
+        initializePage();
+    });
 
-// Load selected game list
-$(document).ready(function () {
-    $('.attributeLoader img').on('click', function () {
-        var imageUrl = $(this).attr('data-image-url');
-        var fileUrl = $(this).attr('data-file-url');
 
-        if (!fileUrl) {
-            fileUrl = 'lists/404atr.html';
-        }
+    $('.attributeLoader').on('click', function () {
+        var optionsUrl = $(this).attr('data-options-url') || 'lists/404opts.html';
+        var fileUrl = $(this).data('file-url') || 'lists/404atr.html';
 
-        $('#hierarchyDeployer').load(fileUrl, function () {
+        lastLoadedHierarchyPath = fileUrl;
+        lastLoadedTypesPath = optionsUrl;
+        localStorage.setItem('cachedHierarchyPath', lastLoadedHierarchyPath);
+        localStorage.setItem('cachedTypesPath', lastLoadedTypesPath);
+
+        $('#hierarchyDeployer').load(fileUrl);
+        $('#attributeTypesDeploy').load(optionsUrl, function () {
+            initializePage();
             initializeRoot();
         });
     });
+
+    $(document).on('click', '.optionloader', function () {
+        var fileUrl = $(this).data('file-url') || 'lists/404atr.html';
+
+        lastLoadedHierarchyPath = fileUrl;
+        localStorage.setItem('cachedHierarchyPath', lastLoadedHierarchyPath);
+
+        $('#hierarchyDeployer').load(fileUrl, function () {
+            initializePage();
+            initializeRoot();
+        });
+    });
+
+    function handleImageSelection() {
+        $('.attributeLoader img').removeClass('selected');
+        $(this).find('img').addClass('selected');
+        lastLoadedGame = $(this).find('img').attr('src');
+        localStorage.setItem('cachedGame', lastLoadedGame);
+    }
+    $('.attributeLoader').on('click', handleImageSelection);
+    $('.attributeLoader img[src="' + (lastLoadedGame || $('.attributeLoader img:first').attr('src')) + '"]').addClass('selected');
 });
 
 
 
 function setRandomDuration() {
-    var noiseBar = document.querySelector('.noise-bar');
-    var randomDuration = Math.floor(Math.random() * (30 - 3 + 1)) + 3;
-    noiseBar.style.setProperty('--animation-duration-3to30', randomDuration + 's');
+    var noiseBars = document.querySelectorAll('.noise-bar');
+    noiseBars.forEach(function (noiseBar) {
+        var randomDuration = Math.floor(Math.random() * (30 - 3 + 1)) + 3;
+        noiseBar.style.setProperty('--animation-duration-3to30', randomDuration + 's');
+    });
 }
+
 document.addEventListener("animationiteration", setRandomDuration);
 setTimeout(setRandomDuration, 500);

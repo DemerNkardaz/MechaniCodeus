@@ -7,6 +7,7 @@
     opacity: 0;
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" /></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" /></svg>') repeat;
     animation: noiseAnimation var(--animation-duration-3to30) ease-in infinite;
+
 }
 
 @keyframes noiseAnimation {

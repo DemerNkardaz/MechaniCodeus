@@ -3,6 +3,7 @@
         {
             "MechaTitle": "MechaniCodeus",
             "File404": "File is not exists",
+            "unRecognized": "Unrecognized",
             "noInformation": "Error recognizing data block:<br><br>Information is missing<br><br>Contact the nearest Administratum office for assistance from a Mechanicum specialist.",
             "System": "System",
             "TutorialAuthor": "Info created by ",

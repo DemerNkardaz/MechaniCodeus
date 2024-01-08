@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons+Outlined');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Tektur&display=swap');
@@ -176,8 +177,11 @@ a>.material-icons.external:hover {
 .ClassesTypeSelector {
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    margin-top: 5px;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .ClassesTypeSelector .material-icons {
@@ -194,11 +198,7 @@ a>.material-icons.external:hover {
     left: 0;
 }
 
-.ClassesTypeSelector {
-    display: flex;
-    flex-direction: row;
-    margin-top: 5px;
-}
+
 
 .ClassesTypeSelector .SelectChange {
     display: flex;
@@ -212,34 +212,47 @@ a>.material-icons.external:hover {
 #selectGame {
     position: relative;
     display: flex;
+    width: 183px;
 }
 
 #selectGame img {
     position: relative;
     background: linear-gradient(#ffffff, #ffffff) 50% 50%/calc(100% - 16px) calc(100% - 16px) no-repeat,
-        conic-gradient(from 278deg, #c1c637 0%, #6c6b21 23%, #cca436 56%, rgb(112, 93, 24) 100%);
+        conic-gradient(from 278deg, #7450ad 0%, #1c1968 23%, #a83bc6 56%, rgb(24, 87, 114) 100%);
     border-radius: 15%;
     padding: 2px;
     box-sizing: border-box;
     position: relative;
     cursor: pointer;
-    transition: filter 0.3s ease-in-out;
+    transition: filter 0.1s ease-in-out;
+}
+
+#selectGame img.selected {
+    background: linear-gradient(#ffffff, #ffffff) 50% 50%/calc(100% - 16px) calc(100% - 16px) no-repeat,
+        conic-gradient(from 278deg, #c66b37 0%, #6c3121 23%, #cc4f36 56%, rgb(112, 24, 55) 100%);
+    filter: none;
+
 }
 
 #selectGame img:hover {
-    filter: brightness(70%);
+    filter: brightness(110%);
 }
 
 #selectGame img:active,
 #selectGame img:focus {
     transition: filter 0.05s ease-in-out;
-    filter: brightness(120%);
+    filter: brightness(125%);
 }
 
 #selectGame img.disabled {
-    filter: grayscale();
     cursor: auto;
 }
+
+#selectGame img.disabled:not(.selected) {
+    filter: grayscale();
+
+}
+
 
 
 .modal-dialog.HelpPopup {
@@ -255,6 +268,7 @@ a>.material-icons.external:hover {
 
 .modal-header.HelpPopup {
     border-bottom: 1px solid #543e0e;
+    width: 100%;
 }
 
 .modal-header.HelpPopup>:first-child {
@@ -299,6 +313,7 @@ a>.material-icons.external:hover {
 .container.additional {
     max-height: 300px;
     overflow: auto;
+    background-color: #362a1f3b;
 }
 
 .container.additional>.list-group {
@@ -453,15 +468,6 @@ a>.material-icons.external:hover {
     align-items: center;
 }
 
-.container.left> :first-child> :nth-child(1) {
-    margin-right: auto;
-    max-width: 250px;
-}
-
-.container.left> :first-child> :nth-child(2) {
-    margin-right: 0;
-}
-
 .container.right {
     max-width: 1000px;
     margin-left: 20px;
@@ -478,6 +484,9 @@ a>.material-icons.external:hover {
     z-index: 1;
 }
 
+.optionloader {
+    margin-right: 3.5px;
+}
 
 
 
@@ -620,52 +629,52 @@ a>.material-icons.external:hover {
     margin-left: auto;
 }
 
-#hierarchyAtrributes {
+#hierarchyAttributes {
     overflow: hidden;
     position: relative;
 }
 
-#hierarchyAtrributes {
+#hierarchyAttributes {
     font-size: 0.8em;
 }
 
-#hierarchyAtrributes * {
+#hierarchyAttributes * {
     text-indent: 2px;
     list-style-type: none;
 }
 
-#hierarchyAtrributes li {
+#hierarchyAttributes li {
     user-select: none;
     cursor: pointer;
     position: relative;
     list-style-type: none;
 }
 
-#hierarchyAtrributes>ul {
+#hierarchyAttributes>ul {
     margin: 10px;
     padding: 0;
 }
 
-#hierarchyAtrributes li {
+#hierarchyAttributes li {
     position: relative;
     z-index: 1;
 }
 
-#hierarchyAtrributes .listElement_Arrow {
+#hierarchyAttributes .listElement_Arrow {
     font-weight: 800;
     color: #4c10ff;
 }
 
-#hierarchyAtrributes .listElement_Arrow:hover {
+#hierarchyAttributes .listElement_Arrow:hover {
     font-weight: 800;
     color: #9d7cff;
 }
 
-#hierarchyAtrributes li span:last-of-type {
+#hierarchyAttributes li span:last-of-type {
     font-family: 'Tektur', sans-serif !important;
 }
 
-#hierarchyAtrributes li span::before {
+#hierarchyAttributes li span::before {
     content: "";
     position: absolute;
     transform: scaleX(150%);
@@ -676,8 +685,8 @@ a>.material-icons.external:hover {
     z-index: -2;
 }
 
-#hierarchyAtrributes li span.hovered::before,
-#hierarchyAtrributes li span:hover::before {
+#hierarchyAttributes li span.hovered::before,
+#hierarchyAttributes li span:hover::before {
     content: "";
     position: absolute;
     width: 100%;
@@ -686,8 +695,8 @@ a>.material-icons.external:hover {
     z-index: -2;
 }
 
-#hierarchyAtrributes li span.hovered,
-#hierarchyAtrributes li span:hover {
+#hierarchyAttributes li span.hovered,
+#hierarchyAttributes li span:hover {
     letter-spacing: 0.15em;
     font-weight: 800;
     color: #271405;
@@ -750,6 +759,106 @@ a>.material-icons.external:hover {
     mix-blend-mode: hard-light;
     box-shadow: inset 0 0 2px #b41111cb;
     z-index: 0;
+}
+
+.secondaryScreen {
+    position: relative;
+    height: 32px;
+    width: 180px;
+    background-blend-mode: multiply;
+    filter: contrast(240%) hue-rotate(100deg);
+    border-radius: 7px 7px 10px 10px;
+    overflow: hidden;
+    overflow-x: hidden;
+    z-index: 0;
+    color: rgb(255, 255, 0);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 0 10px 0 10px;
+}
+
+.secondaryScreen>#attributeTypesDeploy {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.secondaryScreen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #8f593058;
+    box-shadow: inset 0 0 30px #9f2525a9;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.Greyish.secondaryScreen {
+    background: #4a2907 repeating-linear-gradient(to bottom, #2c2c2c96, #34343475 5px, #6565657f 5px, #59595957 6px);
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    filter: none;
+}
+
+.Greyish.secondaryScreen::before {
+    content: '';
+    background: transparent;
+    box-shadow: inset 0 0 20px #9f2525a9;
+}
+
+.secondaryScreen::before {
+    content: '';
+    background: transparent;
+    box-shadow: inset 0 0 50px #9f2525a9;
+}
+
+
+.secondaryScreen::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 20px #00000083;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.secondaryScreen>*>span {
+    display: inline-block;
+    font-size: 1.65em !important;
+    user-select: none;
+    cursor: pointer;
+    transition: font-size 0.1s ease-in;
+}
+
+.secondaryScreen>*>span:hover {
+    color: white;
+    font-size: 2em !important;
+}
+
+
+#attributeType {
+    position: relative;
+    margin-left: auto;
+}
+
+#attributeType .iron_border {
+    border-radius: 7px;
+    box-shadow: 0 2px 5px #00000018, 0 0 7px #00000027, 5px 7px 4px rgb(42, 18, 1);
+    border-bottom: 3px solid #2b1704;
+}
+
+#attributeType .iron_border::before {
+    border-radius: 7px;
 }
 
 #hierarchyMain {
