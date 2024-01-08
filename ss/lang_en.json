@@ -20,7 +20,7 @@
             "ebp_ui_info": "stores common info for the interface.",
             "ebp_help_text_list": "list of localization codes for auxiliary text.",
             "ebp_help_text_num": "from 01 to 08 (default), localization code in the format <i>$000 (number from .ucs file)</i>.",
-            "ebp_icon_name": "the path to the entity icon is in the format 'folder\\icon_name' (stored at the path data\\art\\ui\\ingame\\folder\\icon_name.tga)."
+            "ebp_icon_name": "the path to the entity icon is in the format 'folder\\icon_name' (stored at the path <span class='path_to_file'>data\\art\\ui\\ingame\\folder\\icon_name.tga</span>)."
         },
         {
             "inputSearchTextPlaceholder": "Search in Attributes..."

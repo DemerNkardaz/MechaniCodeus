@@ -20,7 +20,7 @@
             "ebp_ui_info": "インターフェースの共通情報を保存します。",
             "ebp_help_text_list": "補助テキストのローカリゼーションコードのリスト。",
             "ebp_help_text_num": "01 から 08 まで（デフォルト）は、<i>$000（.ucs ファイル内の番号）</i> の形式でローカリゼーションコードを示しています。",
-            "ebp_icon_name": "エンティティアイコンのパスは「フォルダ/アイコン名」の形式です（保存先は data/art/ui/ingame/フォルダ/アイコン名.tga）。"
+            "ebp_icon_name": "エンティティアイコンのパスは「フォルダ/アイコン名」の形式です（保存先は <span class='path_to_file'>data/art/ui/ingame/フォルダ/アイコン名.tga</span>）。"
         },
         {
             "inputSearchTextPlaceholder": "属性で検索。。。"

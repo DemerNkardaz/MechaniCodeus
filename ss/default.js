@@ -1,6 +1,15 @@
 
 
 function initializePage() {
+    function generateMeaningfulBinaryCode(length) {
+        let binaryCode = '';
+        for (let i = 0; i < length; i++) {
+            const randomBit = Math.round(Math.random());
+            binaryCode += randomBit;
+        }
+        return binaryCode;
+    }
+
     $(document).ready(function () {
         $(':header').each(function () {
             var headerLevel = parseInt(this.tagName.substring(1));
@@ -12,10 +21,7 @@ function initializePage() {
                 'font-weight': '700'
             });
         });
-    });
 
-
-    $(document).ready(function () {
         const binaryCodeElement = $('#LexMechanicus').find('span:first');
         const dotsElement = $('#LexMechanicus').find('span').eq(1);
 
@@ -95,39 +101,24 @@ function initializePage() {
                 setTimeout(generateAfterMouseout, 50);
             }
         });
-    });
 
-    function generateMeaningfulBinaryCode(length) {
-        let binaryCode = '';
-        for (let i = 0; i < length; i++) {
-            const randomBit = Math.round(Math.random());
-            binaryCode += randomBit;
-        }
-        return binaryCode;
-    }
-
-    $(document).ready(function () {
+        // Add icon after external links
         $('a[href^="http://"], a[href^="https://"]').each(function () {
-            if ($(this).contents().length === 1 && $(this).contents().get(0).nodeType === 3) {
+            var existingSpans = $(this).find('.material-icons.external');
+
+            if (existingSpans.length === 0 && !$(this).children('img').length) {
                 $(this).append('<span class="material-icons external">launch</span>');
             }
         });
-    });
 
-
-
-
-
-
-
-    $(document).ready(function () {
+        // Language setup
         var languages = [
             { code: 'en', name: 'English', flag: '🇺🇸' },
             { code: 'ru', name: 'Русский', flag: '🇷🇺' },
             { code: 'jp', name: '日本語', flag: '🇯🇵' },
         ];
 
-        var selectedLanguage = localStorage.getItem('selectedLanguage') || 'ru';
+        var selectedLanguage = localStorage.getItem('selectedLanguage') || 'en';
 
         var selectHtml = '<select class="form-select" id="languageSelect">';
         for (var i = 0; i < languages.length; i++) {
@@ -139,11 +130,9 @@ function initializePage() {
         $('#languageSelectorContainer').html(selectHtml);
 
         function updateLanguage(selectedLanguage) {
-            // Изменяем язык в теге <html>
             var htmlElement = document.querySelector('html');
             htmlElement.setAttribute('lang', selectedLanguage);
 
-            // Загрузка данных для выбранного языка
             $.getJSON('ss/lang_' + selectedLanguage + '.json', function (data) {
                 $('[data-key]').each(function () {
                     var dataKey = $(this).data('key');
@@ -167,7 +156,7 @@ function initializePage() {
         updateLanguage(selectedLanguage);
     });
 
-
+    // Adding N/A for undescribed attribs
     $(document).ready(function () {
         $(".container.right *").each(function () {
             var currentText = $(this).text();
@@ -177,7 +166,7 @@ function initializePage() {
         });
     });
 
-
+    // Colorize attrib names
     $(document).ready(function () {
         setTimeout(function () {
             $('.coloredType li').each(function () {
@@ -240,7 +229,7 @@ $(document).ready(function () {
 });
 
 
-
+// Search
 
 $(document).ready(function () {
     $('#searchAttrib').on('input', function () {
@@ -267,8 +256,8 @@ $.expr[":"].containsOrInChildren = $.expr.createPseudo(function (text) {
 
 
 
-
 function initializeRoot() {
+    // Loading the info pages
     var lastLoadedWikiePath = '';
     $('#hierarchyAtrributes li').each(function () {
         $(this).children('span').last().each(function () {
@@ -290,26 +279,19 @@ function initializeRoot() {
     });
 
 
-
     $(document).ready(function () {
         $('#contentAreaContainer').load('wikies/testpage.html', function () {
             initializePage();
         });
 
         $('#randomPage').on('click', function () {
-            // Запрос к GitHub API для получения содержимого директории
             $.ajax({
                 url: 'https://api.github.com/repos/demernkardaz/MechaniCodeus/contents/wikies',
                 success: function (data) {
-                    // Извлекаем имена файлов из полученных данных
                     var files = data.map(function (file) {
                         return file.name;
                     });
-
-                    // Выбираем случайный файл из списка
                     var randomFile = files[Math.floor(Math.random() * files.length)];
-
-                    // Загрузка случайного файла и вызов функции initializePage
                     $('#contentAreaContainer').load('wikies/' + randomFile, function () {
                         initializePage();
                     });
@@ -318,9 +300,9 @@ function initializeRoot() {
         });
     });
 
-
-
+    // List functions
     $(document).ready(function () {
+
         $('#hierarchyAtrributes li').each(function () {
             if ($(this).find('ul').length > 0) {
                 $(this).prepend('<span class="material-icons hierarchical_arrow">chevron_right</span>');
@@ -331,17 +313,58 @@ function initializeRoot() {
         $('#hierarchyAtrributes li.has-child').each(function () {
             var $ul = $(this).children('ul');
             $ul.hide();
+            var $arrow = $(this).children('.hierarchical_arrow');
 
             $(this).children('.hierarchical_arrow').click(function (e) {
                 e.stopPropagation();
-                $ul.slideToggle();
-                $(this).toggleClass('rotated');
+                $ul.slideToggle({
+                    duration: 'fast',
+                    start: observeListState,
+                    complete: observeListState,
+                });
             });
             $(this).children().next().dblclick(function (e) {
                 e.stopPropagation();
-                $ul.slideToggle();
+                $ul.slideToggle({
+                    duration: 'fast',
+                    start: observeListState,
+                    complete: observeListState,
+                });
             });
 
+            var isAllOpen = false;
+
+            $('#collapseShowAllLists').click(function (e) {
+                var $elements = $('#hierarchyAtrributes li.has-child ul');
+                var $button = $(this);
+
+                if (isAllOpen) {
+                    $elements.slideUp({
+                        duration: 'fast',
+                        start: observeListState,
+                        complete: observeListState,
+                    });
+                    $button.text('unfold_more');
+                } else {
+                    $elements.slideDown({
+                        duration: 'fast',
+                        start: observeListState,
+                        complete: observeListState,
+                    });
+                    $button.text('unfold_less');
+                }
+
+                isAllOpen = !isAllOpen;
+            });
+
+            var observeListState = function () {
+                if ($ul.css('display') === 'none') {
+                    $arrow.removeClass('rotated');
+                } else {
+                    $arrow.addClass('rotated');
+                }
+            };
+            observeListState();
 
         });
 
@@ -352,8 +375,6 @@ function initializeRoot() {
             $('span[data-wikie]').on('mouseout', function () {
                 $(this).siblings('span.hierarchical_arrow').removeClass('listElement_Arrow');
             });
-
-
 
             $('span.hierarchical_arrow').on('mouseover', function () {
                 $(this).siblings('span[data-wikie]').addClass('hovered');
@@ -367,40 +388,21 @@ function initializeRoot() {
 
     });
 
-    var isAllOpen = false;
-
-    $('#collapseShowAllLists').click(function (e) {
-        var $elements = $('#hierarchyAtrributes li.has-child ul');
-        var $button = $(this);
-
-        if (isAllOpen) {
-            $elements.slideUp();
-            $button.text('unfold_more');
-        } else {
-            $elements.slideDown();
-            $button.text('unfold_less');
-        }
-
-        isAllOpen = !isAllOpen;
-    });
-
-
 }
 
-
-
+// Load the common list
 $(document).ready(function () {
     $('#hierarchyDeployer').load('hi_attri.html', function () {
         initializeRoot();
     });
 });
 
+
+
 function setRandomDuration() {
     var noiseBar = document.querySelector('.noise-bar');
     var randomDuration = Math.floor(Math.random() * (30 - 3 + 1)) + 3;
     noiseBar.style.setProperty('--animation-duration-3to30', randomDuration + 's');
 }
-
 document.addEventListener("animationiteration", setRandomDuration);
-
 setTimeout(setRandomDuration, 500);
