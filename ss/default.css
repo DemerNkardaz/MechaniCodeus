@@ -438,7 +438,7 @@ a>.material-icons.external:hover {
 }
 
 .select-options li {
-    font-family: 'Tektur', sans-serif;
+    font-family: 'Tektur', 'Noto Color Emoji', sans-serif;
     line-height: 1.8;
     list-style: none;
     cursor: pointer;
@@ -460,7 +460,7 @@ a>.material-icons.external:hover {
     border-radius: 7px;
     cursor: pointer;
     color: #ffd228;
-    font-family: 'Tektur', sans-serif;
+    font-family: 'Tektur', 'Noto Color Emoji', sans-serif;
     padding: 0px 10px 0px 10px;
     line-height: 1.5;
     font-size: 0.7em;
