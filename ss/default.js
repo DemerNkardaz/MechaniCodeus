@@ -42,8 +42,10 @@ function initializePage() {
             }
         }
 
+        let animationFrameId;
         $('#LexGearus').on({
             mouseover: function () {
+                cancelAnimationFrame(animationFrameId);
                 binaryCodeElement.addClass('animated');
                 dotsElement.addClass('animated');
 
@@ -69,7 +71,7 @@ function initializePage() {
                 clearInterval(binaryCodeIntervalId);
                 clearInterval(dotsIntervalId);
 
-                let remainingTime = 700;
+                let remainingTime = 3100;
                 const originalTextElement = $('#LexMechanicus span:first');
                 const dataKey = originalTextElement.data('key');
 
@@ -78,7 +80,7 @@ function initializePage() {
                         updateBinaryCode();
                         updateDots();
                         remainingTime -= 50;
-                        setTimeout(generateAfterMouseout, 50);
+                        animationFrameId = requestAnimationFrame(generateAfterMouseout);
                     } else {
                         const selectedLanguage = localStorage.getItem('selectedLanguage') || 'ru';
                         $.getJSON('ss/lang_' + selectedLanguage + '.json', function (data) {
@@ -96,11 +98,10 @@ function initializePage() {
                         });
                     }
                 };
-
-
-                setTimeout(generateAfterMouseout, 50);
+                animationFrameId = requestAnimationFrame(generateAfterMouseout);
             }
         });
+
 
         // Add icon after external links
         $('a[href^="http://"], a[href^="https://"]').each(function () {
