@@ -354,6 +354,10 @@ let cachedTypesPath = localStorage.getItem('cachedTypesPath');
 let cachedGame = localStorage.getItem('cachedGame');
 let lastLoadedGame = cachedGame;
 
+let cachedOption = localStorage.getItem('cachedOption');
+let lastLoadedOption = cachedOption;
+
+
 function initializeRoot() {
     // Loading the info pages
 
@@ -466,25 +470,45 @@ function initializeRoot() {
 
         });
 
-        $(document).ready(function () {
-            $('span[data-wikie]').on('mouseover', function () {
-                $(this).siblings('span.hierarchical_arrow').addClass('listElement_Arrow');
-            });
-            $('span[data-wikie]').on('mouseout', function () {
-                $(this).siblings('span.hierarchical_arrow').removeClass('listElement_Arrow');
-            });
 
-            $('span.hierarchical_arrow').on('mouseover', function () {
-                $(this).siblings('span[data-wikie]').addClass('hovered');
-                $(this).addClass('listElement_Arrow');
-            });
-            $('span.hierarchical_arrow').on('mouseout', function () {
-                $(this).siblings('span[data-wikie]').removeClass('hovered');
-                $(this).removeClass('listElement_Arrow');
-            });
+        $('span[data-wikie]').on('mouseover', function () {
+            $(this).siblings('span.hierarchical_arrow').addClass('listElement_Arrow');
+        });
+        $('span[data-wikie]').on('mouseout', function () {
+            $(this).siblings('span.hierarchical_arrow').removeClass('listElement_Arrow');
         });
 
+        $('span.hierarchical_arrow').on('mouseover', function () {
+            $(this).siblings('span[data-wikie]').addClass('hovered');
+            $(this).addClass('listElement_Arrow');
+        });
+        $('span.hierarchical_arrow').on('mouseout', function () {
+            $(this).siblings('span[data-wikie]').removeClass('hovered');
+            $(this).removeClass('listElement_Arrow');
+        });
+
+
     });
+
+    var filesQueue = [
+        'lists/dowss_opts.html',
+        'lists/dow2ret_opts.html',
+        'lists/sm_opts.html',
+    ]
+
+    $('.optionloader').each(function () {
+        var selectedOptionIndex = $(this).index();
+        var selectedOptionID = 'selectedOptionID_' + (selectedOptionIndex + 1);
+        $(this).attr('id', selectedOptionID);
+
+        $(document).on('click', '#' + selectedOptionID, function () {
+            $('.optionloader').removeClass('selected');
+            $(this).addClass('selected');
+            localStorage.setItem('cachedOption', $(this).attr('id'));
+        });
+    });
+
+
 
 }
 // Load the common list
@@ -536,6 +560,34 @@ $(document).ready(function () {
     }
     $('.attributeLoader').on('click', handleImageSelection);
     $('.attributeLoader img[src="' + (lastLoadedGame || $('.attributeLoader img:first').attr('src')) + '"]').addClass('selected');
+
+    function observeChangesInAttributeType() {
+        var targetElement = document.getElementById('attributeType');
+
+        var observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                // Проверяем, изменился ли какой-то атрибут или дочерние элементы
+                if (mutation.type === 'childList') {
+                    // Загрузка значения из кэша при изменениях внутри #attributeType
+                    if (lastLoadedOption) {
+                        $('#' + lastLoadedOption).addClass('selected');
+                    } else {
+                        $('#selectedOptionID_1').addClass('selected');
+                    }
+                }
+            });
+        });
+
+        var config = { childList: true, subtree: true };
+        observer.observe(targetElement, config);
+
+        return observer;
+    }
+
+    var mutationObserverInstance = observeChangesInAttributeType();
+
+
+
 });
 
 

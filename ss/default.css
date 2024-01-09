@@ -832,7 +832,7 @@ a>.material-icons.external:hover {
     pointer-events: none;
 }
 
-.secondaryScreen>*>span {
+.secondaryScreen>*>.optionloader {
     display: inline-block;
     font-size: 1.65em !important;
     user-select: none;
@@ -840,11 +840,14 @@ a>.material-icons.external:hover {
     transition: font-size 0.1s ease-in;
 }
 
-.secondaryScreen>*>span:hover {
+.secondaryScreen>*>.optionloader:hover {
     color: white;
     font-size: 2em !important;
 }
 
+.secondaryScreen>*>.optionloader.selected {
+    color: white;
+}
 
 #attributeType {
     position: relative;
