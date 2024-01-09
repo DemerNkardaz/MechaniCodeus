@@ -189,8 +189,6 @@ function initializePage() {
             return '';
         }
 
-
-
         function updatePlaceholderText(data) {
             if (data.items && data.items[1]) {
                 var inputSearchTextPlaceholder = data.items[1].inputSearchTextPlaceholder;
