@@ -571,10 +571,16 @@ $(document).ready(function () {
                             localStorage.setItem('cachedOption', $(this).attr('id'));
                         });
                     });
-                    if (lastLoadedOption) {
-                        $('#' + lastLoadedOption).addClass('selected');
+                    var cachedOption = localStorage.getItem('cachedOption');
+                    if (cachedOption) {
+                        // Удаление класса 'selected' у всех опций
+                        $('.optionloader').removeClass('selected');
+
+                        // Установка класса 'selected' для сохраненной опции
+                        $('#' + cachedOption).addClass('selected');
                     } else {
-                        $('#selectedOptionID_1').addClass('selected');
+                        // Установка первой опции по умолчанию
+                        $('.optionloader:first').addClass('selected');
                     }
                 }
             });
@@ -590,6 +596,13 @@ $(document).ready(function () {
 
 
 
+});
+
+$(document).ready(function () {
+    $('#cleanTheCache').on('click', function () {
+        localStorage.clear();
+        location.reload();
+    });
 });
 
 

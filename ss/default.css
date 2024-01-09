@@ -515,7 +515,7 @@ a>.material-icons.external:hover {
 
 }
 
-.hierarchyControls>:first-child .btn.btn-primary {
+.btn.btn-primary {
     color: #ffd228;
     /*color: #4c10ff;*/
     background-color: #be9115cf;
@@ -531,7 +531,7 @@ a>.material-icons.external:hover {
 }*/
 
 #languageSelect:hover,
-.hierarchyControls>:first-child .btn.btn-primary:hover {
+.btn.btn-primary:hover {
     background-color: #fcdf20;
     border-color: white;
     color: #4c10ff;
@@ -539,8 +539,8 @@ a>.material-icons.external:hover {
 
 #languageSelect:focus,
 #languageSelect:active,
-.hierarchyControls>:first-child .btn.btn-primary:focus,
-.hierarchyControls>:first-child .btn.btn-primary:active {
+.btn.btn-primary:focus,
+.btn.btn-primary:active {
     background-color: #be9115;
     border-color: #fcdf20;
     color: #ffffff;
