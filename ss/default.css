@@ -212,7 +212,6 @@ a>.material-icons.external:hover {
 #selectGame {
     position: relative;
     display: flex;
-    width: 183px;
 }
 
 #selectGame img {
@@ -220,7 +219,7 @@ a>.material-icons.external:hover {
     background: linear-gradient(#ffffff, #ffffff) 50% 50%/calc(100% - 16px) calc(100% - 16px) no-repeat,
         conic-gradient(from 278deg, #7450ad 0%, #1c1968 23%, #a83bc6 56%, rgb(24, 87, 114) 100%);
     border-radius: 15%;
-    padding: 2px;
+    padding: 3px;
     box-sizing: border-box;
     position: relative;
     cursor: pointer;
@@ -229,7 +228,7 @@ a>.material-icons.external:hover {
 
 #selectGame img.selected {
     background: linear-gradient(#ffffff, #ffffff) 50% 50%/calc(100% - 16px) calc(100% - 16px) no-repeat,
-        conic-gradient(from 278deg, #c66b37 0%, #6c3121 23%, #cc4f36 56%, rgb(112, 24, 55) 100%);
+        conic-gradient(from 278deg, #b3c637 0%, #216c56 23%, #36cc75 56%, rgb(27, 112, 24) 100%);
     filter: none;
 
 }
@@ -796,7 +795,7 @@ a>.material-icons.external:hover {
 .secondaryScreen {
     position: relative;
     height: 32px;
-    width: 180px;
+    width: 148px;
     background-blend-mode: multiply;
     filter: contrast(240%) hue-rotate(100deg);
     border-radius: 7px 7px 10px 10px;
@@ -810,10 +809,11 @@ a>.material-icons.external:hover {
     padding: 0 10px 0 10px;
 }
 
-.secondaryScreen>#attributeTypesDeploy {
+#attributeTypesDeploy {
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
 }
 
 .secondaryScreen::before {
@@ -995,4 +995,45 @@ a>.material-icons.external:hover {
     font-size: 0.825em;
     padding: 10px 10px 0px 10px;
     white-space: pre-wrap;
+}
+
+
+.attributeLoader.iron_border {
+    background: #362916;
+    border-radius: 7px;
+    box-shadow: 0 1px 3px #00000018, 0 0 5px #00000027, 2px 4px 2px rgb(42, 18, 1);
+    border-bottom: 2px solid #2b1704;
+    padding: 3.5px;
+    width: 48px;
+    height: 47.4px;
+    margin-left: 1.25px;
+
+}
+
+.attributeLoader.iron_border::before {
+    border-radius: 7px;
+}
+
+.insetShadowImg {
+    position: relative;
+    top: 0.1px;
+    left: 1.6px;
+
+}
+
+.insetShadowImg::after,
+.insetShadowImg::before {
+    content: '';
+    position: absolute;
+    top: -0.75px;
+    border-radius: 6px;
+    left: -0.9px;
+    width: calc(100% - 1.2px);
+    height: calc(100% + 1.75px);
+    border: 1px solid #2603038d;
+    box-shadow: inset 0 0 1px #0000006a;
+    filter: blur(.5px);
+
+    z-index: 1;
+    pointer-events: none;
 }
