@@ -31,6 +31,27 @@
 
 }
 
+@keyframes noiseAnimation_ltr {
+    0% {
+        left: -100px;
+    }
+
+    83% {
+        left: 98%;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 98%;
+        opacity: 0;
+
+    }
+
+}
+
 /* CSS only animated static noise background Mathieu S.*/
 .noise_glitch {
     position: fixed;

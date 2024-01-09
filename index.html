@@ -24,18 +24,22 @@
                 </span>
                 <a href="index.html" id="MechaHeader">
                     <h1 id="LexMechanicus">
-                        <span data-key="MechaTitle" class="glitch2">МеханиКодеус</span><span></span>
+                        <span data-key="MechaTitle">МеханиКодеус</span><span></span>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             DEV
                         </span>
                     </h1>
 
                 </a>
-                <div class="input-group">
-                    <span class="input-group-text material-icons">
-                        search
-                    </span>
-                    <input type="text" class="form-control" id="searchAttrib" aria-label="Search" aria-describedby="button-addon">
+                <div id="searchPanelScreen" class="iron_border">
+
+                    <div class="input-group secondaryScreen">
+                        <span class="input-group-text material-icons">
+                            search
+                        </span>
+                        <input type="text" class="form-control" id="searchAttrib" aria-label="Search" aria-describedby="button-addon">
+                    </div>
+                    <div class="noise_glitch"></div>
                 </div>
             </div>
 
@@ -68,8 +72,8 @@
                         <div class="noise-bar"></div>
                         <div class="hierarchyControls">
                             <span class="material-icons">
-                                <button type="button" class="btn btn-primary" id="collapseShowAllLists">unfold_more</button>&#x2006;<button type="button" class="btn btn-primary" id="alphaSorting">sort_by_alpha</button><!---<&#x2006;button type="button"
-                                    class="btn btn-primary">filter_list_off</button>--->&#x2006;<button id="randomPage" class="btn btn-primary"><span class="material-icons">shuffle</span></button>
+                                <button type="button" class="btn btn-primary" id="collapseShowAllLists">unfold_more</button>&#x2006;<!---<&#x2006;button type="button"
+                                    class="btn btn-primary">filter_list_off</button>---><button id="randomPage" class="btn btn-primary"><span class="material-icons">shuffle</span></button>&#x2006;<button type="button" class="btn btn-primary" id="homePage">home</button>
                                 <div class="language-selector" id="languageSelectorContainer"></div>&#x2006;<button type="button"
                                     class="btn btn-primary"
                                     data-bs-toggle="modal" data-bs-target="#helpModal">help_outline</button>

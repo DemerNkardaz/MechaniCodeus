@@ -399,6 +399,16 @@ function initializeRoot() {
             }
         });
     });
+    $('#homePage').on('click', function () {
+        if (lastLoadedWikiePath !== 'wikies/testpage.html') {
+            $('#contentAreaContainer').load('wikies/testpage.html', function () {
+                initializePage();
+                lastLoadedWikiePath = 'wikies/testpage.html';
+                cachedWikiePath = lastLoadedWikiePath;
+                localStorage.setItem('lastLoadedWikiePath', lastLoadedWikiePath);
+            });
+        }
+    });
 
 
     // List functions
@@ -458,6 +468,7 @@ function initializeRoot() {
                 isAllOpen = !isAllOpen;
             });
 
+
             var observeListState = function () {
                 if ($ul.css('display') === 'none') {
                     $arrow.removeClass('rotated');
@@ -494,10 +505,6 @@ function initializeRoot() {
         'lists/dow2ret_opts.html',
         'lists/sm_opts.html',
     ]
-
-
-
-
 
 }
 // Load the common list
@@ -592,8 +599,6 @@ $(document).ready(function () {
     }
 
     var mutationObserverInstance = observeChangesInAttributeType();
-
-
 
 });
 
