@@ -192,10 +192,11 @@ function initializePage() {
 
 
         function updatePlaceholderText(data) {
-            var inputSearchTextPlaceholder = data.items[1].inputSearchTextPlaceholder;
-            $('#searchAttrib').attr('placeholder', inputSearchTextPlaceholder);
+            if (data.items && data.items[1]) {
+                var inputSearchTextPlaceholder = data.items[1].inputSearchTextPlaceholder;
+                $('#searchAttrib').attr('placeholder', inputSearchTextPlaceholder);
+            }
         }
-
         $('#languageSelectorContainer').on('change', '#languageSelect', function () {
             var selectedLanguage = $(this).val();
             localStorage.setItem('selectedLanguage', selectedLanguage);
