@@ -913,9 +913,11 @@ a>.material-icons.external:hover {
 #hierarchyDeployer {
     position: relative;
     overflow: auto;
-    max-height: 72vh;
+    max-height: 88%;
     z-index: 0;
 }
+
+#hierarchyAttributes {}
 
 #hierarchyDeployer {
     scrollbar-color: transparent transparent;
@@ -971,12 +973,19 @@ a>.material-icons.external:hover {
 }
 
 .cogitatorInterface {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-family: 'Tektur', sans-serif;
     font-size: 0.8em;
     position: absolute;
-    width: 100%;
+    width: auto;
     bottom: 10px;
     text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
 }
 
 
