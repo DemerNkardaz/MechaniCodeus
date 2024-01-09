@@ -496,17 +496,7 @@ function initializeRoot() {
         'lists/sm_opts.html',
     ]
 
-    $('.optionloader').each(function () {
-        var selectedOptionIndex = $(this).index();
-        var selectedOptionID = 'selectedOptionID_' + (selectedOptionIndex + 1);
-        $(this).attr('id', selectedOptionID);
 
-        $(document).on('click', '#' + selectedOptionID, function () {
-            $('.optionloader').removeClass('selected');
-            $(this).addClass('selected');
-            localStorage.setItem('cachedOption', $(this).attr('id'));
-        });
-    });
 
 
 
@@ -547,6 +537,8 @@ $(document).ready(function () {
         localStorage.setItem('cachedHierarchyPath', lastLoadedHierarchyPath);
 
         $('#hierarchyDeployer').load(fileUrl, function () {
+            $('.attributeLoader').data('file-url', fileUrl);
+
             initializePage();
             initializeRoot();
         });
@@ -566,9 +558,19 @@ $(document).ready(function () {
 
         var observer = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
-                // Проверяем, изменился ли какой-то атрибут или дочерние элементы
+
                 if (mutation.type === 'childList') {
-                    // Загрузка значения из кэша при изменениях внутри #attributeType
+                    $('.optionloader').each(function () {
+                        var selectedOptionIndex = $(this).index();
+                        var selectedOptionID = 'selectedOptionID_' + (selectedOptionIndex + 1);
+                        $(this).attr('id', selectedOptionID);
+
+                        $(document).on('click', '#' + selectedOptionID, function () {
+                            $('.optionloader').removeClass('selected');
+                            $(this).addClass('selected');
+                            localStorage.setItem('cachedOption', $(this).attr('id'));
+                        });
+                    });
                     if (lastLoadedOption) {
                         $('#' + lastLoadedOption).addClass('selected');
                     } else {
