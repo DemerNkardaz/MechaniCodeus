@@ -5,6 +5,7 @@
             "File404": "File is not exists",
             "unRecognized": "Unrecognized",
             "noInformation": "Error recognizing data block:<br><br>Information is missing<br><br>Contact the nearest Administratum office for assistance from a Mechanicum specialist.",
+            "erroremCogitatorum": "Cogitator System Overload!<br>Supernormal data influx on:",
             "System": "System",
             "TutorialAuthor": "Info created by ",
             "cogitatorInterface": "Cogitator Interface / Access Online",

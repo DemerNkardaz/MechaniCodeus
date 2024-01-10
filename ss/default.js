@@ -25,8 +25,8 @@ function initializePage() {
         const binaryCodeElement = $('#LexMechanicus').find('span:first');
         const dotsElement = $('#LexMechanicus').find('span').eq(1);
 
-        let binaryCodeIntervalId, dotsIntervalId;
-        let numDots = 1;
+        let binaryCodeIntervalId, dotsIntervalId, rotateTimeout, animationFrameId, erroremCogitatorumTimer, decreaseInterval;;
+        let numDots = 1, rotationDegrees = 0, clickTimestamp = 0;
 
         function updateBinaryCode() {
             const meaningfulBinaryCode = generateMeaningfulBinaryCode(25);
@@ -42,10 +42,10 @@ function initializePage() {
             }
         }
 
-        let animationFrameId;
         $('#LexGearus').on({
             mouseover: function () {
                 cancelAnimationFrame(animationFrameId);
+
                 binaryCodeElement.addClass('animated');
                 dotsElement.addClass('animated');
 
@@ -74,7 +74,6 @@ function initializePage() {
                 let remainingTime = 3100;
                 const originalTextElement = $('#LexMechanicus span:first');
                 const dataKey = originalTextElement.data('key');
-
                 const generateAfterMouseout = function () {
                     if (remainingTime > 0) {
                         updateBinaryCode();
@@ -99,9 +98,78 @@ function initializePage() {
                     }
                 };
                 animationFrameId = requestAnimationFrame(generateAfterMouseout);
+
+            },
+            click: function () {
+                const currentTimestamp = new Date().getTime();
+                const timeSinceLastClick = currentTimestamp - clickTimestamp;
+
+                clearTimeout(erroremCogitatorumTimer);
+                clearTimeout(rotateTimeout);
+
+                let increment = 200;
+
+                if (timeSinceLastClick < 5000) {
+                    increment += rotationDegrees * 0.5;
+                } else if (timeSinceLastClick >= 2000) {
+                    rotationDegrees = 0;
+                } else {
+                    rotationDegrees = 90;
+                }
+
+                rotationDegrees += increment;
+                clickTimestamp = currentTimestamp;
+
+                clearInterval(decreaseInterval);
+
+                const currentGearElement = $(this);
+                currentGearElement.css('transform', 'rotate(' + rotationDegrees + 'deg)');
+
+                if (rotationDegrees > 1000000000) {
+                    setRandomAnimation();
+                }
+                if (rotationDegrees > 1000000) {
+                    $('#erroremCogitatorum').css('display', 'block');
+                }
+
+                $('#currentGearDegree').text(rotationDegrees);
+
+                rotateTimeout = setTimeout(function () {
+                    let currentDegreeValue = rotationDegrees;
+                    decreaseInterval = setInterval(function () {
+                        const randomStep = Math.floor(Math.random() * currentDegreeValue * 0.35) + 1;
+                        currentDegreeValue -= randomStep;
+                        if (currentDegreeValue < 0) {
+                            currentDegreeValue = 0;
+                        }
+                        $('#currentGearDegree').text(currentDegreeValue);
+                        $('#LexGearus').css('transform', 'rotate(' + currentDegreeValue + 'deg)');
+
+                        if (currentDegreeValue <= 0) {
+                            clearInterval(decreaseInterval);
+                            $('#LexGearus').css('transform', 'rotate(0deg)');
+                            $('#LexGearus').removeAttr('style');
+                        }
+                    }, 20);
+
+                }, 2000);
+                erroremCogitatorumTimer = setTimeout(function () {
+                    setRandomAnimation();
+                    setTimeout(() => {
+                        $('#erroremCogitatorum').removeAttr('style');
+                    }, 2000);
+                }, 5000);
             }
         });
 
+        var animations = ['alertingMig_00', 'alertingMig_01', 'alertingMig_02', 'alertingMig_03'];
+        function getRandomAnimation() {
+            return animations[Math.floor(Math.random() * animations.length)];
+        }
+        function setRandomAnimation() {
+            var randomAnimation = getRandomAnimation();
+            $('#erroremCogitatorum').css('animation', randomAnimation + ' 3s infinite');
+        }
 
         // Add icon after external links
         $('a[href^="http://"], a[href^="https://"]').each(function () {
