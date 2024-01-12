@@ -1,339 +1,67 @@
+$(document).ready(function () {
+    const HeadText = $('#LexMechanicus');
+    const HeadText_Title = HeadText.find('span:first');
+    const HeadText_AfterTitle = HeadText.find('span').eq(1);
+    const HeadLogo = $('#LexGearus');
+    const dataErrorum = $('#erroremCogitatorum');
+    const dataErrorum_overflow = $('#currentGearDegree');
+    const dataErrorum_anim = ['alertingMig_00', 'alertingMig_01', 'alertingMig_02', 'alertingMig_03'];
+    const searchPanel = $('#searchAttrib');
+    const contentAreaContainer = $('#contentAreaContainer');
+    const leftContainer = $('#leftContainer');
+    const rightContainer = $('#rightContainer');
+    const classesTypeSelector = $('#ClassesTypeSelector');
+    const deployerList = $('#hierarchyDeployer');
+    const deployerTypesList = $('#attributeTypesDeploy')
+    const externalLinkElement = (
+        '<span class="material-icons external">launch</span>'
+    );
+    const listArrowMarker = (
+        '<span class="material-icons hierarchical_arrow">chevron_right</span>'
+    );
 
-
-function initializePage() {
-    function generateMeaningfulBinaryCode(length) {
-        let binaryCode = '';
-        for (let i = 0; i < length; i++) {
-            const randomBit = Math.round(Math.random());
-            binaryCode += randomBit;
-        }
-        return binaryCode;
-    }
-
-    $(document).ready(function () {
+    function headerInit() {
         $(':header').each(function () {
-            var headerLevel = parseInt(this.tagName.substring(1));
-            var baseSize = 1.75;
-            var newSize = baseSize - (headerLevel - 1) * 0.15;
-
+            const headerLevel = parseInt(this.tagName.substring(1));
+            const baseSize = 1.75;
+            const newSize = baseSize - (headerLevel - 1) * 0.15;
             $(this).css({
                 'font-size': 'calc(' + newSize + 'em)',
                 'font-weight': '700'
             });
         });
-
-        const binaryCodeElement = $('#LexMechanicus').find('span:first');
-        const dotsElement = $('#LexMechanicus').find('span').eq(1);
-
-        let binaryCodeIntervalId, dotsIntervalId, rotateTimeout, animationFrameId, erroremCogitatorumTimer, decreaseInterval;;
-        let numDots = 1, rotationDegrees = 0, clickTimestamp = 0;
-
-        function updateBinaryCode() {
-            const meaningfulBinaryCode = generateMeaningfulBinaryCode(25);
-            binaryCodeElement.text(meaningfulBinaryCode);
-        }
-
-        function updateDots() {
-            dotsElement.text('.'.repeat(numDots));
-
-            numDots++;
-            if (numDots > 5) {
-                numDots = 1;
-            }
-        }
-
-        $('#LexGearus').on({
-            mouseover: function () {
-                cancelAnimationFrame(animationFrameId);
-
-                binaryCodeElement.addClass('animated');
-                dotsElement.addClass('animated');
-
-                binaryCodeElement.css({
-                    'font-family': 'Tektur',
-                    'font-size': '0.6em'
-                });
-                dotsElement.css({
-                    'font-family': 'Tektur',
-                    'font-size': '0.6em'
-                });
-
-                updateBinaryCode();
-                binaryCodeIntervalId = setInterval(updateBinaryCode, 50);
-
-                updateDots();
-                dotsIntervalId = setInterval(updateDots, 500);
-            },
-            mouseout: function () {
-                binaryCodeElement.removeClass('animated');
-                dotsElement.removeClass('animated');
-
-                clearInterval(binaryCodeIntervalId);
-                clearInterval(dotsIntervalId);
-
-                let remainingTime = 3100;
-                const originalTextElement = $('#LexMechanicus span:first');
-                const dataKey = originalTextElement.data('key');
-                const generateAfterMouseout = function () {
-                    if (remainingTime > 0) {
-                        updateBinaryCode();
-                        updateDots();
-                        remainingTime -= 50;
-                        animationFrameId = requestAnimationFrame(generateAfterMouseout);
-                    } else {
-                        const selectedLanguage = localStorage.getItem('selectedLanguage') || 'ru';
-                        $.getJSON('ss/lang_' + selectedLanguage + '.json', function (data) {
-                            originalTextElement.text(data.items[0][dataKey]);
-                            dotsElement.text('');
-
-                            binaryCodeElement.css({
-                                'font-family': '',
-                                'font-size': ''
-                            });
-                            dotsElement.css({
-                                'font-family': '',
-                                'font-size': ''
-                            });
-                        });
-                    }
-                };
-                animationFrameId = requestAnimationFrame(generateAfterMouseout);
-
-            },
-            click: function () {
-                const currentTimestamp = new Date().getTime();
-                const timeSinceLastClick = currentTimestamp - clickTimestamp;
-
-                clearTimeout(erroremCogitatorumTimer);
-                clearTimeout(rotateTimeout);
-
-                let increment = 200;
-
-                if (timeSinceLastClick < 5000) {
-                    increment += rotationDegrees * 0.5;
-                } else if (timeSinceLastClick >= 2000) {
-                    rotationDegrees = 0;
-                } else {
-                    rotationDegrees = 90;
+    }
+    function observeHeaders() {
+        var observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                var headerChanges = $(mutation.target).find(':header').length > 0;
+                if (headerChanges) {
+                    headerInit();
                 }
-
-                rotationDegrees += increment;
-                clickTimestamp = currentTimestamp;
-
-                clearInterval(decreaseInterval);
-
-                const currentGearElement = $(this);
-                currentGearElement.css('transform', 'rotate(' + rotationDegrees + 'deg)');
-
-                if (rotationDegrees > 1000000000) {
-                    setRandomAnimation();
-                }
-                if (rotationDegrees > 1000000) {
-                    $('#erroremCogitatorum').css('display', 'block');
-                }
-
-                $('#currentGearDegree').text(rotationDegrees);
-
-                rotateTimeout = setTimeout(function () {
-                    let currentDegreeValue = rotationDegrees;
-                    decreaseInterval = setInterval(function () {
-                        const randomStep = Math.floor(Math.random() * currentDegreeValue * 0.35) + 1;
-                        currentDegreeValue -= randomStep;
-                        if (currentDegreeValue < 0) {
-                            currentDegreeValue = 0;
-                        }
-                        $('#currentGearDegree').text(currentDegreeValue);
-                        $('#LexGearus').css('transform', 'rotate(' + currentDegreeValue + 'deg)');
-
-                        if (currentDegreeValue <= 0) {
-                            clearInterval(decreaseInterval);
-                            $('#LexGearus').css('transform', 'rotate(0deg)');
-                            $('#LexGearus').removeAttr('style');
-                        }
-                    }, 20);
-
-                }, 2000);
-                erroremCogitatorumTimer = setTimeout(function () {
-                    setRandomAnimation();
-                    setTimeout(() => {
-                        $('#erroremCogitatorum').removeAttr('style');
-                    }, 2000);
-                }, 5000);
-            }
-        });
-
-        var animations = ['alertingMig_00', 'alertingMig_01', 'alertingMig_02', 'alertingMig_03'];
-        function getRandomAnimation() {
-            return animations[Math.floor(Math.random() * animations.length)];
-        }
-        function setRandomAnimation() {
-            var randomAnimation = getRandomAnimation();
-            $('#erroremCogitatorum').css('animation', randomAnimation + ' 3s infinite');
-        }
-
-        // Add icon after external links
-        $('a[href^="http://"], a[href^="https://"]').each(function () {
-            var existingSpans = $(this).find('.material-icons.external');
-
-            if (existingSpans.length === 0 && !$(this).children('img').length) {
-                $(this).append('<span class="material-icons external">launch</span>');
-            }
-        });
-
-        // Language setup
-        var languages = [
-            { code: 'la', short: 'AG', name: 'Altum Gothicum', flag: '🏛️' },
-            { code: 'en', short: 'EN', name: 'English', flag: '🇺🇸' },
-            { code: 'ru', short: 'РУ', name: 'Русский', flag: '🇷🇺' },
-            { code: 'jp', short: '日本語', name: '日本語', flag: '🇯🇵' },
-        ];
-
-        var selectedLanguage = localStorage.getItem('selectedLanguage') || 'en';
-
-        var selectHtml = '<div class="custom-select" id="languageSelectWrapper">';
-        selectHtml += '<div class="select-styled" id="languageSelect">' + getSelectedLanguageName(selectedLanguage) + '</div>';
-        selectHtml += '<ul class="select-options">';
-        for (var i = 0; i < languages.length; i++) {
-            var selected = languages[i].code === selectedLanguage ? 'selected' : '';
-            selectHtml += '<li data-value="' + languages[i].code + '" ' + selected + '>' + languages[i].flag + ' ' + languages[i].name + '</li>';
-        }
-        selectHtml += '</ul></div>';
-
-        $('#languageSelectorContainer').html(selectHtml);
-
-        // Добавляем обработчик события для открытия/закрытия списка
-        $('#languageSelect').on('click', function () {
-            $(this).toggleClass('active');
-            $('.select-options').toggleClass('active');
-        });
-
-        // Добавляем обработчик события для выбора языка
-        $('#languageSelectWrapper li').on('click', function () {
-            var selectedLanguage = $(this).data('value');
-            updateLanguage(selectedLanguage);
-
-            // Закрываем список после выбора
-            $('#languageSelect').removeClass('active');
-            $('.select-options').removeClass('active');
-        });
-
-        // Добавляем обработчик события для скрытия блока выбора языка при клике за его пределами
-        $(document).on('click', function (event) {
-            var languageSelectWrapper = $('#languageSelectWrapper');
-
-            // Проверяем, был ли клик вне блока выбора языка
-            if (!languageSelectWrapper.is(event.target) && languageSelectWrapper.has(event.target).length === 0) {
-                // Если клик был вне блока, скрываем его
-                $('#languageSelect').removeClass('active');
-                $('.select-options').removeClass('active');
-            }
-        });
-
-        function updateLanguage(selectedLanguage) {
-            var htmlElement = document.querySelector('html');
-            htmlElement.setAttribute('lang', selectedLanguage);
-
-            $('#languageSelect').html(getSelectedLanguageName(selectedLanguage));
-
-
-            // Сохраняем выбранный язык в кеше
-            localStorage.setItem('selectedLanguage', selectedLanguage);
-
-            $.getJSON('ss/lang_' + selectedLanguage + '.json', function (data) {
-                $('[data-key]').each(function () {
-                    var dataKey = $(this).data('key');
-                    $(this).html(data.items[0][dataKey]);
-                });
-                updatePlaceholderText(data);
             });
-        }
-
-
-        function getSelectedLanguageName(code) {
-            for (var i = 0; i < languages.length; i++) {
-                if (languages[i].code === code) {
-                    return languages[i].flag + '&#8201;' + languages[i].short;
-                }
-            }
-            return '';
-        }
-
-        function updatePlaceholderText(data) {
-            if (data.items && data.items[1]) {
-                var inputSearchTextPlaceholder = data.items[1].inputSearchTextPlaceholder;
-                $('#searchAttrib').attr('placeholder', inputSearchTextPlaceholder);
-            }
-        }
-        $('#languageSelectorContainer').on('change', '#languageSelect', function () {
-            var selectedLanguage = $(this).val();
-            localStorage.setItem('selectedLanguage', selectedLanguage);
-            updateLanguage(selectedLanguage);
         });
+        observer.observe(document.body, { childList: true, subtree: true });
+    }
+    observeHeaders();
 
-        updateLanguage(selectedLanguage);
-    });
 
-    // Adding N/A for undescribed attribs
-    $(document).ready(function () {
-        $(".container.right .child_attributes_list li").each(function () {
+    function updateContentStyles() {
+        rightContainer.find('.child_attributes_list li').each(function () {
             var currentText = $(this).text();
             if (currentText && !currentText.replace(/.* — /, '').trim()) {
                 $(this).append(" N/A");
             }
         });
-    });
+        rightContainer.find('.coloredType li').each(function () {
+            var text = $(this).html().trim();
+            var parts = text.split(' — ');
 
-    // Colorize attrib names
-    $(document).ready(function () {
-        setTimeout(function () {
-            $('.coloredType li').each(function () {
-                var text = $(this).html().trim();
-                var parts = text.split(' — ');
-
-                if (parts.length === 2 && parts[0].trim() !== "") {
-                    var span = $('<span>').addClass('child_list_highlight').html(parts[0]);
-                    $(this).html('').append(span).append(' — ' + parts[1]);
-                }
-            });
-        }, 50);
-    });
-
-
-    $(document).ready(function () {
-        var $firstSpan = $('#hierarchyAttributes li').children('span').first();
-        var $lastSpan = $('#hierarchyAttributes li').children('span').last();
-
-        $firstSpan.mouseover(function () {
-            if ($(this).hasClass('hierarchical_arrow')) {
-                $(this).addClass('listElement_Arrow');
+            if (parts.length === 2 && parts[0].trim() !== "") {
+                var span = $('<span>').addClass('child_list_highlight').html(parts[0]);
+                $(this).html('').append(span).append(' — ' + parts[1]);
             }
         });
-        $firstSpan.mouseout(function () {
-            $(this).removeClass('listElement_Arrow');
-        });
-
-    });
-
-    $(document).ready(function () {
-        var lastModifiedSpan = $('#lastModified');
-
-        $.ajax({
-            type: 'HEAD',
-            url: window.location.href,
-            success: function (data, status, xhr) {
-                var lastModifiedDate = new Date(xhr.getResponseHeader('Last-Modified'));
-                var formattedDate = `${addZero(lastModifiedDate.getDate())}.${addZero(lastModifiedDate.getMonth() + 1)}.${lastModifiedDate.getFullYear()} ${addZero(lastModifiedDate.getHours())}:${addZero(lastModifiedDate.getMinutes())}:${addZero(lastModifiedDate.getSeconds())}`;
-                lastModifiedSpan.text(formattedDate);
-            }
-        });
-    });
-    function addZero(number) {
-        return number < 10 ? '0' + number : number;
-    }
-
-    $(document).ready(function () {
-        // Заменяем все вхождения тегов на соответствующий HTML-код
-        $('#contentAreaContainer').html(function (index, oldHtml) {
+        contentAreaContainer.html(function (index, oldHtml) {
             var replacements = {
                 'tag_ability': '<span class="badge bg-primary align-self-start pink">Ability</span>',
                 'tag_addons': '<span class="badge bg-primary align-self-start red">Addons</span>',
@@ -370,127 +98,352 @@ function initializePage() {
             };
 
             for (var tag in replacements) {
-                // Use word boundaries (\b) in the regular expression
                 oldHtml = oldHtml.replace(new RegExp('\\b' + tag + '\\b', 'g'), replacements[tag]);
             }
 
             return oldHtml;
         });
-    });
-
-
-}
-
-$(document).ready(function () {
-    initializePage();
-});
-
-
-// Search
-
-$(document).ready(function () {
-    $('#searchAttrib').on('input', function () {
-        var searchText = $(this).val().toLowerCase();
-        $('#hierarchyMain li').hide();
-        $('#hierarchyMain li:containsOrInChildren("' + searchText + '")').show();
-        localStorage.setItem('lastSearch', searchText);
-    });
-
-    var lastSearch = localStorage.getItem('lastSearch');
-    if (lastSearch) {
-        $('#searchAttrib').val(lastSearch).trigger('input');
     }
-});
 
-$.expr[":"].containsOrInChildren = $.expr.createPseudo(function (text) {
-    return function (elem) {
-        return $(elem).find('*').addBack().filter(function () {
-            return $(this).text().toLowerCase().indexOf(text.toLowerCase()) !== -1;
-        }).length > 0;
-    };
-});
+    function initializePage() {
+        let binaryCodeIntervalId, dotsIntervalId, rotateTimeout, animationFrameId, erroremCogitatorumTimer, decreaseInterval;;
+        let numDots = 1, rotationDegrees = 0, clickTimestamp = 0;
 
+        function generateMeaningfulBinaryCode(length) {
+            let binaryCode = '';
+            for (let i = 0; i < length; i++) {
+                const randomBit = Math.round(Math.random());
+                binaryCode += randomBit;
+            }
+            return binaryCode;
+        }
 
-let lastLoadedWikiePath = '';
-let lastLoadedHierarchyPath = '';
-let lastLoadedTypesPath = '';
+        function updateBinaryCode() {
+            const meaningfulBinaryCode = generateMeaningfulBinaryCode(25);
+            HeadText_Title.text(meaningfulBinaryCode);
+        }
 
-let cachedWikiePath = localStorage.getItem('lastLoadedWikiePath');
-let cachedHierarchyPath = localStorage.getItem('cachedHierarchyPath');
-let cachedTypesPath = localStorage.getItem('cachedTypesPath');
+        function updateDots() {
+            HeadText_AfterTitle.text('.'.repeat(numDots));
+            numDots++;
+            if (numDots > 5) {
+                numDots = 1;
+            }
+        }
 
-let cachedGame = localStorage.getItem('cachedGame');
-let lastLoadedGame = cachedGame;
+        HeadLogo.on({
+            mouseover: function () {
+                cancelAnimationFrame(animationFrameId);
 
-let cachedOption = localStorage.getItem('cachedOption');
-let lastLoadedOption = cachedOption;
+                HeadText_Title.addClass('animated');
+                HeadText_AfterTitle.addClass('animated');
 
+                HeadText_Title.css({
+                    'font-family': 'Tektur',
+                    'font-size': '0.6em'
+                });
+                HeadText_AfterTitle.css({
+                    'font-family': 'Tektur',
+                    'font-size': '0.6em'
+                });
 
-function initializeRoot() {
-    // Loading the info pages
+                updateBinaryCode();
+                binaryCodeIntervalId = setInterval(updateBinaryCode, 50);
 
-    $('#hierarchyAttributes li').each(function () {
-        $(this).children('span').last().each(function () {
-            if (!$(this).attr('data-wikie')) {
-                $(this).attr('data-wikie', 'wikies/404.html');
+                updateDots();
+                dotsIntervalId = setInterval(updateDots, 500);
+            },
+            mouseout: function () {
+                HeadText_Title.removeClass('animated');
+                HeadText_AfterTitle.removeClass('animated');
+
+                clearInterval(binaryCodeIntervalId);
+                clearInterval(dotsIntervalId);
+
+                let remainingTime = 3100;
+
+                const dataKey = HeadText_Title.data('key');
+                const generateAfterMouseout = function () {
+                    if (remainingTime > 0) {
+                        updateBinaryCode();
+                        updateDots();
+                        remainingTime -= 50;
+                        animationFrameId = requestAnimationFrame(generateAfterMouseout);
+                    } else {
+                        const selectedLanguage = localStorage.getItem('selectedLanguage') || 'ru';
+                        $.getJSON('ss/lang_' + selectedLanguage + '.json', function (data) {
+                            HeadText_Title.text(data.items[0][dataKey]);
+                            HeadText_AfterTitle.text('');
+
+                            HeadText_Title.css({
+                                'font-family': '',
+                                'font-size': ''
+                            });
+                            HeadText_AfterTitle.css({
+                                'font-family': '',
+                                'font-size': ''
+                            });
+                        });
+                    }
+                };
+                animationFrameId = requestAnimationFrame(generateAfterMouseout);
+
+            },
+            click: function () {
+                const currentTimestamp = new Date().getTime();
+                const timeSinceLastClick = currentTimestamp - clickTimestamp;
+
+                clearTimeout(erroremCogitatorumTimer);
+                clearTimeout(rotateTimeout);
+
+                let increment = 200;
+
+                if (timeSinceLastClick < 5000) {
+                    increment += rotationDegrees * 0.5;
+                } else if (timeSinceLastClick >= 2000) {
+                    rotationDegrees = 0;
+                } else {
+                    rotationDegrees = 90;
+                }
+
+                rotationDegrees += increment;
+                clickTimestamp = currentTimestamp;
+
+                clearInterval(decreaseInterval);
+
+                $(this).css('transform', 'rotate(' + rotationDegrees + 'deg)');
+
+                if (rotationDegrees > 1000000000) {
+                    dataErrorum_RandomAnim();
+                }
+                if (rotationDegrees > 1000000) {
+                    dataErrorum.css('display', 'block');
+                }
+
+                dataErrorum_overflow.text(rotationDegrees);
+
+                rotateTimeout = setTimeout(function () {
+                    let currentDegreeValue = rotationDegrees;
+                    decreaseInterval = setInterval(function () {
+                        const randomStep = Math.floor(Math.random() * currentDegreeValue * 0.35) + 1;
+                        currentDegreeValue -= randomStep;
+                        if (currentDegreeValue < 0) {
+                            currentDegreeValue = 0;
+                        }
+                        dataErrorum_overflow.text(currentDegreeValue);
+                        HeadLogo.css('transform', 'rotate(' + currentDegreeValue + 'deg)');
+
+                        if (currentDegreeValue <= 0) {
+                            clearInterval(decreaseInterval);
+                            HeadLogo.css('transform', 'rotate(0deg)');
+                            HeadLogo.removeAttr('style');
+                        }
+                    }, 20);
+
+                }, 2000);
+                erroremCogitatorumTimer = setTimeout(function () {
+                    dataErrorum_RandomAnim();
+                    setTimeout(() => {
+                        dataErrorum.removeAttr('style');
+                    }, 2000);
+                }, 5000);
+            }
+        });
+        function dataErrorum_RandomAnim() {
+            var randomAnimation = dataErrorum_anim[Math.floor(Math.random() * dataErrorum_anim.length)];
+            dataErrorum.css('animation', randomAnimation + ' 3s infinite');
+        }
+
+        // Add icon after external links
+        $('a[href^="http://"], a[href^="https://"]').each(function () {
+            var existingSpans = $(this).find('.material-icons.external');
+
+            if (existingSpans.length === 0 && !$(this).children('img').length) {
+                $(this).append(externalLinkElement);
             }
         });
 
-        $('span[data-wikie]').on('click', function () {
-            var wikiePath = $(this).data('wikie');
+        // Language setup
+        const LanguageSelector = $('#languageSelectorContainer');
+        var languages = [
+            { code: 'la', short: 'AG', name: 'Altum Gothicum', flag: '🏛️' },
+            { code: 'en', short: 'EN', name: 'English', flag: '🇺🇸' },
+            { code: 'ru', short: 'РУ', name: 'Русский', flag: '🇷🇺' },
+            { code: 'jp', short: '日本語', name: '日本語', flag: '🇯🇵' },
+        ];
+        var selectedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+        var langSelectOption = '';
 
-            if (wikiePath !== lastLoadedWikiePath) {
-                $('#contentAreaContainer').load(wikiePath, function () {
-                    initializePage();
-                    lastLoadedWikiePath = wikiePath;
-                    localStorage.setItem('lastLoadedWikiePath', lastLoadedWikiePath);
-                });
+        for (var i = 0; i < languages.length; i++) {
+            var selected = languages[i].code === selectedLanguage ? 'selected' : '';
+            langSelectOption += '<li data-value="' + languages[i].code + '" ' + selected + '>' + languages[i].flag + ' ' + languages[i].name + '</li>';
+        }
+
+        var selectLangDrop = (
+            '<div class="custom-select" id="languageSelectWrapper">' +
+            '<div class="select-styled" id="languageSelect">' + getSelectedLanguageName(selectedLanguage) + '</div>' +
+            '<ul class="select-options">' +
+            langSelectOption +
+            '</ul></div>'
+        );
+        LanguageSelector.html(selectLangDrop);
+        const LanguageSelectWrapper = $('#languageSelectWrapper');
+        const LanguageMenu = $('#languageSelect');
+        const LanguageOption = $('.select-options');
+
+        LanguageMenu.on('click', function () {
+            $(this).toggleClass('active');
+            LanguageOption.toggleClass('active');
+        });
+
+        LanguageSelectWrapper.on('click', 'li', function () {
+            var selectedLanguage = $(this).data('value');
+            updateLanguage(selectedLanguage);
+            LanguageMenu.removeClass('active');
+            LanguageOption.removeClass('active');
+        });
+
+        $(document).on('click', function (event) {
+            if (!LanguageSelectWrapper.is(event.target) && LanguageSelectWrapper.has(event.target).length === 0) {
+                LanguageMenu.removeClass('active');
+                LanguageOption.removeClass('active');
             }
         });
-    });
 
-    $('#randomPage').on('click', function () {
-        $.ajax({
-            url: 'https://api.github.com/repos/demernkardaz/MechaniCodeus/contents/wikies',
-            success: function (data) {
-                var files = data.map(function (file) {
-                    return file.name;
+        function updateLanguage(selectedLanguage) {
+            var htmlElement = document.querySelector('html');
+            htmlElement.setAttribute('lang', selectedLanguage);
+            LanguageMenu.html(getSelectedLanguageName(selectedLanguage));
+            localStorage.setItem('selectedLanguage', selectedLanguage);
+
+            $.getJSON('ss/lang_' + selectedLanguage + '.json', function (data) {
+                $('[data-key]').each(function () {
+                    var dataKey = $(this).data('key');
+                    $(this).html(data.items[0][dataKey]);
                 });
-                var randomFile = files[Math.floor(Math.random() * files.length)];
-                var wikiePath = 'wikies/' + randomFile;
-
-                lastLoadedWikiePath = wikiePath;
-                $('#contentAreaContainer').load(wikiePath, function () {
-                    initializePage();
-                    localStorage.setItem('lastLoadedWikiePath', lastLoadedWikiePath);
-                });
-
-            }
-        });
-    });
-    $('#homePage').on('click', function () {
-        if (lastLoadedWikiePath !== 'wikies/testpage.html') {
-            $('#contentAreaContainer').load('wikies/testpage.html', function () {
-                initializePage();
-                lastLoadedWikiePath = 'wikies/testpage.html';
-                cachedWikiePath = lastLoadedWikiePath;
-                localStorage.setItem('lastLoadedWikiePath', lastLoadedWikiePath);
+                updatePlaceholderText(data);
             });
         }
-    });
+        function getSelectedLanguageName(code) {
+            for (var i = 0; i < languages.length; i++) {
+                if (languages[i].code === code) {
+                    return languages[i].flag + '&#8201;' + languages[i].short;
+                }
+            }
+            return '';
+        }
+
+        function updatePlaceholderText(data) {
+            if (data.items && data.items[1]) {
+                var inputSearchTextPlaceholder = data.items[1].inputSearchTextPlaceholder;
+                searchPanel.attr('placeholder', inputSearchTextPlaceholder);
+            }
+        }
+        LanguageSelector.on('change', LanguageMenu, function () {
+            var selectedLanguage = $(this).val();
+            localStorage.setItem('selectedLanguage', selectedLanguage);
+            updateLanguage(selectedLanguage);
+        });
+        updateLanguage(selectedLanguage);
+
+        var $firstSpan = deployerList.find('li').children('span').first();
+        var $lastSpan = deployerList.find('li').children('span').last();
+
+        $firstSpan.mouseover(function () {
+            if ($(this).hasClass('hierarchical_arrow')) {
+                $(this).addClass('listElement_Arrow');
+            }
+        });
+        $firstSpan.mouseout(function () {
+            $(this).removeClass('listElement_Arrow');
+        });
 
 
-    // List functions
-    $(document).ready(function () {
+        var lastModifiedSpan = $('#lastModified');
 
-        $('#hierarchyAttributes li').each(function () {
+        $.ajax({
+            type: 'HEAD',
+            url: window.location.href,
+            success: function (data, status, xhr) {
+                var lastModifiedDate = new Date(xhr.getResponseHeader('Last-Modified'));
+                var formattedDate = `${addZero(lastModifiedDate.getDate())}.${addZero(lastModifiedDate.getMonth() + 1)}.${lastModifiedDate.getFullYear()} ${addZero(lastModifiedDate.getHours())}:${addZero(lastModifiedDate.getMinutes())}:${addZero(lastModifiedDate.getSeconds())}`;
+                lastModifiedSpan.text(formattedDate);
+            }
+        });
+
+        function addZero(number) {
+            return number < 10 ? '0' + number : number;
+        }
+    }
+
+    initializePage();
+
+
+    let lastLoadedWikiePath = '';
+    let lastLoadedHierarchyPath = '';
+    let lastLoadedTypesPath = '';
+
+    let cachedWikiePath = localStorage.getItem('lastLoadedWikiePath');
+    let cachedHierarchyPath = localStorage.getItem('cachedHierarchyPath');
+    let cachedTypesPath = localStorage.getItem('cachedTypesPath');
+
+    let cachedGame = localStorage.getItem('cachedGame');
+    let lastLoadedGame = cachedGame;
+
+    function deployerListInit() {
+        $.expr[":"].containsOrInChildren = $.expr.createPseudo(function (text) {
+            return function (elem) {
+                return $(elem).find('*').addBack().filter(function () {
+                    return $(this).text().toLowerCase().indexOf(text.toLowerCase()) !== -1;
+                }).length > 0;
+            };
+        });
+        var observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                if (mutation.target.id === 'hierarchyDeployer') {
+                    searchPanel.on('input', function () {
+                        var searchText = $(this).val().toLowerCase();
+                        deployerList.find('li').hide();
+                        deployerList.find('li:containsOrInChildren("' + searchText + '")').show();
+                        localStorage.setItem('lastSearch', searchText);
+                    });
+                    var lastSearch = localStorage.getItem('lastSearch');
+                    if (lastSearch) {
+                        searchPanel.val(lastSearch).trigger('input');
+                    }
+                }
+            });
+        });
+        observer.observe(document.getElementById('hierarchyDeployer'), { childList: true, subtree: true });
+    }
+    deployerListInit();
+
+    function initializeRoot() {
+        deployerList.find('li').each(function () {
+            $(this).children('span').last().each(function () {
+                $(this).attr('data-wikie', $(this).data('wikie') || 'wikies/404.html');
+            });
+            $('span[data-wikie]').on('click', function () {
+                var wikiePath = $(this).data('wikie');
+                if (wikiePath !== lastLoadedWikiePath) {
+                    contentAreaContainer.load(wikiePath, function () {
+                        initializePage();
+                        lastLoadedWikiePath = wikiePath;
+                        localStorage.setItem('lastLoadedWikiePath', lastLoadedWikiePath);
+                        updateContentStyles();
+                    });
+                }
+            });
+        });
+
+        deployerList.find('li').each(function () {
             if ($(this).find('ul').length > 0) {
-                $(this).prepend('<span class="material-icons hierarchical_arrow">chevron_right</span>');
+                $(this).prepend(listArrowMarker);
                 $(this).addClass('has-child');
             }
         });
 
-        $('#hierarchyAttributes li.has-child').each(function () {
+        deployerList.find('li.has-child').each(function () {
             var $ul = $(this).children('ul');
             $ul.hide();
             var $arrow = $(this).children('.hierarchical_arrow');
@@ -512,19 +465,20 @@ function initializeRoot() {
                 });
             });
 
-            var isAllOpen = false;
+            var collapsedAttrList = false;
 
-            $('#collapseShowAllLists').click(function (e) {
-                var $elements = $('#hierarchyAttributes li.has-child ul');
+            $(document).on('click', '#collapseShowAllLists', function (e) {
+                var $elements = deployerList.find('li.has-child ul');
                 var $button = $(this);
 
-                if (isAllOpen) {
+                if (collapsedAttrList) {
                     $elements.slideUp({
                         duration: 'fast',
                         start: observeListState,
                         complete: observeListState,
                     });
                     $button.text('unfold_more');
+                    collapsedAttrList = false;
                 } else {
                     $elements.slideDown({
                         duration: 'fast',
@@ -532,11 +486,9 @@ function initializeRoot() {
                         complete: observeListState,
                     });
                     $button.text('unfold_less');
+                    collapsedAttrList = true;
                 }
-
-                isAllOpen = !isAllOpen;
             });
-
 
             var observeListState = function () {
                 if ($ul.css('display') === 'none') {
@@ -546,52 +498,57 @@ function initializeRoot() {
                 }
             };
             observeListState();
-
         });
-
-
-        $('span[data-wikie]').on('mouseover', function () {
-            $(this).siblings('span.hierarchical_arrow').addClass('listElement_Arrow');
+    }
+    // Load the common list
+    function setDefaultUrl() {
+        $('.attributeLoader').each(function () {
+            $(this).attr('data-file-url', $(this).data('file-url') || 'lists/404atr.html');
+            $(this).attr('data-options-url', $(this).data('options-url') || 'lists/404opts.html');
         });
-        $('span[data-wikie]').on('mouseout', function () {
-            $(this).siblings('span.hierarchical_arrow').removeClass('listElement_Arrow');
+        $('.optionloader').each(function () {
+            $(this).attr('data-file-url', $(this).data('file-url') || 'lists/404atr.html');
         });
+    }
+    function identifyTheOptions() {
+        $('.optionloader').each(function () {
+            if (!$(this).hasClass('glitch')) {
+                var selectedOptionIndex = $(this).index();
+                var selectedOptionID = 'selectedOptionID_' + (selectedOptionIndex + 1);
+                $(this).attr('id', selectedOptionID);
 
-        $('span.hierarchical_arrow').on('mouseover', function () {
-            $(this).siblings('span[data-wikie]').addClass('hovered');
-            $(this).addClass('listElement_Arrow');
+                $(document).on('click', '#' + selectedOptionID, function () {
+                    $('.optionloader').removeClass('selected');
+                    $(this).addClass('selected');
+                    localStorage.setItem('cachedOption', $(this).attr('id'));
+                });
+            }
         });
-        $('span.hierarchical_arrow').on('mouseout', function () {
-            $(this).siblings('span[data-wikie]').removeClass('hovered');
-            $(this).removeClass('listElement_Arrow');
-        });
+        var cachedOption = localStorage.getItem('cachedOption');
+        if (cachedOption) {
+            $('.optionloader').removeClass('selected');
 
+            $('#' + cachedOption).addClass('selected');
+        } else {
+            $('.optionloader:first').addClass('selected');
+        }
+    }
 
+    deployerList.load(cachedHierarchyPath || 'lists/dowss_attrib.html', function () {
     });
-
-    var filesQueue = [
-        'lists/dowss_opts.html',
-        'lists/dow2ret_opts.html',
-        'lists/sm_opts.html',
-    ]
-
-}
-// Load the common list
-$(document).ready(function () {
-    $('#hierarchyDeployer').load(cachedHierarchyPath || 'lists/dowss_attrib.html', function () {
-
-    });
-    $('#attributeTypesDeploy').load(cachedTypesPath || 'lists/dowss_opts.html', function () {
+    deployerTypesList.load(cachedTypesPath || 'lists/dowss_opts.html', function () {
         initializeRoot();
+        setDefaultUrl();
+        identifyTheOptions();
     });
-    $('#contentAreaContainer').load(cachedWikiePath || 'wikies/testpage.html', function () {
+    contentAreaContainer.load(cachedWikiePath || 'wikies/testpage.html', function () {
         initializePage();
+        updateContentStyles();
     });
 
-
-    $('.attributeLoader').on('click', function () {
-        var optionsUrl = $(this).attr('data-options-url') || 'lists/404opts.html';
-        var fileUrl = $(this).data('file-url') || 'lists/404atr.html';
+    $(document).on('click', '.attributeLoader', function () {
+        var optionsUrl = $(this).attr('data-options-url');
+        var fileUrl = $(this).data('file-url');
 
         lastLoadedHierarchyPath = fileUrl;
         lastLoadedTypesPath = optionsUrl;
@@ -600,85 +557,89 @@ $(document).ready(function () {
 
         $('#hierarchyDeployer').load(fileUrl);
         $('#attributeTypesDeploy').load(optionsUrl, function () {
-            initializePage();
+            initializePage()
             initializeRoot();
+            setDefaultUrl();
+            identifyTheOptions();
         });
     });
 
     $(document).on('click', '.optionloader', function () {
-        var fileUrl = $(this).data('file-url') || 'lists/404atr.html';
+        var fileUrl = $(this).data('file-url');
 
         lastLoadedHierarchyPath = fileUrl;
         localStorage.setItem('cachedHierarchyPath', lastLoadedHierarchyPath);
-
         $('#hierarchyDeployer').load(fileUrl, function () {
             $('.attributeLoader').data('file-url', fileUrl);
-
-            initializePage();
+            initializePage()
             initializeRoot();
         });
     });
 
     function handleImageSelection() {
-        $('.attributeLoader img').removeClass('selected');
+        $('.attributeLoader').find('img').removeClass('selected');
         $(this).find('img').addClass('selected');
         lastLoadedGame = $(this).find('img').attr('src');
         localStorage.setItem('cachedGame', lastLoadedGame);
     }
     $('.attributeLoader').on('click', handleImageSelection);
-    $('.attributeLoader img[src="' + (lastLoadedGame || $('.attributeLoader img:first').attr('src')) + '"]').addClass('selected');
+    $('.attributeLoader').find('img[src="' + (lastLoadedGame || $('.attributeLoader').find('img:first').attr('src')) + '"]').addClass('selected');
 
-    function observeChangesInAttributeType() {
-        var targetElement = document.getElementById('attributeType');
 
-        var observer = new MutationObserver(function (mutations) {
-            mutations.forEach(function (mutation) {
+    $(document).on('mouseover', 'span[data-wikie]', function () {
+        $(this).siblings('span.hierarchical_arrow').addClass('listElement_Arrow');
+    });
+    $(document).on('mouseout', 'span[data-wikie]', function () {
+        $(this).siblings('span.hierarchical_arrow').removeClass('listElement_Arrow');
+    });
 
-                if (mutation.type === 'childList') {
-                    $('.optionloader').each(function () {
-                        var selectedOptionIndex = $(this).index();
-                        var selectedOptionID = 'selectedOptionID_' + (selectedOptionIndex + 1);
-                        $(this).attr('id', selectedOptionID);
+    $(document).on('mouseover', 'span.hierarchical_arrow', function () {
+        $(this).siblings('span[data-wikie]').addClass('hovered');
+        $(this).addClass('listElement_Arrow');
+    });
+    $(document).on('mouseout', 'span.hierarchical_arrow', function () {
+        $(this).siblings('span[data-wikie]').removeClass('hovered');
+        $(this).removeClass('listElement_Arrow');
+    });
 
-                        $(document).on('click', '#' + selectedOptionID, function () {
-                            $('.optionloader').removeClass('selected');
-                            $(this).addClass('selected');
-                            localStorage.setItem('cachedOption', $(this).attr('id'));
-                        });
-                    });
-                    var cachedOption = localStorage.getItem('cachedOption');
-                    if (cachedOption) {
-                        // Удаление класса 'selected' у всех опций
-                        $('.optionloader').removeClass('selected');
+    $(document).on('click', '#randomPage', function () {
+        $.ajax({
+            url: 'https://api.github.com/repos/demernkardaz/MechaniCodeus/contents/wikies',
+            success: function (data) {
+                var files = data.map(function (file) {
+                    return file.name;
+                });
+                var randomFile = files[Math.floor(Math.random() * files.length)];
+                var wikiePath = 'wikies/' + randomFile;
 
-                        // Установка класса 'selected' для сохраненной опции
-                        $('#' + cachedOption).addClass('selected');
-                    } else {
-                        // Установка первой опции по умолчанию
-                        $('.optionloader:first').addClass('selected');
-                    }
-                }
-            });
+                lastLoadedWikiePath = wikiePath;
+                contentAreaContainer.load(wikiePath, function () {
+                    initializePage();
+                    localStorage.setItem('lastLoadedWikiePath', lastLoadedWikiePath);
+                    updateContentStyles();
+                });
+
+            }
         });
-
-        var config = { childList: true, subtree: true };
-        observer.observe(targetElement, config);
-
-        return observer;
-    }
-
-    var mutationObserverInstance = observeChangesInAttributeType();
-
-});
-
-$(document).ready(function () {
-    $('#cleanTheCache').on('click', function () {
-        localStorage.clear();
-        location.reload();
+    });
+    $(document).on('click', '#homePage', function () {
+        if (lastLoadedWikiePath !== 'wikies/testpage.html') {
+            contentAreaContainer.load('wikies/testpage.html', function () {
+                initializePage();
+                lastLoadedWikiePath = 'wikies/testpage.html';
+                cachedWikiePath = lastLoadedWikiePath;
+                localStorage.setItem('lastLoadedWikiePath', lastLoadedWikiePath);
+                updateContentStyles();
+            });
+        }
     });
 });
 
 
+$(document).on('click', '#cleanTheCache', function () {
+    localStorage.clear();
+    location.reload();
+});
 
 function setRandomDuration() {
     var noiseBars = document.querySelectorAll('.noise-bar');

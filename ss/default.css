@@ -174,7 +174,7 @@ a>.material-icons.external:hover {
     word-wrap: break-word;
 }
 
-.ClassesTypeSelector {
+#ClassesTypeSelector {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -184,12 +184,12 @@ a>.material-icons.external:hover {
     width: 100%;
 }
 
-.ClassesTypeSelector .material-icons {
+#ClassesTypeSelector .material-icons {
     font-size: 18px;
 
 }
 
-.ClassesTypeSelector .material-icons {
+#ClassesTypeSelector .material-icons {
     background: none;
     border: none;
     color: inherit;
@@ -200,12 +200,12 @@ a>.material-icons.external:hover {
 
 
 
-.ClassesTypeSelector .SelectChange {
+#ClassesTypeSelector .SelectChange {
     display: flex;
     flex-direction: column;
 }
 
-.ClassesTypeSelector .SelectItems {
+#ClassesTypeSelector .SelectItems {
     margin-left: 5px;
 }
 
@@ -518,7 +518,11 @@ a>.material-icons.external:hover {
 
 .optionloader {
     margin-right: 3.5px;
+    cursor: unset !important;
+    user-select: none;
 }
+
+.optionloader * {}
 
 
 
@@ -879,7 +883,7 @@ a>.material-icons.external:hover {
 }
 
 .secondaryScreen>*>.optionloader.selected {
-    color: white;
+    color: white !important;
 }
 
 #attributeType {
