@@ -256,6 +256,7 @@ a>.material-icons.external:hover {
 
 .modal-dialog.HelpPopup {
     max-width: 700px;
+    height: 875px;
     hyphens: auto;
 }
 
@@ -310,7 +311,7 @@ a>.material-icons.external:hover {
 }
 
 .container.additional {
-    max-height: 300px;
+    max-height: 470px;
     overflow: auto;
     background-color: #362a1f3b;
 }
