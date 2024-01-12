@@ -256,10 +256,14 @@ $(document).ready(function () {
 
         // Add icon after external links
         $('a[href^="http://"], a[href^="https://"]').each(function () {
-            var existingSpans = $(this).find('.material-icons.external');
+            var href = $(this).attr('href');
 
-            if (existingSpans.length === 0 && !$(this).children('img').length) {
-                $(this).append(externalLinkElement);
+            if (href && href.indexOf('https://github.com/DemerNkardaz/MechaniCodeus') === -1) {
+                var existingSpans = $(this).find('.material-icons.external');
+
+                if (existingSpans.length === 0 && !$(this).children('img').length) {
+                    $(this).append(externalLinkElement);
+                }
             }
         });
 
