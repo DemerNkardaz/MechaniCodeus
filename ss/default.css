@@ -1218,3 +1218,13 @@ a>.material-icons.external:hover {
     opacity: 1;
     filter: contrast(80%) brightness(250%);
 }
+
+.modal-body {
+    position: relative;
+}
+
+.modalSetupBottom {
+    position: absolute;
+    bottom: 13px;
+    width: 100%;
+}
