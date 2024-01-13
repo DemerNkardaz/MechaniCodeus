@@ -1161,10 +1161,39 @@ a>.material-icons.external:hover {
     height: 24px;
     background: none;
     color: rgb(255, 13, 13) !important;
-    text-shadow: 1px 0 15px rgb(255, 13, 13), 1px 0 15px rgb(255, 13, 13), 1px 0 15px rgb(255, 13, 13);
-    opacity: 0.75;
     --bs-btn-close-focus-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.322);
     padding: 0;
+    animation: flickerBtn 100ms linear infinite;
+}
+
+@keyframes flickerBtn {
+
+    0%,
+    100% {
+        text-shadow: 1px 0 15px rgb(255, 13, 13), 1px 0 15px rgb(255, 13, 13), 1px 0 15px rgb(255, 13, 13);
+        opacity: 0.65;
+
+    }
+
+    50% {
+        opacity: 0.75;
+        text-shadow: 1px 0 20px rgb(255, 13, 13), 1px 0 20px rgb(255, 13, 13), 1px 0 20px rgb(255, 13, 13);
+    }
+}
+
+@keyframes flickerBtn_hover {
+
+    0%,
+    100% {
+        text-shadow: 1px 0 15px rgb(255, 13, 13), 1px 0 15px rgb(255, 13, 13), 1px 0 15px rgb(255, 13, 13);
+        opacity: 0.85;
+
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow: 1px 0 20px rgb(255, 13, 13), 1px 0 20px rgb(255, 13, 13), 1px 0 20px rgb(255, 13, 13);
+    }
 }
 
 .btn-close::before {
@@ -1181,7 +1210,7 @@ a>.material-icons.external:hover {
 }
 
 .btn-close:hover {
-    opacity: 1;
+    animation: flickerBtn_hover 100ms linear infinite;
 }
 
 .btn-close:focus,
