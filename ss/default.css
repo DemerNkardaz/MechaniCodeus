@@ -1151,3 +1151,41 @@ a>.material-icons.external:hover {
         color: #ad9f9f;
     }
 }
+
+
+
+.btn-close {
+    position: relative;
+    font-family: 'Material icons' !important;
+    width: 24px;
+    height: 24px;
+    background: none;
+    color: rgb(255, 13, 13) !important;
+    text-shadow: 1px 0 15px rgb(255, 13, 13), 1px 0 15px rgb(255, 13, 13), 1px 0 15px rgb(255, 13, 13);
+    opacity: 0.75;
+    --bs-btn-close-focus-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.322);
+    padding: 0;
+}
+
+.btn-close::before {
+    content: 'close';
+    position: absolute;
+    top: 24px;
+    left: 12px;
+    transform: translate(-12px, -12px);
+    width: 100%;
+    height: 100%;
+    display: block;
+    font-size: 2em;
+    line-height: 0.5;
+}
+
+.btn-close:hover {
+    opacity: 1;
+}
+
+.btn-close:focus,
+.btn-close:active {
+    opacity: 1;
+    filter: contrast(80%) brightness(250%);
+}
