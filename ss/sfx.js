@@ -84,7 +84,7 @@ $(document).on('click', '.sfx_common', function () {
     generic_click.play();
 });
 
-$(document).on('click', '.form-control', function () {
+$(document).on('mousedown', '.form-control', function () {
     generic_click_2.stop();
     generic_click_2.play();
 });
