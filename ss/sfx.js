@@ -134,7 +134,8 @@ var randomizedAmbienceListWEB = [
 ];
 
 var isLocalServer = window.location.href.startsWith('http://localhost') || window.location.href.startsWith('http://127.0.0.1');
-var randomizedAmbienceList = isLocalServer ? randomizedAmbienceListLocal : randomizedAmbienceListWEB;
+var randomizedAmbienceList = randomizedAmbienceListLocal;
+/*var randomizedAmbienceList = isLocalServer ? randomizedAmbienceListLocal : randomizedAmbienceListWEB;*/
 
 let currentTrackIndex = Math.floor(Math.random() * randomizedAmbienceList.length);
 var ambientMusic = {};
