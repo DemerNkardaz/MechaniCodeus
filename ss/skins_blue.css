@@ -1,0 +1,207 @@
+body {
+    color: #d8ecf2;
+}
+
+* {
+    font-family: 'IBM Plex Mono', 'Noto Color Emoji', sans-serif;
+    scrollbar-width: thin;
+    scrollbar-color: #7569cb rgba(0, 0, 0, 0.2);
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #7569cb rgba(0, 0, 0, 0.2);
+    }
+}
+
+a {
+    color: #4998ff;
+}
+
+a:hover {
+    color: #aa71ff;
+}
+
+a:active {
+    color: #7c30d3;
+}
+
+a:focus {
+    color: #7f30d3;
+}
+
+a>.material-icons.external {
+    color: #d9d9d9;
+}
+
+a>.material-icons.external:hover {
+    color: #ffffff;
+}
+
+.path_to_file {
+    background-color: #283d93;
+    color: #f9f9f9;
+}
+
+.modal-content.HelpPopup {
+    border: 1px solid #543864;
+    background-color: #001f5de6;
+    color: #d8ecf2;
+}
+
+.modal-header.HelpPopup {
+    border-bottom: 1px solid #333333;
+    width: 100%;
+}
+
+.container.additional>.list-group>* {
+    color: #d8ecf2;
+    border-color: #34444d;
+}
+
+.mecha_header>*>a {
+    color: #d8ecf2;
+    text-decoration: none;
+}
+
+.container {
+    border: 1px solid #343b4d;
+    background-color: #1d1d40fa;
+}
+
+#hierarchyMain,
+.mecha_header #searchPanelScreen .secondaryScreen {
+    background: #66a4eb repeating-linear-gradient(to bottom, #55555596, #55555575 5px, #7777777f 5px, #77777757 6px);
+    filter: contrast(240%) hue-rotate(0deg);
+    color: #7cd5ff;
+}
+
+.select-options {
+    border: 1px solid #20befc;
+    box-shadow: 0 0 5px #20a8fc;
+    background: #3b95e3cf repeating-linear-gradient(to bottom, #55555596, #55555575 5px, #7777777f 5px, #77777757 6px);
+    color: #d8ecf2;
+}
+
+.mecha_header #searchPanelScreen .material-icons {
+    color: white;
+}
+
+.mecha_header #searchPanelScreen .form-control:focus::placeholder {
+    color: #ffffffbf;
+}
+
+#hierarchyMain::before,
+.secondaryScreen::before {
+    box-shadow: inset 0 0 120px #086fb9b9;
+}
+
+.hierarchyControls {
+    border-bottom: 1px solid #74aff3
+}
+
+#hierarchyAttributes li span.hovered::before,
+#hierarchyAttributes li span:hover::before {
+    background-color: #7092d2;
+}
+
+.iron_border {
+    background:
+        conic-gradient(from 162deg at 37% 89%, rgba(74, 55, 55, 0.59) 0%, #573737 9%, #484533 16%, rgba(91, 91, 91, 0) 36%, rgba(199, 199, 199, 0.78) 54%, rgba(190, 180, 171, 0.95) 71%, rgba(108, 107, 41, 0.95) 71%, rgba(210, 202, 190, 0.95) 80%, rgb(137, 155, 106) 87%) 61% 75%/168% 198%,
+        conic-gradient(from 277deg at 4% 29%, #b0b0b0 0%, #737373 100%) 96% 77%/114% 103%;
+    border-bottom: 6px solid #2a0303;
+    box-shadow: 0 2px 10px #00000018, 0 0 20px #00000027, 10px 15px 10px #0e01015b;
+}
+
+.iron_border::before {
+    background-color: #4089b6cb;
+    box-shadow: inset 0 0 2px #929292cb;
+}
+
+.secondaryScreen>*>.optionloader,
+#ClassesTypeSelector .material-icons {
+    color: rgb(115, 194, 225)
+}
+
+.Greyish.secondaryScreen::before {
+    box-shadow: inset 0 0 20px #898585a9;
+}
+
+.secondaryScreen>*>.optionloader.selected,
+.secondaryScreen>*>.optionloader:hover {
+    color: rgb(255, 255, 255) !important;
+}
+
+.child_list_highlight {
+    color: #00eaff;
+}
+
+.btn.btn-primary,
+#languageSelect {
+    color: #dfdfdf;
+    background-color: #1a5ab4;
+    border-color: #2e1fff;
+}
+
+#languageSelect:hover,
+.btn.btn-primary:hover {
+    background-color: #4f6dd9cf;
+    border-color: #0004ff;
+    color: #4f4f4f;
+}
+
+#languageSelect:focus,
+#languageSelect:active,
+.btn.btn-primary:focus,
+.btn.btn-primary:active {
+    background-color: #4eb0edcf;
+    border-color: #d3d3d3;
+    color: #333;
+}
+
+.ambienceBlock {
+    border-right: 2px solid #4eb0edcf;
+    border-left: 2px solid #4eb0edcf;
+}
+
+.commonSliders {
+    background: #1a5ab4;
+    border: 1px solid #2e1fff;
+}
+
+.commonSliders:hover {
+    background: #4f6dd9cf;
+}
+
+.commonSliders::-webkit-slider-thumb {
+    background-color: #dcdcdc;
+    border: 2px solid #b4b4b4cf;
+}
+
+.commonSliders::-moz-range-thumb {
+    background-color: #dcdcdc;
+    border: 2px solid #b4b4b4cf;
+}
+
+.commonSliders::-webkit-slider-thumb:hover {
+    filter: invert(50%);
+}
+
+.commonSliders::-moz-range-thumb:hover {
+    filter: invert(50%);
+}
+
+.commonSliders:active::-webkit-slider-thumb,
+.commonSliders:focus::-webkit-slider-thumb,
+.commonSliders:active::-moz-range-thumb,
+.commonSliders:focus::-moz-range-thumb {
+    filter: invert(0%) brightness(120%);
+    box-shadow: 0px 0px 5px #c5c5c5, 0px 0px 15px #c5c5c5;
+}
+
+.skin_setup {
+    border-right: 2px solid #4eb0edcf;
+    border-left: 2px solid #4eb0edcf;
+}

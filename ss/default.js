@@ -280,11 +280,11 @@ $(document).ready(function () {
 
         for (var i = 0; i < languages.length; i++) {
             var selected = languages[i].code === selectedLanguage ? 'selected' : '';
-            langSelectOption += '<li data-value="' + languages[i].code + '" ' + selected + '>' + languages[i].flag + ' ' + languages[i].name + '</li>';
+            langSelectOption += '<li class="sfx_common" data-value="' + languages[i].code + '" ' + selected + '>' + languages[i].flag + ' ' + languages[i].name + '</li>';
         }
 
         var selectLangDrop = (
-            '<div class="custom-select" id="languageSelectWrapper">' +
+            '<div class="custom-select sfx_common" id="languageSelectWrapper">' +
             '<div class="select-styled" id="languageSelect">' + getSelectedLanguageName(selectedLanguage) + '</div>' +
             '<ul class="select-options">' +
             langSelectOption +

@@ -11,11 +11,17 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <link rel="stylesheet" href="ss/default.css">
         <script src="ss/default.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+        <script src="ss/sfx.js"></script>
+        <script src="ss/skins.js"></script>
     </head>
     <body>
-        <video width="560" height="315" autoplay loop muted controls="false">
-            <source src="bgsndl_low.mp4" type="video/mp4">
-        </video>
+        <div id="backgroundVideo">
+            <video autoplay loop muted>
+                <source src="bgsndl_low.mp4" type="video/mp4">
+            </video>
+            <div></div>
+        </div>
         <div id="erroremCogitatorum" class="glitch">
             <span data-key="erroremCogitatorum">Перегрузка систем когитатора!<br>Сверхнорма данных на:</span>&#8195;<span id="currentGearDegree" style="display: inline-block; width: 120px; max-width: 280px; text-align: right;"></span>
         </div>
@@ -78,10 +84,11 @@
                         <div class="noise-bar"></div>
                         <div class="hierarchyControls">
                             <span class="material-icons">
-                                <button type="button" class="btn btn-primary" id="collapseShowAllLists">unfold_more</button>&#x2006;<!---<&#x2006;button type="button"
-                                    class="btn btn-primary">filter_list_off</button>---><button id="randomPage" class="btn btn-primary"><span class="material-icons">shuffle</span></button>&#x2006;<button type="button" class="btn btn-primary" id="homePage">home</button>
+                                <button type="button" class="btn btn-primary sfx_common" id="collapseShowAllLists">unfold_more</button>&#x2006;<!---<&#x2006;button type="button"
+                                    class="btn btn-primary">filter_list_off</button>---><button id="randomPage" class="btn btn-primary sfx_common"><span class="material-icons sfx_common">shuffle</span></button>&#x2006;<button type="button" class="btn btn-primary sfx_common"
+                                    id="homePage">home</button>
                                 <div class="language-selector" id="languageSelectorContainer"></div>&#x2006;<button type="button"
-                                    class="btn btn-primary"
+                                    class="btn btn-primary sfx_common"
                                     data-bs-toggle="modal" data-bs-target="#helpModal">help_outline</button>
                             </span>
                         </div>
@@ -107,11 +114,11 @@
                 <div class="modal-content HelpPopup Greyish secondaryScreen">
 
                     <div class="modal-header HelpPopup">
-                        <a href="https://store.steampowered.com/app/9450/Warhammer_40000_Dawn_of_War__Soulstorm">
+                        <a class="sfx_common" href="https://store.steampowered.com/app/9450/Warhammer_40000_Dawn_of_War__Soulstorm">
                             <img id="SteamSSLink" src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/9450/d13abadb0f456659a634d2cd8286665a0c76a2c6.jpg">
                         </a>
                         <h5 class="modal-title" id="helpModalLabel" data-key="Help_Title">МеханиКодеус: описания атрибутов</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close sfx_close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <p data-key="Help_Description_1">На данном ресурсе располагается информация об атрибутах, задействованных в стратегии «Warhammer 40,000: Dawn of War — Soulstorm».</p>
@@ -146,11 +153,43 @@
                                 <li class="list-group-item"><a href="https://fonts.google.com/specimen/Tektur" style="font-family: Tektur">Tektur</a></li>
                                 <li class="list-group-item"><a href="https://fonts.google.com/specimen/Noto+Color+Emoji?query=Noto+Color+Emoji">Noto Color Emoji</a></li>
                             </ul>
-
+                            <h6 data-key="Music">Музыка</h6>
+                            <ul class="list-group">
+                                <li class="list-group-item">'Shadows and Dust' by Scott Buckley - released under CC-BY 4.0.</li>
+                                <li class="list-group-item">'Decoherence' by Scott Buckley - released under CC-BY 4.0.</li>
+                                <li class="list-group-item">'The Distant Sun' by Scott Buckley - released under CC-BY 4.0.</li>
+                                <li class="list-group-item">'The Encounter' by Scott Buckley - released under CC-BY 4.0.</li>
+                                <li class="list-group-item">'Ephemera' by Scott Buckley - released under CC-BY 4.0.</li>
+                                <li class="list-group-item">'Computations in a Snowstorm' by Scott Buckley - released under CC-BY 4.0.</li>
+                                <li class="list-group-item">'The Old Ones' by Scott Buckley - released under CC-BY 4.0.</li>
+                                <li class="list-group-item">'Soul Searcher' by Scott Buckley - released under CC-BY 4.0.</li>
+                                <li class="list-group-item">'Machina' by Scott Buckley - released under CC-BY 4.0.</li>
+                            </ul>
+                            www.scottbuckley.com.au
                         </div>
 
                         <div class="modalSetupBottom">
-                            <span class="material-icons" style="margin-top: 7px;"><button type="button" class="btn btn-primary" id="cleanTheCache">cleaning_services</button></span>
+                            <span class="material-icons"><button type="button" class="btn btn-primary sfx_common" id="cleanTheCache">cleaning_services</button></span>&#x2006;<span class="material-icons" style="margin-top: 7px;"><button type="button"
+                                    class="btn btn-primary sfx_common" id="silenceToggle">volume_up</button></span>&ensp;
+                            <span class="ambienceBlock">
+                                <span class="material-icons"><button type="button"
+                                        class="btn btn-primary sfx_common" id="musicSilenceToggle">play_arrow</button></span>&#x2006;<span class="sliderParent"><input class="commonSliders sfx_common" type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.25"></span>&#x2006;
+                                <span><input type="text" class="btn btn-primary sfx_common" id="volumeText" value="0.25"></span>
+                            </span>&ensp;
+                            <span class="skin_setup">
+                                <span class="btn btn-primary sfx_common" id="skin_default">
+                                    <div class="skin_preview"></div>
+                                </span>&#x2006;
+                                <span class="btn btn-primary sfx_common" id="skin_yellow" data-skin="ss/skins_yellow.css">
+                                    <div class="skin_preview"></div>
+                                </span>&#x2006;
+                                <span class="btn btn-primary sfx_common" id="skin_red" data-skin="ss/skins_red.css">
+                                    <div class="skin_preview"></div>
+                                </span>&#x2006;
+                                <span class="btn btn-primary sfx_common" id="skin_blue" data-skin="ss/skins_blue.css">
+                                    <div class="skin_preview"></div>
+                                </span>
+                            </span>
                         </div>
                     </div>
                 </div>
