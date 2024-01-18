@@ -539,9 +539,9 @@ $(document).ready(function () {
     }
 
     deployerList.load(cachedHierarchyPath || 'lists/dowss_attrib.html', function () {
+        initializeRoot();
     });
     deployerTypesList.load(cachedTypesPath || 'lists/dowss_opts.html', function () {
-        initializeRoot();
         setDefaultUrl();
         identifyTheOptions();
     });
@@ -561,7 +561,7 @@ $(document).ready(function () {
 
         $('#hierarchyDeployer').load(fileUrl);
         $('#attributeTypesDeploy').load(optionsUrl, function () {
-            initializePage()
+            initializePage();
             initializeRoot();
             setDefaultUrl();
             identifyTheOptions();
@@ -575,7 +575,7 @@ $(document).ready(function () {
         localStorage.setItem('cachedHierarchyPath', lastLoadedHierarchyPath);
         $('#hierarchyDeployer').load(fileUrl, function () {
             $('.attributeLoader').data('file-url', fileUrl);
-            initializePage()
+            initializePage();
             initializeRoot();
         });
     });
