@@ -40,6 +40,15 @@ a>.material-icons.external:hover {
     color: #ffffff;
 }
 
+
+.scottLink {
+    color: #eaeaea;
+}
+
+.scottLink:hover {
+    color: #ffffff;
+}
+
 .path_to_file {
     background-color: #bebebe;
     color: #333;
