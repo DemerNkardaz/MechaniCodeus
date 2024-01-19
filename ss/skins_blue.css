@@ -157,7 +157,7 @@ a>.material-icons.external:hover {
 .btn.btn-primary:hover {
     background-color: #4f6dd9cf;
     border-color: #0004ff;
-    color: #4f4f4f;
+    color: #e22a6a;
 }
 
 #languageSelect:focus,
@@ -167,6 +167,11 @@ a>.material-icons.external:hover {
     background-color: #4eb0edcf;
     border-color: #d3d3d3;
     color: #333;
+}
+
+.container.left #languageSelect:hover,
+.container.left .btn.btn-primary:hover {
+    color: #585858;
 }
 
 .ambienceBlock {
@@ -212,4 +217,9 @@ a>.material-icons.external:hover {
 .skin_setup {
     border-right: 2px solid #4eb0edcf;
     border-left: 2px solid #4eb0edcf;
+}
+
+.generic_tooltip {
+    --bs-tooltip-bg: #2f2e67;
+    box-shadow: 0 0 4px #4eb0ed;
 }

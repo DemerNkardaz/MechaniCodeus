@@ -59,7 +59,7 @@ a>.material-icons.external:hover {
 
 .modal-content.HelpPopup {
     border: 1px solid #3b2020;
-    background-color: rgba(51, 6, 6, 0.9);
+    background-color: #330606e6;
     color: #edbba4;
 }
 
@@ -220,4 +220,10 @@ a>.material-icons.external:hover {
 .skin_setup {
     border-right: 2px solid #ed4e4ecf;
     border-left: 2px solid #ed4e4ecf;
+}
+
+
+.generic_tooltip {
+    --bs-tooltip-bg: #4b0d0d;
+    box-shadow: 0 0 3.5px #bd1f1f;
 }

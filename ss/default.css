@@ -213,7 +213,6 @@ a>.material-icons.external:hover {
 #ClassesTypeSelector .material-icons {
     background: none;
     border: none;
-    color: inherit;
     padding: 0;
     outline: inherit;
     left: 0;
@@ -1364,6 +1363,7 @@ a>.material-icons.external:hover {
     height: 26px;
     width: auto;
     margin-left: auto;
+    user-select: none;
 }
 
 .skin_setup .btn-primary {
@@ -1401,4 +1401,14 @@ a>.material-icons.external:hover {
 #skin_blue .skin_preview {
     background: #8b84c0 repeating-linear-gradient(to bottom, #55555596, #55555575 5px, #7777777f 5px, #77777757 6px);
     filter: contrast(240%) hue-rotate(0deg);
+}
+
+.skin_setup .skinsIcon {
+    margin-right: 2.5px;
+}
+
+.generic_tooltip {
+    --bs-tooltip-bg: #59260c;
+    box-shadow: 0 0 2.25px #fdcf27;
+    border-radius: 5px;
 }

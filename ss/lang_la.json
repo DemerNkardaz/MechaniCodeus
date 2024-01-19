@@ -39,6 +39,12 @@
         },
         {
             "inputSearchTextPlaceholder": "Quaerere in Attributis..."
+        },
+        {
+            "ThemesOption": "Theme Interface",
+            "CacheCleaning": "Cassette purgans",
+            "UISounds": "Sonitus Interfacialis",
+            "AmbienceMusic": "Musica Ambientalis"
         }
     ]
 }

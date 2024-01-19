@@ -39,6 +39,12 @@
         },
         {
             "inputSearchTextPlaceholder": "Поиск по атрибутам..."
+        },
+        {
+            "ThemesOption": "Темы интерфейса",
+            "CacheCleaning": "Очистка кэша",
+            "UISounds": "Звуки интерфейса",
+            "AmbienceMusic": "Фоновая музыка"
         }
     ]
 }

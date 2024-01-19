@@ -39,6 +39,12 @@
         },
         {
             "inputSearchTextPlaceholder": "Search in Attributes..."
+        },
+        {
+            "ThemesOption": "Interface Theme",
+            "CacheCleaning": "Cache Cleaning",
+            "UISounds": "Interface Sounds",
+            "AmbienceMusic": "Ambience Music"
         }
     ]
 }

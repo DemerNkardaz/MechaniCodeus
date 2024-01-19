@@ -39,6 +39,12 @@
         },
         {
             "inputSearchTextPlaceholder": "属性で検索。。。"
+        },
+        {
+            "ThemesOption": "テーマインタフェース",
+            "CacheCleaning": "キャッシュクリア",
+            "UISounds": "インタフェースサウンド",
+            "AmbienceMusic": "環境音楽"
         }
     ]
 }

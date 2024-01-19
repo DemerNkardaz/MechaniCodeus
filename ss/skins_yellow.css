@@ -188,3 +188,9 @@ a>.material-icons.external:hover {
     border-right: 2px solid #bdbdbdcf;
     border-left: 2px solid #bdbdbdcf;
 }
+
+
+.generic_tooltip {
+    --bs-tooltip-bg: #333;
+    box-shadow: 0 0 2.25px #ffffff;
+}

@@ -326,6 +326,7 @@ $(document).ready(function () {
                     $(this).html(data.items[0][dataKey]);
                 });
                 updatePlaceholderText(data);
+                updateTooltips(data);
             });
         }
         function getSelectedLanguageName(code) {
@@ -348,6 +349,21 @@ $(document).ready(function () {
             localStorage.setItem('selectedLanguage', selectedLanguage);
             updateLanguage(selectedLanguage);
         });
+        function updateTooltips(data) {
+            $('[data-bs-toggle="tooltip"]').each(function () {
+                const dataKey = $(this).data('key');
+                if (data.items[2].hasOwnProperty(dataKey)) {
+                    $(this).attr('data-bs-title', data.items[2][dataKey]);
+                }
+            });
+
+            $('[data-bs-toggle="tooltip"]').tooltip('dispose');
+            $('[data-bs-toggle="tooltip"]').tooltip();
+        }
+
+        $('[data-bs-toggle="tooltip"]').tooltip();
+
+
         updateLanguage(selectedLanguage);
 
         var $firstSpan = deployerList.find('li').children('span').first();

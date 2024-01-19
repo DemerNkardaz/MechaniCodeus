@@ -170,15 +170,22 @@
                         </div>
 
                         <div class="modalSetupBottom">
-                            <span class="material-icons"><button type="button" class="btn btn-primary sfx_common" id="cleanTheCache">cleaning_services</button></span>&#x2006;<span class="material-icons" style="margin-top: 7px;"><button type="button"
-                                    class="btn btn-primary sfx_common" id="silenceToggle">volume_up</button></span>&ensp;
+                            <span class="material-icons"><button type="button" class="btn btn-primary sfx_common" id="cleanTheCache" data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-custom-class="generic_tooltip"
+                                    data-bs-title="Clean Cache" data-key="CacheCleaning">cleaning_services</button></span>&#x2006;<span class="material-icons" style="margin-top: 7px;"><button type="button"
+                                    class="btn btn-primary sfx_common" id="silenceToggle" data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-custom-class="generic_tooltip"
+                                    data-bs-title="On/Off UI Sounds" data-key="UISounds">volume_up</button></span>&ensp;
                             <span class="ambienceBlock">
                                 <span class="material-icons"><button type="button"
-                                        class="btn btn-primary sfx_common" id="musicSilenceToggle">play_arrow</button></span>&#x2006;<span class="sliderParent"><input class="commonSliders sfx_common" type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.25"></span>&#x2006;
+                                        class="btn btn-primary sfx_common" id="musicSilenceToggle" data-bs-toggle="tooltip" data-bs-placement="top"
+                                        data-bs-custom-class="generic_tooltip"
+                                        data-bs-title="On/Off Music" data-key="AmbienceMusic">play_arrow</button></span>&#x2006;<span class="sliderParent"><input class="commonSliders sfx_common" type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.25"></span>&#x2006;
                                 <span><input type="text" class="btn btn-primary sfx_common" id="volumeText" value="0.25"></span>
                             </span>&ensp;
-                            <span class="skin_setup">
-                                <span class="btn btn-primary sfx_common" id="skin_default">
+                            <span class="skin_setup"><span class="material-icons skinsIcon" data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-custom-class="generic_tooltip"
+                                    data-bs-title="UI Themes" data-key="ThemesOption">color_lens</span>&#x2006;<span class="btn btn-primary sfx_common" id="skin_default">
                                     <div class="skin_preview"></div>
                                 </span>&#x2006;
                                 <span class="btn btn-primary sfx_common" id="skin_yellow" data-skin="ss/skins_yellow.css">
