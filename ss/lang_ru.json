@@ -44,7 +44,11 @@
             "ThemesOption": "Темы интерфейса",
             "CacheCleaning": "Очистка кэша",
             "UISounds": "Звуки интерфейса",
-            "AmbienceMusic": "Фоновая музыка"
+            "AmbienceMusic": "Фоновая музыка",
+            "SkinDefault": "Мониторум Механикум",
+            "SkinYellow": "Классическая",
+            "SkinRed": "Кровавый Договор",
+            "SkinBlue": "Тень Борк'ан"
         }
     ]
 }

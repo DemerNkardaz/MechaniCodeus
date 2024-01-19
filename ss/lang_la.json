@@ -44,7 +44,11 @@
             "ThemesOption": "Theme Interface",
             "CacheCleaning": "Cassette purgans",
             "UISounds": "Sonitus Interfacialis",
-            "AmbienceMusic": "Musica Ambientalis"
+            "AmbienceMusic": "Musica Ambientalis",
+            "SkinDefault": "Monitorum Mechanicum",
+            "SkinYellow": "Classica",
+            "SkinRed": "Foedus Cruentus",
+            "SkinBlue": "Umbra Bork'an"
         }
     ]
 }

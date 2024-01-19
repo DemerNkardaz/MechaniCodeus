@@ -44,7 +44,11 @@
             "ThemesOption": "テーマインタフェース",
             "CacheCleaning": "キャッシュクリア",
             "UISounds": "インタフェースサウンド",
-            "AmbienceMusic": "環境音楽"
+            "AmbienceMusic": "環境音楽",
+            "SkinDefault": "モニトルム・メカニクム",
+            "SkinYellow": "クラシック",
+            "SkinRed": "血の協定",
+            "SkinBlue": "タウ・エンパイアの影"
         }
     ]
 }

@@ -44,7 +44,11 @@
             "ThemesOption": "Interface Theme",
             "CacheCleaning": "Cache Cleaning",
             "UISounds": "Interface Sounds",
-            "AmbienceMusic": "Ambience Music"
+            "AmbienceMusic": "Ambience Music",
+            "SkinDefault": "Monitorum Mechanicum",
+            "SkinYellow": "Classical Marine",
+            "SkinRed": "Blood Pact",
+            "SkinBlue": "Shadow of Bork'an"
         }
     ]
 }
