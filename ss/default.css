@@ -717,6 +717,10 @@ a>.material-icons.external:hover {
     z-index: 1;
 }
 
+#hierarchyAttributes>ul>li>span[data-wikie]:first-child {
+    margin-left: 16px;
+}
+
 #hierarchyAttributes .listElement_Arrow {
     font-weight: 800;
     color: #4c10ff;
