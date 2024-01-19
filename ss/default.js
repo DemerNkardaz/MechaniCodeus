@@ -574,12 +574,14 @@ $(document).ready(function () {
         lastLoadedHierarchyPath = fileUrl;
         localStorage.setItem('cachedHierarchyPath', lastLoadedHierarchyPath);
         $('#hierarchyDeployer').load(fileUrl, function () {
-            $('.attributeLoader').data('file-url', fileUrl);
             initializePage();
             initializeRoot();
         });
-    });
 
+        var game = $(this).data('game');
+        var attributeLoaderSelector = '.attributeLoader[data-game="' + game + '"]';
+        $(attributeLoaderSelector).data('file-url', fileUrl);
+    });
     function handleImageSelection() {
         $('.attributeLoader').find('img').removeClass('selected');
         $(this).find('img').addClass('selected');
