@@ -1,4 +1,14 @@
-[Open the MechaniCodeus](https://demernkardaz.github.io/MechaniCodeus/)
+![1705742665072](image/README/1705742665072.png)
+
+
+
+
+<h3 align="center">
+   <a href="https://demernkardaz.github.io/MechaniCodeus/">Open the MechaniCodeus</a>
+</h3>
+
+
+
 
 Created with AI.
 
