@@ -40,6 +40,11 @@ a>.material-icons.external:hover {
     color: #ffffff;
 }
 
+.material-icons.titleIcon {
+    color: inherit;
+    background-color: #d29b03;
+}
+
 
 .scottLink {
     color: #eaeaea;

@@ -40,6 +40,13 @@ a>.material-icons.external:hover {
     color: #ffffff;
 }
 
+.material-icons.titleIcon {
+    color: #ff88ff;
+    background-color: #0d6efd;
+}
+
+
+
 .scottLink {
     color: #d8ecf2;
 }

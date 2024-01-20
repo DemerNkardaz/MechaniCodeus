@@ -57,6 +57,36 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+h1 .material-icons,
+h2 .material-icons,
+h3 .material-icons,
+h4 .material-icons,
+h5 .material-icons,
+h6 .material-icons {
+    user-select: none;
+}
+
+.material-icons.titleIcon {
+    display: inline-flex;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+
+    margin-right: 10px;
+    font-size: 1em;
+    line-height: 1;
+    color: #00F999;
+    background-color: #00815e;
+    padding: 1px;
+    border-radius: 5px;
+
+}
+
+.homeTitle {
+    font-family: 'Cormorant SC', serif;
+    font-size: 1.2em;
+}
+
 a {
     color: #ff6b10;
 }

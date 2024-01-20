@@ -2,6 +2,7 @@
     "items": [
         {
             "MechaTitle": "Deus Mechanicus",
+            "homePageTitle": "Librarium Scientiarum Mechanicum",
             "File404": "Limen non existit",
             "unRecognized": "Non Cognitum",
             "noInformation": "Errorem intellectus databloci:<br><br>Informatio deest<br><br>Contactus est in proximum Administratum officium ad auxilium ab perito petendum ex Mechanicum.",

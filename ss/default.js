@@ -561,7 +561,7 @@ $(document).ready(function () {
         setDefaultUrl();
         identifyTheOptions();
     });
-    contentAreaContainer.load(cachedWikiePath || 'wikies/testpage.html', function () {
+    contentAreaContainer.load(cachedWikiePath || 'html/pages/home.html', function () {
         initializePage();
         updateContentStyles();
     });
@@ -645,10 +645,10 @@ $(document).ready(function () {
         });
     });
     $(document).on('click', '#homePage', function () {
-        if (lastLoadedWikiePath !== 'wikies/testpage.html') {
-            contentAreaContainer.load('wikies/testpage.html', function () {
+        if (lastLoadedWikiePath !== 'html/pages/home.html') {
+            contentAreaContainer.load('html/pages/home.html', function () {
                 initializePage();
-                lastLoadedWikiePath = 'wikies/testpage.html';
+                lastLoadedWikiePath = 'html/pages/home.html';
                 cachedWikiePath = lastLoadedWikiePath;
                 localStorage.setItem('lastLoadedWikiePath', lastLoadedWikiePath);
                 updateContentStyles();
