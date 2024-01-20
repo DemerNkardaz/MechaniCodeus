@@ -1,10 +1,31 @@
-[Открыть МеханиКодеус](https://demernkardaz.github.io/MechaniCodeus/index.html)
+[Open the MechaniCodeus](https://demernkardaz.github.io/MechaniCodeus/)
 
-Будущий список атрибутов Dawn of War — Soulstorm и их описаний.
+Created with AI.
 
-Создаётся с помощью ИИ, я не настоящий кодер.
+This is a future modding information resource for Dawn of War — Soulstorm and maybe for Dawn of War II — Retribution & Space Marine.
 
----
+This will be contain the main attributes references, default structure (ingame abilities, addons, entities, squads, weapons etc.) and guides.
+
+
+Разрабатываемый интерфейс для нужд моддинга Dawn of War — Soulstorm, и может быть в будущем и для Dawn of War II — Retribution вместе с Space Marine.
+
+Он будет содержать данные об основных атрибутах, стандартную структуру (существующие в игре способности, апгрейды, энтити, сквады, оружие и т.д.), а так же гайды различной направленности.
+
+
+## Topics for you
+
+* [Common ideas topic](https://github.com/DemerNkardaz/MechaniCodeus/discussions/1)
+* [Обсуждение идей](https://github.com/DemerNkardaz/MechaniCodeus/discussions/4)
+* [Request to add own materials](https://github.com/DemerNkardaz/MechaniCodeus/discussions/2)
+* [Реквесты для авторских материалов](https://github.com/DemerNkardaz/MechaniCodeus/discussions/3)
+* [Report the Issues here | Об ошибках пишите тут](https://github.com/DemerNkardaz/MechaniCodeus/issues)
+
+## Knowed Issues
+
+1. Too laggy & slow loading of left-panel lists if it has much count of elements.
+
+
+## Credits
 
 The ambient music used in MechaniCodeus are from Scott Buckley
 
