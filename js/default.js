@@ -171,7 +171,7 @@ $(document).ready(function () {
                         animationFrameId = requestAnimationFrame(generateAfterMouseout);
                     } else {
                         const selectedLanguage = localStorage.getItem('selectedLanguage') || 'ru';
-                        $.getJSON('ss/lang_' + selectedLanguage + '.json', function (data) {
+                        $.getJSON('json/lang_' + selectedLanguage + '.json', function (data) {
                             HeadText_Title.text(data.items[0][dataKey]);
                             HeadText_AfterTitle.text('');
 
@@ -320,7 +320,7 @@ $(document).ready(function () {
             LanguageMenu.html(getSelectedLanguageName(selectedLanguage));
             localStorage.setItem('selectedLanguage', selectedLanguage);
 
-            $.getJSON('ss/lang_' + selectedLanguage + '.json', function (data) {
+            $.getJSON('json/lang_' + selectedLanguage + '.json', function (data) {
                 $('[data-key]').each(function () {
                     var dataKey = $(this).data('key');
                     $(this).html(data.items[0][dataKey]);
@@ -441,7 +441,7 @@ $(document).ready(function () {
     function initializeRoot() {
         deployerList.find('li').each(function () {
             $(this).children('span').last().each(function () {
-                $(this).attr('data-wikie', $(this).data('wikie') || 'wikies/404.html');
+                $(this).attr('data-wikie', $(this).data('wikie') || 'html/pages/404.html');
             });
             $('span[data-wikie]').on('click', function () {
                 var wikiePath = $(this).data('wikie');
@@ -523,11 +523,11 @@ $(document).ready(function () {
     // Load the common list
     function setDefaultUrl() {
         $('.attributeLoader').each(function () {
-            $(this).attr('data-file-url', $(this).data('file-url') || 'lists/404atr.html');
-            $(this).attr('data-options-url', $(this).data('options-url') || 'lists/404opts.html');
+            $(this).attr('data-file-url', $(this).data('file-url') || 'html/pages/404atr.html');
+            $(this).attr('data-options-url', $(this).data('options-url') || 'html/pages/404opts.html');
         });
         $('.optionloader').each(function () {
-            $(this).attr('data-file-url', $(this).data('file-url') || 'lists/404atr.html');
+            $(this).attr('data-file-url', $(this).data('file-url') || 'html/pages/404atr.html');
         });
     }
     function identifyTheOptions() {
@@ -554,10 +554,10 @@ $(document).ready(function () {
         }
     }
 
-    deployerList.load(cachedHierarchyPath || 'lists/dowss_attrib.html', function () {
+    deployerList.load(cachedHierarchyPath || 'html/pages/dowss/dowss_attrib.html', function () {
         initializeRoot();
     });
-    deployerTypesList.load(cachedTypesPath || 'lists/dowss_opts.html', function () {
+    deployerTypesList.load(cachedTypesPath || 'html/pages/dowss/dowss_opts.html', function () {
         setDefaultUrl();
         identifyTheOptions();
     });
