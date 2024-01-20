@@ -7,9 +7,11 @@ This is a future modding information resource for Dawn of War — Soulstorm and 
 This will be contain the main attributes references, default structure (ingame abilities, addons, entities, squads, weapons etc.) and guides.
 
 
+
 Разрабатываемый интерфейс для нужд моддинга Dawn of War — Soulstorm, и может быть в будущем и для Dawn of War II — Retribution вместе с Space Marine.
 
 Он будет содержать данные об основных атрибутах, стандартную структуру (существующие в игре способности, апгрейды, энтити, сквады, оружие и т.д.), а так же гайды различной направленности.
+
 
 
 ## Topics for you
