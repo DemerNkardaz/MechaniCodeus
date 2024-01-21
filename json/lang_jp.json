@@ -5,6 +5,11 @@
             "homePageTitle": "機械科学の図書館",
             "File404": "ファイルは存在しません",
             "unRecognized": "認識されていません",
+            "Commits": "コミット",
+            "commitAuthor": "著者",
+            "commitMessage": "コミットメッセージ",
+            "commitFiles": "ファイル",
+            "commitTime": "日時",
             "noInformation": "データブロックの認識エラー：<br><br>情報が不足しています<br><br>機械工房の専門家からのサポートのために、最寄りのアドミニストラタムオフィスにお問い合わせください。",
             "erroremCogitatorum": "コジテーターシステムの過負荷！<br>超常データ流入中：",
             "System": "系統",
@@ -39,7 +44,7 @@
             "ebp_icon_name": "エンティティアイコンのパスは「フォルダ/アイコン名」の形式です（保存先は <span class='path_to_file'>data/art/ui/ingame/フォルダ/アイコン名.tga</span>）。"
         },
         {
-            "inputSearchTextPlaceholder": "属性で検索。。。"
+            "inputSearchTextPlaceholder": "属性一覧で検索。。。"
         },
         {
             "ThemesOption": "テーマインタフェース",

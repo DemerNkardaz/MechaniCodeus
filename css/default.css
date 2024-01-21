@@ -71,8 +71,8 @@ h6 .material-icons {
     justify-content: center;
     width: 32px;
     height: 32px;
-
     margin-right: 10px;
+    margin-bottom: 5px;
     font-size: 1em;
     line-height: 1;
     color: #00F999;
@@ -80,6 +80,29 @@ h6 .material-icons {
     padding: 1px;
     border-radius: 5px;
 
+}
+
+.pageTitleMain {
+    max-height: 51.5px;
+}
+
+.pageTitleMain>:first-child {
+    height: 51.5px;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+}
+
+
+.pageTitleMain .toolVer {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    font-size: 8pt;
+    user-select: none;
+    cursor: pointer;
 }
 
 .homeTitle {
@@ -555,6 +578,7 @@ a>.material-icons.external:hover {
     margin-left: 20px;
     position: relative;
 }
+
 
 #TutorialAuthor {
     position: sticky;
@@ -1441,4 +1465,97 @@ a>.material-icons.external:hover {
     --bs-tooltip-bg: #59260c;
     box-shadow: 0 0 2.25px #fdcf27;
     border-radius: 5px;
+}
+
+
+.tableContentParent {
+    overflow: auto;
+    max-height: 100%;
+}
+
+#dummyGitBlank {
+    position: absolute;
+    width: 95%;
+    height: 730px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 12px;
+    background-color: inherit;
+    border: 1px solid #543e0e;
+    overflow: auto;
+    z-index: 10;
+
+    display: none;
+}
+
+#dummyGitBlank>div {
+    border-radius: 12px;
+}
+
+#dummyGitBlank .nav-link {
+    border-radius: 12px 0 12px 0;
+    color: inherit;
+}
+
+#dummyGitBlank .nav-link.active {
+    border-radius: 12px 0 12px 0;
+    background-color: #00815e;
+}
+
+#dummyGitBlank .tab-pane {
+    border-left: 1px solid #543e0e;
+}
+
+.commitTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.commitTable th,
+.commitTable td {
+    border: 1px solid #543e0e;
+    border-top: 0px;
+    text-align: left;
+    padding: 8px;
+}
+
+.commitTable td:first-child,
+.commitTable th:first-child {
+    border-left: 0px;
+}
+
+.commitTable tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.commitTable td:nth-child(1),
+.commitTable th:nth-child(1) {
+    width: 10%;
+}
+
+.commitTable td:nth-child(2),
+.commitTable th:nth-child(2) {
+    width: 20%;
+}
+
+.commitTable td:nth-child(3),
+.commitTable th:nth-child(3) {
+    width: 45%;
+}
+
+.commitTable td:nth-child(4) {
+    font-size: 0.8em;
+}
+
+.commitTable td:nth-child(1),
+.commitTable th:nth-child(1),
+.commitTable td:nth-child(2),
+.commitTable th:nth-child(2) {
+    text-align: center;
+}
+
+.commitTable .files-row {
+    opacity: 0.5;
+    font-size: 0.6em;
+    line-height: 0px;
 }

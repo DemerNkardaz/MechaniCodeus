@@ -5,6 +5,11 @@
             "homePageTitle": "Librarium Scientiarum Mechanicum",
             "File404": "File is not exists",
             "unRecognized": "Unrecognized",
+            "Commits": "Commits",
+            "commitAuthor": "Author",
+            "commitMessage": "Commit message",
+            "commitFiles": "Files",
+            "commitTime": "Date",
             "noInformation": "Error recognizing data block:<br><br>Information is missing<br><br>Contact the nearest Administratum office for assistance from a Mechanicum specialist.",
             "erroremCogitatorum": "Cogitator System Overload!<br>Supernormal data influx on:",
             "System": "System",
@@ -39,7 +44,7 @@
             "ebp_icon_name": "the path to the entity icon is in the format 'folder\\icon_name' (stored at the path <span class='path_to_file'>data\\art\\ui\\ingame\\folder\\icon_name.tga</span>)."
         },
         {
-            "inputSearchTextPlaceholder": "Search in Attributes..."
+            "inputSearchTextPlaceholder": "Search in Attributes List..."
         },
         {
             "ThemesOption": "Interface Theme",

@@ -75,8 +75,10 @@ var generic_close = new Howl({
 });
 
 $(document).on('mouseover', '.sfx_common, .sfx_close', function () {
-    generic_hover.stop();
-    generic_hover.play();
+    if (!$(this).hasClass('sfx_no_hover')) {
+        generic_hover.stop();
+        generic_hover.play();
+    }
 });
 
 $(document).on('click', '.sfx_common', function () {

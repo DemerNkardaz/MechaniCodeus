@@ -598,15 +598,19 @@ $(document).ready(function () {
         var attributeLoaderSelector = '.attributeLoader[data-game="' + game + '"]';
         $(attributeLoaderSelector).data('file-url', fileUrl);
     });
+    if (lastLoadedGame) {
+        $('.attributeLoader[data-game="' + lastLoadedGame + '"] img').addClass('selected');
+    } else {
+        $('.attributeLoader[data-game="SS"] img').addClass('selected');
+    }
+    $('.attributeLoader').on('click', handleImageSelection);
+
     function handleImageSelection() {
         $('.attributeLoader').find('img').removeClass('selected');
         $(this).find('img').addClass('selected');
-        lastLoadedGame = $(this).find('img').attr('src');
+        lastLoadedGame = $(this).data('game');
         localStorage.setItem('cachedGame', lastLoadedGame);
     }
-    $('.attributeLoader').on('click', handleImageSelection);
-    $('.attributeLoader').find('img[src="' + (lastLoadedGame || $('.attributeLoader').find('img:first').attr('src')) + '"]').addClass('selected');
-
 
     $(document).on('mouseover', 'span[data-wikie]', function () {
         $(this).siblings('span.hierarchical_arrow').addClass('listElement_Arrow');
@@ -625,8 +629,20 @@ $(document).ready(function () {
     });
 
     $(document).on('click', '#randomPage', function () {
+        var pageUrls = [
+            'html/pages/dowss/attrib',
+            'html/pages/dowss/guides',
+            'html/pages/dowss/struc',
+            'html/pages/dow2r/attrib',
+            'html/pages/dow2r/guides',
+            'html/pages/dow2r/struc',
+            'html/pages/sm/attrib',
+            'html/pages/sm/guides',
+            'html/pages/sm/struc',
+            'html/pages/home.html'
+        ];
         $.ajax({
-            url: 'https://api.github.com/repos/demernkardaz/MechaniCodeus/contents/wikies',
+            url: pageUrls[Math.floor(Math.random() * pageUrls.length)],
             success: function (data) {
                 var files = data.map(function (file) {
                     return file.name;

@@ -1,4 +1,44 @@
-<div class="d-flex align-items-center">
-    <h1 class="me-2"><span class="material-icons titleIcon">home</span><span data-key="homePageTitle" class="homeTitle"></span></h1>
+<div class="d-flex align-items-center pageTitleMain">
+    <h1 class="me-2">
+        <span class="material-icons titleIcon">home</span><span data-key="homePageTitle" class="homeTitle"></span>
+        <span class="toolVer sfx_common" id="VersionsInfo">
+            ‹&emsp13;VER &#x300C;0–1&#x300D›<br>
+        </span>
+    </h1>
 </div>
 <hr>
+
+<div id="dummyGitBlank">
+    <div class="d-flex align-items-start w-100">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+            <button class="nav-link active sfx_common sfx_no_hover" id="v-pills-commits-tab" data-bs-toggle="pill" data-bs-target="#v-pills-commits" type="button" role="tab" aria-controls="v-pills-commits" aria-selected="true" data-key="Commits">Коммиты</button>
+
+            <button class="nav-link sfx_common sfx_no_hover" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">…</button>
+
+        </div>
+        <div class="tab-content w-100 h-100" id="v-pills-tabContent">
+            <div class="tab-pane fade show active w-100 h-100" id="v-pills-commits" role="tabpanel" aria-labelledby="v-pills-commits-tab">
+
+                <div class="tableContentParent">
+                    <table id="commits-table" class="commitTable">
+                        <thead>
+                            <tr>
+                                <th>№</th>
+                                <th data-key="commitAuthor">Автор</th>
+                                <th data-key="commitMessage">Сообщение</th>
+                                <th data-key="commitTime">Время</th>
+                            </tr>
+                        </thead>
+                        <tbody id="commits-container">
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="tab-pane fade w-100 h-100" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">…</div>
+        </div>
+    </div>
+
+</div>

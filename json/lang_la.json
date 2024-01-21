@@ -5,6 +5,11 @@
             "homePageTitle": "Librarium Scientiarum Mechanicum",
             "File404": "Limen non existit",
             "unRecognized": "Non Cognitum",
+            "Commits": "Committis",
+            "commitAuthor": "Autore",
+            "commitMessage": "Messagio",
+            "commitFiles": "Files",
+            "commitTime": "Data",
             "noInformation": "Errorem intellectus databloci:<br><br>Informatio deest<br><br>Contactus est in proximum Administratum officium ad auxilium ab perito petendum ex Mechanicum.",
             "erroremCogitatorum": "Saturatio systematis cogitatorum!<br>Supernormalis influxus datarum in:",
             "System": "Systema",
@@ -39,7 +44,7 @@
             "ebp_icon_name": "via ad entitatem iconem est secundum formam 'tabula\\nomen_signum_imagis' (reconditur in via <span class='path_to_file'>data\\art\\ui\\ingame\\tabula\\nomen_signum_imagis.tga</span>)."
         },
         {
-            "inputSearchTextPlaceholder": "Quaerere in Attributis..."
+            "inputSearchTextPlaceholder": "Quaerere in Foliis Attributis..."
         },
         {
             "ThemesOption": "Theme Interface",

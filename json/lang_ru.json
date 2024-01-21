@@ -5,6 +5,11 @@
             "homePageTitle": "Либрариум Сциентиарум Механикум",
             "File404": "Файл отсутствует",
             "unRecognized": "Не распознано",
+            "Commits": "Коммиты",
+            "commitAuthor": "Автор",
+            "commitMessage": "Сообщение",
+            "commitFiles": "Файлы",
+            "commitTime": "Время",
             "noInformation": "Ошибка распознания дата-блока:<br><br>Информация отсутствует<br><br>Обратитесь в ближайший отдел Администратума для получения помощи специалиста механикум.",
             "erroremCogitatorum": "Перегрузка систем когитатора!<br>Сверхнорма данных на:",
             "System": "Система",
@@ -39,7 +44,7 @@
             "ebp_icon_name": "путь до иконки энтити: формата «папка/имя_иконки» (хранятся по пути <span class='path_to_file'>data\\art\\ui\\ingame\\папка\\имя_иконки.tga</span>)."
         },
         {
-            "inputSearchTextPlaceholder": "Поиск по атрибутам..."
+            "inputSearchTextPlaceholder": "Поиск по листу атрибутов..."
         },
         {
             "ThemesOption": "Темы интерфейса",

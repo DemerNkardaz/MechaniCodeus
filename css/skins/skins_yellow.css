@@ -199,3 +199,22 @@ a>.material-icons.external:hover {
     --bs-tooltip-bg: #333;
     box-shadow: 0 0 2.25px #ffffff;
 }
+
+
+
+#dummyGitBlank {
+    border-color: #5b5b5b;
+}
+
+#dummyGitBlank .tab-pane {
+    border-color: #5b5b5b;
+}
+
+.commitTable th,
+.commitTable td {
+    border-color: #5b5b5b;
+}
+
+#dummyGitBlank .nav-link.active {
+    background-color: #d29b03;
+}
