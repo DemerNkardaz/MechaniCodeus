@@ -96,13 +96,17 @@ h6 .material-icons {
 }
 
 
-.pageTitleMain .toolVer {
+
+.toolVer {
     display: flex;
     justify-content: center;
     margin-left: auto;
+    margin-bottom: 8px;
+    margin-right: 8px;
     font-size: 8pt;
     user-select: none;
     cursor: pointer;
+    font-weight: 800;
 }
 
 .homeTitle {
@@ -554,13 +558,14 @@ a>.material-icons.external:hover {
     border-radius: 8px;
     height: 89vh;
     overflow-y: auto;
-    padding: 10px 15px 10px 15px;
+
 }
 
 .container.left {
     max-width: 400px;
     overflow: hidden;
     white-space: nowrap;
+    padding: 10px 15px 10px 15px;
 }
 
 .container.left>hr:nth-of-type(1) {
@@ -577,6 +582,18 @@ a>.material-icons.external:hover {
     max-width: 1000px;
     margin-left: 20px;
     position: relative;
+    overflow: hidden;
+    padding: 0;
+
+}
+
+.subcontainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding: 10px 15px 10px 15px;
+
 }
 
 
@@ -604,11 +621,11 @@ a>.material-icons.external:hover {
     border-color: #ffd228;
 }
 
-.container.right>:first-child {
+.container.right>.subcontainer>:first-child {
     margin-top: 10px;
 }
 
-.container.right>*>hr:nth-of-type(1) {
+.container.right>.subcontainer>*>hr:nth-of-type(1) {
     margin-top: 2px;
 }
 
