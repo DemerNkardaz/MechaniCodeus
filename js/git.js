@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var accessToken = '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';
+    var accessToken = '';
 
     function getGitHubCommits(page = 1) {
         var apiUrl = 'https://api.github.com/repos/DemerNkardaz/MechaniCodeus/commits';
