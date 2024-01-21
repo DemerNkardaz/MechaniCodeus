@@ -6,11 +6,14 @@ $(document).ready(function () {
 
         var commitsContainer = $('#commits-container');
         if (commitsContainer.find('tr').length === 0) {
+            var headers = {};
+            if (accessToken) {
+                headers['Authorization'] = 'Bearer ' + accessToken;
+            }
+
             $.ajax({
                 url: apiUrl + `?per_page=100&page=${page}`,
-                headers: {
-                    'Authorization': 'Bearer ' + accessToken
-                },
+                headers: headers,
                 success: function (data) {
                     var totalCommits = data.length;
 
@@ -23,9 +26,7 @@ $(document).ready(function () {
                         // Сделаем запрос для получения данных о файлах
                         $.ajax({
                             url: commitFilesUrl,
-                            headers: {
-                                'Authorization': 'Bearer ' + accessToken
-                            },
+                            headers: headers,
                             success: function (filesData) {
                                 // Получим имена файлов
                                 var fileNames = filesData.tree.map(function (file) {
@@ -52,6 +53,17 @@ $(document).ready(function () {
 
                     if (data.length === 100) {
                         getGitHubCommits(page + 1);
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    if (accessToken && xhr.status === 401) {
+                        // Unauthorized only if token was provided
+                        var errorParagraph = '<p data-key="APIUnauthorizedError">Unauthorized access. Please check your access token.</p>';
+                        commitsContainer.after(errorParagraph);
+                    } else if (xhr.status === 403 && xhr.responseJSON && xhr.responseJSON.message === "API rate limit exceeded for xxx.xxx.xxx.xxx.") {
+                        // API rate limit exceeded
+                        var errorParagraph = '<p data-key="APIRateLimitError">API rate limit exceeded. Please try again later.</p>';
+                        commitsContainer.after(errorParagraph);
                     }
                 }
             });
