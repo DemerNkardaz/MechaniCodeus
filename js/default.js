@@ -453,6 +453,11 @@ $(document).ready(function () {
                         updateContentStyles();
                     });
                 }
+                var $this = $(this);
+                $this.addClass('listHoverAnimation');
+                setTimeout(function () {
+                    $this.removeClass('listHoverAnimation');
+                }, 75);
             });
         });
 
@@ -538,9 +543,14 @@ $(document).ready(function () {
                 $(this).attr('id', selectedOptionID);
 
                 $(document).on('click', '#' + selectedOptionID, function () {
+                    var $this = $(this);
                     $('.optionloader').removeClass('selected');
-                    $(this).addClass('selected');
-                    localStorage.setItem('cachedOption', $(this).attr('id'));
+                    $this.addClass('selected');
+                    localStorage.setItem('cachedOption', $this.attr('id'));
+                    $this.addClass('listHoverAnimation');
+                    setTimeout(function () {
+                        $this.removeClass('listHoverAnimation');
+                    }, 75);
                 });
             }
         });
@@ -613,7 +623,13 @@ $(document).ready(function () {
     }
 
     $(document).on('mouseover', 'span[data-wikie]', function () {
-        $(this).siblings('span.hierarchical_arrow').addClass('listElement_Arrow');
+        var $this = $(this);
+        $this.siblings('span[data-wikie]').removeClass('hovered');
+        $this.siblings('span.hierarchical_arrow').addClass('listElement_Arrow');
+        $this.addClass('listHoverAnimation');
+        setTimeout(function () {
+            $this.removeClass('listHoverAnimation');
+        }, 150);
     });
     $(document).on('mouseout', 'span[data-wikie]', function () {
         $(this).siblings('span.hierarchical_arrow').removeClass('listElement_Arrow');

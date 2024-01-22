@@ -833,6 +833,28 @@ a>.material-icons.external:hover {
     color: #271405;
 }
 
+.listHoverAnimation {
+    animation: animationListHover 150ms linear infinite;
+    opacity: 1;
+}
+
+@keyframes animationListHover {
+
+    0%,
+    40%,
+    100% {
+        opacity: 1;
+    }
+
+    30%,
+    80% {
+        opacity: 0;
+    }
+
+}
+
+
+
 .hierarchical_arrow {
     position: relative;
     color: #fae3be;
