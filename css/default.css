@@ -627,6 +627,7 @@ a>.material-icons.external:hover {
     width: 100%;
     height: 100%;
     overflow: auto;
+    overflow-x: hidden;
     padding: 10px 15px 10px 15px;
 
 }
@@ -1643,6 +1644,18 @@ a>.material-icons.external:hover {
     z-index: 1;
     flex-direction: column;
     display: flex;
+    overflow: hidden;
+    width: 60px;
+    z-index: 0;
+}
+
+#homePageButtonRoll {
+    margin-left: -35px;
+    z-index: -1;
+}
+
+#showThePageCommands {
+    z-index: 1;
 }
 
 .controlIcons {
@@ -1661,6 +1674,7 @@ a>.material-icons.external:hover {
     border-radius: 5px;
     user-select: none;
     cursor: pointer;
+    z-index: -1;
 }
 
 .controlIcons:hover {
@@ -1670,6 +1684,20 @@ a>.material-icons.external:hover {
 .controlIcons:active {
     filter: hue-rotate(-100deg) brightness(200%);
     box-shadow: 0px 0px 5px #00815f73, 0px 0px 15px #00815e;
+}
+
+.controlIcons.more {
+    position: absolute;
+    width: 12px;
+    background: #262626ce;
+    backdrop-filter: blur(5px);
+
+}
+
+.controlIcons.more_active {
+    position: absolute;
+    width: 12px;
+    backdrop-filter: blur(5px);
 }
 
 #pageContent {
@@ -1684,4 +1712,32 @@ a>.material-icons.external:hover {
 
 .ui-autocomplete {
     z-index: 99999 !important;
+}
+
+
+
+#contentAreaContainer>code,
+#contentAreaContainer>pre {
+    position: absolute;
+    width: 1000px;
+    height: auto;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+
+}
+
+#contentAreaContainer>code {
+    padding: 10px 20px 10px 10px;
+}
+
+pre,
+code {
+    word-break: normal !important;
+    overflow-wrap: anywhere !important;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word !important;
 }

@@ -64,7 +64,13 @@
             "CreatePage": "ページを作成",
             "SavePage": "ページを保存",
             "ResetPage": "ページをリセット",
-            "DownloadPage": "ページをダウンロード"
+            "DownloadPage": "ページをダウンロード",
+            "encodeTags": "タグをエンコード",
+            "decodeTags": "タグをデコード",
+            "EditPage": "ページの編集を切り替え",
+            "EditPageOff": "ページの編集をオフ",
+            "EditPageOn": "ページの編集をオン",
+            "CodePage": "HTMLマークアップ"
         }
     ]
 }

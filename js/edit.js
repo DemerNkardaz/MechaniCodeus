@@ -1,4 +1,22 @@
+import { tagReplacements, decodeTagsReplaces, refreshCodeHighlight, disableCodeHighlight } from './page.js';
+import * as $item from './_variables.js';
 $(document).ready(function () {
+    $("#showThePageCommands").click(function () {
+        var buttonRoll = $("#homePageButtonRoll");
+        var currentMargin = parseInt(buttonRoll.css("margin-left"));
+        if (currentMargin === -35) {
+            buttonRoll.animate({ marginLeft: 15 }, { duration: 400, easing: 'easeOutQuad' });
+            $("#showThePageCommands").removeClass('more');
+            $("#showThePageCommands").addClass('more_active');
+
+        } else {
+            buttonRoll.animate({ marginLeft: -35 }, { duration: 250, easing: 'easeInQuad' });
+            $("#showThePageCommands").removeClass('more_active');
+            $("#showThePageCommands").addClass('more');
+        }
+    });
+
+
     $("#downloadCurrentPage").on("click", function () {
         var contentHtml = $("#contentAreaContainer").html();
         var blob = new Blob([contentHtml], { type: "text/html" });
@@ -12,6 +30,62 @@ $(document).ready(function () {
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
     });
+    $('#editCurrentPage').attr('data-state', 'off').text('edit');
+    $('#codeCurrentPage').attr('data-state', 'off').text('code');
+
+    $('#editCurrentPage').on('click', function () {
+        var currentState = $(this).attr('data-state') || 'off';
+        if (currentState === 'off') {
+            $(this).attr('data-state', 'on');
+            $(this).text('edit_off');
+
+            $item.rightContainer.attr('contentEditable', 'true');
+        } else {
+            $(this).attr('data-state', 'off');
+            $(this).text('edit');
+
+            $item.rightContainer.attr('contentEditable', 'false');
+        }
+    });
+
+
+    $('#codeCurrentPage').on('click', function () {
+        var currentState = $(this).attr('data-state') || 'off';
+        var $contentAreaContainer = $item.rightContainer.find('#contentAreaContainer');
+
+        if (currentState === 'off') {
+            $(this).attr('data-state', 'on');
+            $(this).text('code_off');
+
+            $contentAreaContainer.wrapInner('<pre><code class="theme-base16-gigavolt language-html"></code></pre>');
+            var $codeElement = $contentAreaContainer.find('pre code');
+
+            $codeElement.html(function (_, oldHtml) {
+                return oldHtml.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            });
+            hljs.initHighlightingOnLoad();
+
+        } else {
+            disableCodeHighlight();
+            $(this).attr('data-state', 'off');
+            $(this).text('code');
+
+            $contentAreaContainer.find('pre code').html(function (_, oldHtml) {
+                return oldHtml.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+            });
+
+            $contentAreaContainer.find('pre code').contents().unwrap().unwrap();
+        }
+    });
+
+
+
+    $('#homePageControls *').on("click", function () {
+        $(this).tooltip('dispose');
+        $(this).tooltip('show');
+    });
+
+
     var editor = ContentTools.EditorApp.get();
 
     $("#makeNewPage").on("click", function () {
@@ -24,8 +98,11 @@ $(document).ready(function () {
         var secondTags = $("#pageSecondTagsInput").val();
 
         $("#contentAreaContainer").load("html/pages/create_page.html", function () {
-            $('*[data-editable]').find('*').attr('contenteditable', 'true');
-            editor.init('*[data-editable]', 'data-name');
+            var $editableElement = $item.rightContainer.find('element-trigger[data-editable="true"]');
+            if ($editableElement.length > 0) {
+                editor.init($item.rightContainer.children(), 'data-name');
+            }
+
 
             $("#contentAreaContainer").html(function (i, html) {
                 return html.replace('{NewPage}', pageName)
@@ -34,6 +111,7 @@ $(document).ready(function () {
             });
 
             $("#pageNameModal").modal('hide');
+            tagReplacements();
         });
     });
     function split(val) {
@@ -114,7 +192,5 @@ $(document).ready(function () {
             $(this).autocomplete("widget").css("display", "block");
         }
     });
-
-
 
 });

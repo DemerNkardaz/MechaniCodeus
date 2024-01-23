@@ -1,11 +1,10 @@
+import * as $item from './_variables.js';
 let updateLanguage;
 let selectedLanguage;
 let langSelectOption;
 let updatePlaceholderText;
 let updateTooltips;
 $(document).ready(function () {
-    const searchPanel = $('#searchAttrib');
-    const LanguageSelector = $('#languageSelectorContainer');
     var languages = [
         { code: 'la', short: 'AG', name: 'Altum Gothicum', flag: '🏛️' },
         { code: 'en', short: 'EN', name: 'English', flag: '🇺🇸' },
@@ -27,7 +26,7 @@ $(document).ready(function () {
         langSelectOption +
         '</ul></div>'
     );
-    LanguageSelector.html(selectLangDrop);
+    $item.LanguageSelector.html(selectLangDrop);
     const LanguageSelectWrapper = $('#languageSelectWrapper');
     const LanguageMenu = $('#languageSelect');
     const LanguageOption = $('.select-options');
@@ -78,10 +77,10 @@ $(document).ready(function () {
     updatePlaceholderText = function (data) {
         if (data.items && data.items[1]) {
             var inputSearchTextPlaceholder = data.items[1].inputSearchTextPlaceholder;
-            searchPanel.attr('placeholder', inputSearchTextPlaceholder);
+            $item.searchPanel.attr('placeholder', inputSearchTextPlaceholder);
         }
     }
-    LanguageSelector.on('change', LanguageMenu, function () {
+    $item.LanguageSelector.on('change', LanguageMenu, function () {
         var selectedLanguage = $(this).val();
         localStorage.setItem('selectedLanguage', selectedLanguage);
         updateLanguage(selectedLanguage);

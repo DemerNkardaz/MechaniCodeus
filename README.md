@@ -24,6 +24,12 @@ This will be contain the main attributes references, default structure (ingame a
 
 ­
 
+## Libraries
+
+| [Bootstrap 5.3.2](https://github.com/twbs/bootstrap) | [JQuery 3.7.1](https://github.com/jquery/jquery) | [JQuery UI 1.13.2](https://github.com/jquery/jquery-ui) | [ContentTools](https://github.com/GetmeUK/ContentTools)? (may be replaced) | [Howler.JS 2.2.4](https://github.com/goldfire/howler.js) | [Highlight.js 11.9.0](https://github.com/highlightjs/highlight.js) |
+
+­
+
 ## Topics for you | Топики для вас
 
 * [Common ideas topic](https://github.com/DemerNkardaz/MechaniCodeus/discussions/1)
@@ -74,6 +80,7 @@ You can to search some stuff in Attribute List. Latest search saved to cache and
 
 1. Too laggy & slow loading of left-panel lists if it has much count of elements.
 2. Bugging expand/collapse list.
+3. No exit from page code view/edit.
 
 ­
 
@@ -106,7 +113,6 @@ Just cleans all cached interactions: latest opened page, latest opened game, lat
 ![1705743526003](image/README/1705743526003.png)
 
 ![1705743625862](image/README/1705743625862.png)
-
 
 ­
 

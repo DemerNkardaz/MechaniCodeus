@@ -64,7 +64,13 @@
             "CreatePage": "Create Page",
             "SavePage": "Save Page",
             "ResetPage": "Reset Page",
-            "DownloadPage": "Download Page"
+            "DownloadPage": "Download Page",
+            "encodeTags": "Encode Tags",
+            "decodeTags": "Decode Tags",
+            "EditPage": "Toggle Edit Page",
+            "EditPageOff": "Edit Page Off",
+            "EditPageOn": "Edit Page On",
+            "CodePage": "HTML-Markup"
         }
     ]
 }

@@ -64,7 +64,13 @@
             "CreatePage": "Creare Paginam",
             "SavePage": "Salvare Paginam",
             "ResetPage": "Reset Paginam",
-            "DownloadPage": "Scaricare Paginam"
+            "DownloadPage": "Scaricare Paginam",
+            "encodeTags": "Codificare Tagum",
+            "decodeTags": "Decodificare Tagum",
+            "EditPage": "Modificare Paginam",
+            "EditPageOff": "Modificare Paginam Extinguere",
+            "EditPageOn": "Modificare Paginam Activare",
+            "CodePage": "HTML-Markup"
         }
     ]
 }

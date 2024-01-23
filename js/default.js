@@ -1,25 +1,9 @@
 import { updateLanguage, selectedLanguage, langSelectOption } from './lang.js';
+import { tagReplacements } from './page.js';
+import * as $item from './_variables.js';
+
 $(document).ready(function () {
-    const HeadText = $('#LexMechanicus');
-    const HeadText_Title = HeadText.find('span:first');
-    const HeadText_AfterTitle = HeadText.find('span').eq(1);
-    const HeadLogo = $('#LexGearus');
-    const dataErrorum = $('#erroremCogitatorum');
-    const dataErrorum_overflow = $('#currentGearDegree');
-    const dataErrorum_anim = ['alertingMig_00', 'alertingMig_01', 'alertingMig_02', 'alertingMig_03'];
-    const searchPanel = $('#searchAttrib');
-    const contentAreaContainer = $('#contentAreaContainer');
-    const leftContainer = $('#leftContainer');
-    const rightContainer = $('#rightContainer');
-    const classesTypeSelector = $('#ClassesTypeSelector');
-    const deployerList = $('#hierarchyDeployer');
-    const deployerTypesList = $('#attributeTypesDeploy')
-    const externalLinkElement = (
-        '<span class="material-icons external">launch</span>'
-    );
-    const listArrowMarker = (
-        '<span class="material-icons hierarchical_arrow">chevron_right</span>'
-    );
+
 
     function headerInit() {
         $(':header').each(function () {
@@ -47,13 +31,13 @@ $(document).ready(function () {
 
 
     function updateContentStyles() {
-        rightContainer.find('.child_attributes_list li').each(function () {
+        $item.rightContainer.find('.child_attributes_list li').each(function () {
             var currentText = $(this).text();
             if (currentText && !currentText.replace(/.* — /, '').trim()) {
                 $(this).append(" N/A");
             }
         });
-        rightContainer.find('.coloredType li').each(function () {
+        $item.rightContainer.find('.coloredType li').each(function () {
             var text = $(this).html().trim();
             var parts = text.split(' — ');
 
@@ -61,48 +45,6 @@ $(document).ready(function () {
                 var span = $('<span>').addClass('child_list_highlight').html(parts[0]);
                 $(this).html('').append(span).append(' — ' + parts[1]);
             }
-        });
-        contentAreaContainer.html(function (index, oldHtml) {
-            var replacements = {
-                'tag_ability': '<span class="badge bg-primary align-self-start pink">Ability</span>',
-                'tag_addons': '<span class="badge bg-primary align-self-start red">Addons</span>',
-                'tag_entity': '<span class="badge bg-primary align-self-start blue">Entity</span>',
-                'tag_formations': '<span class="badge bg-primary align-self-start yellow">Formations</span>',
-                'tag_modifiers': '<span class="badge bg-primary align-self-start turquoise">Modifiers</span>',
-                'tag_race': '<span class="badge bg-primary align-self-start darkred">Race</span>',
-                'tag_requirements': '<span class="badge bg-primary align-self-start lightindigo">Requirements</span>',
-                'tag_research': '<span class="badge bg-primary align-self-start grey">Research</span>',
-                'tag_squad': '<span class="badge bg-primary align-self-start purple">Squad</span>',
-                'tag_tables': '<span class="badge bg-primary align-self-start lightbrown">Tables</span>',
-                'tag_tuning': '<span class="badge bg-primary align-self-start cyan1">Tuning</span>',
-                'tag_types': '<span class="badge bg-primary align-self-start lavanda">Types</span>',
-                'tag_weapon': '<span class="badge bg-primary align-self-start green">Weapon</span>',
-                'tag_lua': '<span class="badge bg-primary align-self-start lua">Lua</span>',
-                'tag_scar': '<span class="badge bg-primary align-self-start relic">Scar</span>',
-                'tag_map': '<span class="badge bg-primary align-self-start lime">Map</span>',
-                'tag_guide': '<span class="badge bg-primary align-self-start guide">Guide</span>',
-                'tag_ui': '<span class="badge bg-primary align-self-start skyblue">UI</span>',
-                'tag_3d': '<span class="badge bg-primary align-self-start orange">3D</span>',
-                'tag_textures': '<span class="badge bg-primary align-self-start lavandadark">Textures</span>',
-                'tag_fx': '<span class="badge bg-primary align-self-start lightpink">FX</span>',
-                'tag_sfx': '<span class="badge bg-primary align-self-start sfx">SFX</span>',
-                'tag_error': '<span class="badge bg-primary align-self-start red">ERROR</span>',
-
-                'tag_abilityext': '<p data-key="abilextension"><i>Расширение Блюпринта Способности</i></p>',
-                'tag_addonext': '<p data-key="addonextension"><i>Расширение Блюпринта Улучшения</i></p>',
-                'tag_ebpextension': '<p data-key="ebpextension"><i>Расширение Блюпринта Энтити</i></p>',
-                'tag_raceextension': '<p data-key="raceextension"><i>Расширение Блюпринта Расы</i></p>',
-                'tag_requiredextension': '<p data-key="requiredextension"><i>Расширение Блюпринта Требований</i></p>',
-                'tag_researchextension': '<p data-key="researchextension"><i>Расширение Блюпринта Исследований</i></p>',
-                'tag_sbpextension': '<p data-key="sbpextension"><i>Расширение Блюпринта Отряда</i></p>',
-                'tag_weapextension': '<p data-key="weapextension"><i>Расширение Блюпринта Оружия</i></p>',
-            };
-
-            for (var tag in replacements) {
-                oldHtml = oldHtml.replace(new RegExp('\\b' + tag + '\\b', 'g'), replacements[tag]);
-            }
-
-            return oldHtml;
         });
     }
 
@@ -121,29 +63,29 @@ $(document).ready(function () {
 
         function updateBinaryCode() {
             const meaningfulBinaryCode = generateMeaningfulBinaryCode(25);
-            HeadText_Title.text(meaningfulBinaryCode);
+            $item.HeadText_Title.text(meaningfulBinaryCode);
         }
 
         function updateDots() {
-            HeadText_AfterTitle.text('.'.repeat(numDots));
+            $item.HeadText_AfterTitle.text('.'.repeat(numDots));
             numDots++;
             if (numDots > 5) {
                 numDots = 1;
             }
         }
 
-        HeadLogo.on({
+        $item.HeadLogo.on({
             mouseover: function () {
                 cancelAnimationFrame(animationFrameId);
 
-                HeadText_Title.addClass('animated');
-                HeadText_AfterTitle.addClass('animated');
+                $item.HeadText_Title.addClass('animated');
+                $item.HeadText_AfterTitle.addClass('animated');
 
-                HeadText_Title.css({
+                $item.HeadText_Title.css({
                     'font-family': 'Tektur',
                     'font-size': '0.6em'
                 });
-                HeadText_AfterTitle.css({
+                $item.HeadText_AfterTitle.css({
                     'font-family': 'Tektur',
                     'font-size': '0.6em'
                 });
@@ -155,15 +97,15 @@ $(document).ready(function () {
                 dotsIntervalId = setInterval(updateDots, 500);
             },
             mouseout: function () {
-                HeadText_Title.removeClass('animated');
-                HeadText_AfterTitle.removeClass('animated');
+                $item.HeadText_Title.removeClass('animated');
+                $item.HeadText_AfterTitle.removeClass('animated');
 
                 clearInterval(binaryCodeIntervalId);
                 clearInterval(dotsIntervalId);
 
                 let remainingTime = 3100;
 
-                const dataKey = HeadText_Title.data('key');
+                const dataKey = $item.HeadText_Title.data('key');
                 const generateAfterMouseout = function () {
                     if (remainingTime > 0) {
                         updateBinaryCode();
@@ -173,14 +115,14 @@ $(document).ready(function () {
                     } else {
                         const selectedLanguage = localStorage.getItem('selectedLanguage') || 'ru';
                         $.getJSON('json/lang_' + selectedLanguage + '.json', function (data) {
-                            HeadText_Title.text(data.items[0][dataKey]);
-                            HeadText_AfterTitle.text('');
+                            $item.HeadText_Title.text(data.items[0][dataKey]);
+                            $item.HeadText_AfterTitle.text('');
 
-                            HeadText_Title.css({
+                            $item.HeadText_Title.css({
                                 'font-family': '',
                                 'font-size': ''
                             });
-                            HeadText_AfterTitle.css({
+                            $item.HeadText_AfterTitle.css({
                                 'font-family': '',
                                 'font-size': ''
                             });
@@ -218,10 +160,10 @@ $(document).ready(function () {
                     dataErrorum_RandomAnim();
                 }
                 if (rotationDegrees > 1000000) {
-                    dataErrorum.css('display', 'block');
+                    $item.dataErrorum.css('display', 'block');
                 }
 
-                dataErrorum_overflow.text(rotationDegrees);
+                $item.dataErrorum_overflow.text(rotationDegrees);
 
                 rotateTimeout = setTimeout(function () {
                     let currentDegreeValue = rotationDegrees;
@@ -231,13 +173,13 @@ $(document).ready(function () {
                         if (currentDegreeValue < 0) {
                             currentDegreeValue = 0;
                         }
-                        dataErrorum_overflow.text(currentDegreeValue);
-                        HeadLogo.css('transform', 'rotate(' + currentDegreeValue + 'deg)');
+                        $item.dataErrorum_overflow.text(currentDegreeValue);
+                        $item.HeadLogo.css('transform', 'rotate(' + currentDegreeValue + 'deg)');
 
                         if (currentDegreeValue <= 0) {
                             clearInterval(decreaseInterval);
-                            HeadLogo.css('transform', 'rotate(0deg)');
-                            HeadLogo.removeAttr('style');
+                            $item.HeadLogo.css('transform', 'rotate(0deg)');
+                            $item.HeadLogo.removeAttr('style');
                         }
                     }, 20);
 
@@ -245,14 +187,14 @@ $(document).ready(function () {
                 erroremCogitatorumTimer = setTimeout(function () {
                     dataErrorum_RandomAnim();
                     setTimeout(() => {
-                        dataErrorum.removeAttr('style');
+                        $item.dataErrorum.removeAttr('style');
                     }, 2000);
                 }, 5000);
             }
         });
         function dataErrorum_RandomAnim() {
-            var randomAnimation = dataErrorum_anim[Math.floor(Math.random() * dataErrorum_anim.length)];
-            dataErrorum.css('animation', randomAnimation + ' 3s infinite');
+            var randomAnimation = dataErrorum_anim[Math.floor(Math.random() * $item.dataErrorum_anim.length)];
+            $item.dataErrorum.css('animation', randomAnimation + ' 3s infinite');
         }
 
         // Add icon after external links
@@ -263,7 +205,7 @@ $(document).ready(function () {
                 var existingSpans = $(this).find('.material-icons.external');
 
                 if (existingSpans.length === 0 && !$(this).children('img').length) {
-                    $(this).append(externalLinkElement);
+                    $(this).append($item.externalLinkElement);
                 }
             }
         });
@@ -272,8 +214,8 @@ $(document).ready(function () {
 
         updateLanguage(selectedLanguage);
 
-        var $firstSpan = deployerList.find('li').children('span').first();
-        var $lastSpan = deployerList.find('li').children('span').last();
+        var $firstSpan = $item.deployerList.find('li').children('span').first();
+        var $lastSpan = $item.deployerList.find('li').children('span').last();
 
         $firstSpan.mouseover(function () {
             if ($(this).hasClass('hierarchical_arrow')) {
@@ -300,6 +242,7 @@ $(document).ready(function () {
         function addZero(number) {
             return number < 10 ? '0' + number : number;
         }
+        tagReplacements();
     }
 
     initializePage();
@@ -327,10 +270,10 @@ $(document).ready(function () {
         var observer = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
                 if (mutation.target.id === 'hierarchyDeployer') {
-                    searchPanel.on('input', function () {
+                    $item.searchPanel.on('input', function () {
                         var searchText = $(this).val().toLowerCase();
-                        deployerList.find('li').hide();
-                        deployerList.find('li:containsOrInChildren("' + searchText + '")').show();
+                        $item.deployerList.find('li').hide();
+                        $item.deployerList.find('li:containsOrInChildren("' + searchText + '")').show();
                         localStorage.setItem('lastSearch', searchText);
                     });
                     var lastSearch = localStorage.getItem('lastSearch');
@@ -345,14 +288,14 @@ $(document).ready(function () {
     deployerListInit();
 
     function initializeRoot() {
-        deployerList.find('li').each(function () {
+        $item.deployerList.find('li').each(function () {
             $(this).children('span').last().each(function () {
                 $(this).attr('data-wikie', $(this).data('wikie') || 'html/pages/404.html');
             });
             $('span[data-wikie]').on('click', function () {
                 var wikiePath = $(this).data('wikie');
                 if (wikiePath !== lastLoadedWikiePath) {
-                    contentAreaContainer.load(wikiePath, function () {
+                    $item.contentAreaContainer.load(wikiePath, function () {
                         initializePage();
                         lastLoadedWikiePath = wikiePath;
                         localStorage.setItem('lastLoadedWikiePath', lastLoadedWikiePath);
@@ -367,14 +310,14 @@ $(document).ready(function () {
             });
         });
 
-        deployerList.find('li').each(function () {
+        $item.deployerList.find('li').each(function () {
             if ($(this).find('ul').length > 0) {
-                $(this).prepend(listArrowMarker);
+                $(this).prepend($item.listArrowMarker);
                 $(this).addClass('has-child');
             }
         });
 
-        deployerList.find('li.has-child').each(function () {
+        $item.deployerList.find('li.has-child').each(function () {
             var $ul = $(this).children('ul');
             $ul.hide();
             var $arrow = $(this).children('.hierarchical_arrow');
@@ -399,7 +342,7 @@ $(document).ready(function () {
             var collapsedAttrList = false;
 
             $(document).on('click', '#collapseShowAllLists', function (e) {
-                var $elements = deployerList.find('li.has-child ul');
+                var $elements = $item.deployerList.find('li.has-child ul');
                 var $button = $(this);
 
                 if (collapsedAttrList) {
@@ -470,14 +413,14 @@ $(document).ready(function () {
         }
     }
 
-    deployerList.load(cachedHierarchyPath || 'html/pages/dowss/dowss_attrib.html', function () {
+    $item.deployerList.load(cachedHierarchyPath || 'html/pages/dowss/dowss_attrib.html', function () {
         initializeRoot();
     });
-    deployerTypesList.load(cachedTypesPath || 'html/pages/dowss/dowss_opts.html', function () {
+    $item.deployerTypesList.load(cachedTypesPath || 'html/pages/dowss/dowss_opts.html', function () {
         setDefaultUrl();
         identifyTheOptions();
     });
-    contentAreaContainer.load(cachedWikiePath || 'html/pages/home.html', function () {
+    $item.contentAreaContainer.load(cachedWikiePath || 'html/pages/home.html', function () {
         initializePage();
         updateContentStyles();
     });
@@ -573,7 +516,7 @@ $(document).ready(function () {
                 var wikiePath = 'wikies/' + randomFile;
 
                 lastLoadedWikiePath = wikiePath;
-                contentAreaContainer.load(wikiePath, function () {
+                $item.contentAreaContainer.load(wikiePath, function () {
                     initializePage();
                     localStorage.setItem('lastLoadedWikiePath', lastLoadedWikiePath);
                     updateContentStyles();
@@ -584,7 +527,7 @@ $(document).ready(function () {
     });
     $(document).on('click', '#homePage', function () {
         if (lastLoadedWikiePath !== 'html/pages/home.html') {
-            contentAreaContainer.load('html/pages/home.html', function () {
+            $item.contentAreaContainer.load('html/pages/home.html', function () {
                 initializePage();
                 lastLoadedWikiePath = 'html/pages/home.html';
                 cachedWikiePath = lastLoadedWikiePath;
@@ -597,8 +540,8 @@ $(document).ready(function () {
     function homePageControlsPosition() {
         var homePageControls = $("#homePageControls");
 
-        var rightContainerRect = rightContainer.offset();
-        var leftPosition = rightContainerRect.left + rightContainer.width() + 10;
+        var rightContainerRect = $item.rightContainer.offset();
+        var leftPosition = rightContainerRect.left + $item.rightContainer.width() + 10;
 
         homePageControls.css({
             "left": leftPosition + "px",
