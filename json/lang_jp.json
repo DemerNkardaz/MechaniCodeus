@@ -10,6 +10,12 @@
             "commitMessage": "コミットメッセージ",
             "commitFiles": "ファイル",
             "commitTime": "日時",
+            "commitNkardaz": "NkardazのDemer",
+            "EnterPageNameForm": "ページ名",
+            "CancelPageForm": "キャンセル",
+            "CreatePageForm": "作成",
+            "pageMainTags": "メインタグ",
+            "pageSecondTags": "セカンドタグ",
             "noInformation": "データブロックの認識エラー：<br><br>情報が不足しています<br><br>機械工房の専門家からのサポートのために、最寄りのアドミニストラタムオフィスにお問い合わせください。",
             "erroremCogitatorum": "コジテーターシステムの過負荷！<br>超常データ流入中：",
             "System": "系統",
@@ -54,7 +60,11 @@
             "SkinDefault": "モニトルム・メカニクム",
             "SkinYellow": "クラシック",
             "SkinRed": "血の協定",
-            "SkinBlue": "タウ・エンパイアの影"
+            "SkinBlue": "タウ・エンパイアの影",
+            "CreatePage": "ページを作成",
+            "SavePage": "ページを保存",
+            "ResetPage": "ページをリセット",
+            "DownloadPage": "ページをダウンロード"
         }
     ]
 }

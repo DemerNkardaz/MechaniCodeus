@@ -10,6 +10,12 @@
             "commitMessage": "Messagio",
             "commitFiles": "Files",
             "commitTime": "Data",
+            "commitNkardaz": "Demer Nkardaz",
+            "EnterPageNameForm": "Nomen",
+            "CancelPageForm": "Cancella",
+            "CreatePageForm": "Crea",
+            "pageMainTags": "Tags Principali",
+            "pageSecondTags": "Tags Secondari",
             "noInformation": "Errorem intellectus databloci:<br><br>Informatio deest<br><br>Contactus est in proximum Administratum officium ad auxilium ab perito petendum ex Mechanicum.",
             "erroremCogitatorum": "Saturatio systematis cogitatorum!<br>Supernormalis influxus datarum in:",
             "System": "Systema",
@@ -54,7 +60,11 @@
             "SkinDefault": "Monitorum Mechanicum",
             "SkinYellow": "Classica",
             "SkinRed": "Foedus Cruentus",
-            "SkinBlue": "Umbra Bork'an"
+            "SkinBlue": "Umbra Bork'an",
+            "CreatePage": "Creare Paginam",
+            "SavePage": "Salvare Paginam",
+            "ResetPage": "Reset Paginam",
+            "DownloadPage": "Scaricare Paginam"
         }
     ]
 }

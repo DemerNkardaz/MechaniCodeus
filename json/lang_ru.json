@@ -10,6 +10,12 @@
             "commitMessage": "Сообщение",
             "commitFiles": "Файлы",
             "commitTime": "Время",
+            "commitNkardaz": "Демер Нкардаз",
+            "EnterPageNameForm": "Имя страницы",
+            "CancelPageForm": "Отмена",
+            "CreatePageForm": "Создать",
+            "pageMainTags": "Основные теги",
+            "pageSecondTags": "Вторичные теги",
             "noInformation": "Ошибка распознания дата-блока:<br><br>Информация отсутствует<br><br>Обратитесь в ближайший отдел Администратума для получения помощи специалиста механикум.",
             "erroremCogitatorum": "Перегрузка систем когитатора!<br>Сверхнорма данных на:",
             "System": "Система",
@@ -54,7 +60,11 @@
             "SkinDefault": "Мониторум Механикум",
             "SkinYellow": "Классическая",
             "SkinRed": "Кровавый Договор",
-            "SkinBlue": "Тень Борк'ан"
+            "SkinBlue": "Тень Борк'ан",
+            "CreatePage": "Создать страницу",
+            "SavePage": "Сохранить страницу",
+            "ResetPage": "Сбросить страницу",
+            "DownloadPage": "Скачать страницу"
         }
     ]
 }

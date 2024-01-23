@@ -8,13 +8,21 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ContentTools@1.6.1/build/content-tools.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/ContentTools@1.6.1/build/content-tools.min.js"></script>
+
         <link rel="stylesheet" href="css/default.css">
-        <script src="js/default.js"></script>
+        <script type="module" src="js/lang.js"></script>
+        <script type="module" src="js/default.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
         <script src="js/sfx.js"></script>
-        <script src="js/skins.js"></script>
-        <script src="js/git.js"></script>
+        <script type="module" src="js/skins.js"></script>
+        <script type="module" src="js/git.js"></script>
+        <script type="module" src="js/edit.js"></script>
     </head>
     <body>
         <div id="backgroundVideo">
@@ -209,6 +217,34 @@
                                 </span>
                             </span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="homePageControls">
+            <span class="material-icons controlIcons sfx_common" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="generic_tooltip" data-bs-title="Create Page" data-key="CreatePage" id="makeNewPage">post_add</span>
+            <span class="material-icons controlIcons sfx_common" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="generic_tooltip" data-bs-title="Save Page" data-key="SavePage" id="saveCurrentPage">save</span>
+            <span class="material-icons controlIcons sfx_common" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="generic_tooltip" data-bs-title="Reset Page" data-key="ResetPage" id="resertCurrentPage">restart_alt</span>
+            <span class="material-icons controlIcons sfx_common" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="generic_tooltip" data-bs-title="Download Page" data-key="DownloadPage" id="downloadCurrentPage">file_download</span>
+        </div>
+
+        <div class="modal fade" id="pageNameModal" tabindex="-1" aria-labelledby="pageNameModalLabel" aria-hidden="true">
+            <div class="modal-dialog HelpPopup iron_border">
+                <div class="modal-content HelpPopup Greyish secondaryScreen">
+                    <div class="modal-header HelpPopup">
+                        <h5 class="modal-title" id="pageNameModalLabel" data-key="EnterPageNameForm">Имя страницы</h5>
+                        <button type="button" class="btn-close sfx_close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body pageCreationInput">
+                        <input type="text" id="pageNameInput" class="form-control" placeholder>
+                        <br><span data-key="pageMainTags">Основные теги</span>
+                        <input type="text" id="pageMainTagsInput" class="form-control" placeholder>
+                        <br><span data-key="pageSecondTags">Вторичные теги</span>
+                        <input type="text" id="pageSecondTagsInput" class="form-control" placeholder>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary sfx_close" data-bs-dismiss="modal" data-key="CancelPageForm">Отмена</button>
+                        <button type="button" class="btn btn-primary sfx_common" id="savePageNameBtn" data-key="CreatePageForm">Создать</button>
                     </div>
                 </div>
             </div>

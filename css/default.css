@@ -386,6 +386,41 @@ a>.material-icons.external:hover {
     font-size: 0.8em;
 }
 
+#pageNameModal .modal-dialog.HelpPopup {
+    max-width: 556px;
+    height: 400px;
+    hyphens: none;
+}
+
+#pageNameModal .modal-body {
+    width: 100%;
+    flex: 0;
+}
+
+#pageNameModal .modal-footer {
+    border: none;
+}
+
+#pageNameModal .btn {
+    height: 32px;
+}
+
+#pageNameModal .pageCreationInput input {
+    color: #fff;
+    color: #00F999;
+    background-color: #00815f73;
+    border: 1px solid #00815e;
+}
+
+#pageNameModal .pageCreationInput input:hover {
+    filter: brightness(150%);
+}
+
+#pageNameModal .pageCreationInput input:focus {
+    filter: hue-rotate(-100deg) brightness(200%);
+    box-shadow: 0px 0px 5px #00815f73, 0px 0px 15px #00815e;
+}
+
 .container.additional {
     max-height: 470px;
     overflow: auto;
@@ -1597,4 +1632,56 @@ a>.material-icons.external:hover {
     opacity: 0.5;
     font-size: 0.6em;
     line-height: 0px;
+}
+
+.commitTable a {
+    text-decoration: none;
+}
+
+#homePageControls {
+    position: fixed;
+    z-index: 1;
+    flex-direction: column;
+    display: flex;
+}
+
+.controlIcons {
+    display: flex;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    font-size: 1.7em;
+    line-height: 1;
+    color: #00F999;
+    background-color: #00815f73;
+    border: 1px solid #00815e;
+    padding: 1px;
+    border-radius: 5px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.controlIcons:hover {
+    filter: brightness(150%);
+}
+
+.controlIcons:active {
+    filter: hue-rotate(-100deg) brightness(200%);
+    box-shadow: 0px 0px 5px #00815f73, 0px 0px 15px #00815e;
+}
+
+#pageContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px 15px 10px 15px;
+}
+
+
+.ui-autocomplete {
+    z-index: 99999 !important;
 }

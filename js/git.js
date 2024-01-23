@@ -1,3 +1,4 @@
+import { updateLanguage, selectedLanguage, langSelectOption } from './lang.js';
 $(document).ready(function () {
     var accessToken = '';
 
@@ -69,9 +70,24 @@ $(document).ready(function () {
             });
         }
     }
-
+    var commitAuthorLink = 'https://github.com/';
+    var nkardaz = '<span><a href="' + commitAuthorLink + 'DemerNkardaz' + '" data-key="commitNkardaz"></a></span>';
     function gitHubCompiled() {
-        getGitHubCommits();
+        if ($('#commits-container').children().length === 0) {
+            getGitHubCommits();
+            console.log('Commits already loaded');
+        }
+        setTimeout(function () {
+            $('#commits-container tr td:nth-child(2)').html(function (_, oldHtml) {
+                if (oldHtml.trim() === 'Демер Нкардаз' || oldHtml.trim() === 'DemerNkardaz') {
+                    return nkardaz;
+                } else {
+                    return oldHtml;
+                }
+            });
+            updateLanguage(selectedLanguage);
+        }, 1000);
+
         $('#dummyGitBlank').fadeToggle('slow').css('display', 'flex');
     }
 

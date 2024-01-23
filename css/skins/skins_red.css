@@ -252,3 +252,25 @@ a>.material-icons.external:hover {
 #dummyGitBlank .nav-link.active {
     background-color: #932828;
 }
+
+
+.controlIcons {
+    color: #ff3415;
+    background-color: #93282862;
+    border-color: #932828;
+}
+
+.controlIcons:active {
+    filter: sepia(100%) contrast(200%) hue-rotate(-50deg) brightness(200%);
+}
+
+
+#pageNameModal .pageCreationInput input {
+    color: #ff3415;
+    background-color: #93282862;
+    border-color: #932828;
+}
+
+#pageNameModal .pageCreationInput input:focus {
+    filter: sepia(100%) contrast(200%) hue-rotate(-50deg) brightness(200%);
+}

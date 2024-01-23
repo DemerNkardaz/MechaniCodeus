@@ -10,6 +10,12 @@
             "commitMessage": "Commit message",
             "commitFiles": "Files",
             "commitTime": "Date",
+            "commitNkardaz": "Demer Nkardaz",
+            "EnterPageNameForm": "Page name",
+            "CancelPageForm": "Cancel",
+            "CreatePageForm": "Create",
+            "pageMainTags": "Main tags",
+            "pageSecondTags": "Secondary tags",
             "noInformation": "Error recognizing data block:<br><br>Information is missing<br><br>Contact the nearest Administratum office for assistance from a Mechanicum specialist.",
             "erroremCogitatorum": "Cogitator System Overload!<br>Supernormal data influx on:",
             "System": "System",
@@ -54,7 +60,11 @@
             "SkinDefault": "Monitorum Mechanicum",
             "SkinYellow": "Classical Marine",
             "SkinRed": "Blood Pact",
-            "SkinBlue": "Shadow of Bork'an"
+            "SkinBlue": "Shadow of Bork'an",
+            "CreatePage": "Create Page",
+            "SavePage": "Save Page",
+            "ResetPage": "Reset Page",
+            "DownloadPage": "Download Page"
         }
     ]
 }
