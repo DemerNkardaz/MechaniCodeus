@@ -28,6 +28,8 @@ This will be contain the main attributes references, default structure (ingame a
 
 | [Bootstrap 5.3.2](https://github.com/twbs/bootstrap) | [JQuery 3.7.1](https://github.com/jquery/jquery) | [JQuery UI 1.13.2](https://github.com/jquery/jquery-ui) | [ContentTools](https://github.com/GetmeUK/ContentTools)? (may be replaced) | [Howler.JS 2.2.4](https://github.com/goldfire/howler.js) | [Highlight.js 11.9.0](https://github.com/highlightjs/highlight.js) |
 
+Planned: Maybe [Three.JS](https://github.com/mrdoob/three.js) for 3D Previews.
+
 ­
 
 ## Topics for you | Топики для вас

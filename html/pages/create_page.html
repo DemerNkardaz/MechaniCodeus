@@ -7,7 +7,44 @@
 <hr>
 {SecondaryTags}
 
+<span data-key="default"></span>
+
 <div id="TutorialAuthor">
     <span data-key="TutorialAuthor"></span>
     {AuthorName}
 </div>
+
+<script type="module">
+    import { updateLanguage, selectedLanguage, langSelectOption } from './js/lang.js';
+    var localLanguageKeys = {
+        "lang_ru": {
+            "items": [
+                {
+                    "default": "Предмет-211"
+                }
+            ]
+        },
+        "lang_en": {
+            "items": [
+                {
+                    "default": "Item-211"
+                }
+            ]
+        },
+        "lang_la": {
+            "items": [
+                {
+                    "default": "Subjectum-211"
+                }
+            ]
+        },
+        "lang_jp": {
+            "items": [
+                {
+                    "default": "サブジェクト-211"
+                }
+            ]
+        }
+    }
+    updateLanguage(selectedLanguage);
+</script>

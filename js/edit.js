@@ -108,19 +108,18 @@ $(document).ready(function () {
             }
 
             $("#contentAreaContainer").html(function (i, html) {
-                // Замена {NewPage}, {MainTags}, {SecondaryTags}
                 html = html.replace('{NewPage}', pageName)
                     .replace('{MainTags}', mainTags.replace(/, /g, '&#8198;'))
                     .replace('{SecondaryTags}', secondTags.replace(/, /g, '<br>'));
 
-                // Замена {AuthorName}
                 if (authorName) {
-                    // Если указан URL автора, создаем тег ссылки
                     if (authorURL) {
                         html = html.replace('{AuthorName}', '<a href="' + authorURL + '">' + authorName + '</a>');
                     } else {
                         html = html.replace('{AuthorName}', authorName);
                     }
+                } else {
+                    html = html.replace('{AuthorName}', '<i><span data-key="UnknownEntity"></span></i>');
                 }
 
                 return html;

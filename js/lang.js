@@ -4,6 +4,7 @@ let selectedLanguage;
 let langSelectOption;
 let updatePlaceholderText;
 let updateTooltips;
+let localLanguageKeys = {};
 $(document).ready(function () {
     var languages = [
         { code: 'la', short: 'AG', name: 'Altum Gothicum', flag: '🏛️' },
