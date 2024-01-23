@@ -1,4 +1,4 @@
-import * as $item from './_variables.js';
+import * as $item from './variables.js';
 let updateLanguage;
 let selectedLanguage;
 let langSelectOption;

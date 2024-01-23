@@ -1,5 +1,5 @@
 import { tagReplacements, decodeTagsReplaces, refreshCodeHighlight, disableCodeHighlight } from './page.js';
-import * as $item from './_variables.js';
+import * as $item from './variables.js';
 $(document).ready(function () {
     $("#showThePageCommands").click(function () {
         var buttonRoll = $("#homePageButtonRoll");

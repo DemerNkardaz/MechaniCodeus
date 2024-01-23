@@ -1,6 +1,6 @@
 import { updateLanguage, selectedLanguage, langSelectOption } from './lang.js';
 import { tagReplacements } from './page.js';
-import * as $item from './_variables.js';
+import * as $item from './variables.js';
 
 $(document).ready(function () {
 
