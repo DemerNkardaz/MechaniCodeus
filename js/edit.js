@@ -1,4 +1,5 @@
 import { tagReplacements, decodeTagsReplaces, refreshCodeHighlight, disableCodeHighlight } from './page.js';
+import { updateLanguage, selectedLanguage, langSelectOption } from './lang.js';
 import * as $item from './variables.js';
 $(document).ready(function () {
     $("#showThePageCommands").click(function () {
@@ -93,9 +94,12 @@ $(document).ready(function () {
     });
 
     $("#savePageNameBtn").on("click", function () {
+
         var pageName = $("#pageNameInput").val();
         var mainTags = $("#pageMainTagsInput").val();
         var secondTags = $("#pageSecondTagsInput").val();
+        var authorName = $("#pageAuthorNameInput").val();
+        var authorURL = $("#pageAuthorURLInput").val();
 
         $("#contentAreaContainer").load("html/pages/create_page.html", function () {
             var $editableElement = $item.rightContainer.find('element-trigger[data-editable="true"]');
@@ -103,17 +107,32 @@ $(document).ready(function () {
                 editor.init($item.rightContainer.children(), 'data-name');
             }
 
-
             $("#contentAreaContainer").html(function (i, html) {
-                return html.replace('{NewPage}', pageName)
+                // Замена {NewPage}, {MainTags}, {SecondaryTags}
+                html = html.replace('{NewPage}', pageName)
                     .replace('{MainTags}', mainTags.replace(/, /g, '&#8198;'))
                     .replace('{SecondaryTags}', secondTags.replace(/, /g, '<br>'));
+
+                // Замена {AuthorName}
+                if (authorName) {
+                    // Если указан URL автора, создаем тег ссылки
+                    if (authorURL) {
+                        html = html.replace('{AuthorName}', '<a href="' + authorURL + '">' + authorName + '</a>');
+                    } else {
+                        html = html.replace('{AuthorName}', authorName);
+                    }
+                }
+
+                return html;
             });
 
             $("#pageNameModal").modal('hide');
             tagReplacements();
+            updateLanguage(selectedLanguage);
+
         });
     });
+
     function split(val) {
         return val.split(/,\s*/);
     }

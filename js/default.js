@@ -210,10 +210,6 @@ $(document).ready(function () {
             }
         });
 
-
-
-        updateLanguage(selectedLanguage);
-
         var $firstSpan = $item.deployerList.find('li').children('span').first();
         var $lastSpan = $item.deployerList.find('li').children('span').last();
 
@@ -243,6 +239,7 @@ $(document).ready(function () {
             return number < 10 ? '0' + number : number;
         }
         tagReplacements();
+        updateLanguage(selectedLanguage);
     }
 
     initializePage();

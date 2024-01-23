@@ -388,7 +388,7 @@ a>.material-icons.external:hover {
 
 #pageNameModal .modal-dialog.HelpPopup {
     max-width: 556px;
-    height: 400px;
+    height: 450px;
     hyphens: none;
 }
 
@@ -405,11 +405,25 @@ a>.material-icons.external:hover {
     height: 32px;
 }
 
+#pageNameModal .pageCreationInput {
+    display: flex;
+    flex-direction: column;
+}
+
+#pageNameModal .pageCreationInput>span {
+    margin-top: 24px;
+}
+
 #pageNameModal .pageCreationInput input {
     color: #fff;
     color: #00F999;
     background-color: #00815f73;
     border: 1px solid #00815e;
+    height: 38px;
+}
+
+#pageNameModal .pageCreationInput input::placeholder {
+    color: #b8b8b8b7;
 }
 
 #pageNameModal .pageCreationInput input:hover {
@@ -419,6 +433,39 @@ a>.material-icons.external:hover {
 #pageNameModal .pageCreationInput input:focus {
     filter: hue-rotate(-100deg) brightness(200%);
     box-shadow: 0px 0px 5px #00815f73, 0px 0px 15px #00815e;
+}
+
+.doubleInputFlex {
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.doubleInputFlex span:first-child {
+    text-indent: 2.5px;
+}
+
+#pageNameModal .pageCreationInput .halvedInputs {
+    display: inline-flex;
+    margin-left: auto;
+    width: 400px;
+}
+
+#pageNameModal .pageCreationInput .halvedInputs input {
+    display: inline-block;
+    width: 50%;
+
+}
+
+#pageNameModal .pageCreationInput .halvedInputs input#pageAuthorNameInput {
+    margin-right: 5px;
+    margin-left: auto;
+}
+
+#pageNameModal .pageCreationInput input#pageMainTagsInput,
+#pageNameModal .pageCreationInput input#pageSecondTagsInput,
+#pageNameModal .pageCreationInput .halvedInputs input#pageAuthorURLInput {
+    font-size: 10px;
 }
 
 .container.additional {

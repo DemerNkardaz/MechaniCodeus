@@ -37,8 +37,9 @@ $(document).ready(function () {
     });
 
     LanguageSelectWrapper.on('click', 'li', function () {
-        var selectedLanguage = $(this).data('value');
-        updateLanguage(selectedLanguage);
+        var userSelectedLanguage = $(this).data('value');
+        selectedLanguage = userSelectedLanguage; // Обновляем глобальную переменную
+        updateLanguage(userSelectedLanguage);
         LanguageMenu.removeClass('active');
         LanguageOption.removeClass('active');
     });
