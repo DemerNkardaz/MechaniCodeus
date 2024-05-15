@@ -48,7 +48,6 @@ $(document).ready(function () {
             $item.rightContainer.attr('contentEditable', 'false');
         }
     });
-
   $('#codeCurrentPage').on('click', function () {
     var currentState = $(this).attr('data-state') || 'off';
     var $contentAreaContainer = $item.rightContainer.find('#contentAreaContainer');
