@@ -50,34 +50,37 @@ $(document).ready(function () {
     });
 
 
-    $('#codeCurrentPage').on('click', function () {
-        var currentState = $(this).attr('data-state') || 'off';
-        var $contentAreaContainer = $item.rightContainer.find('#contentAreaContainer');
+  $('#codeCurrentPage').on('click', function () {
+    var currentState = $(this).attr('data-state') || 'off';
+    var $contentAreaContainer = $item.rightContainer.find('#contentAreaContainer');
 
-        if (currentState === 'off') {
-            $(this).attr('data-state', 'on');
-            $(this).text('code_off');
+    if (currentState === 'off') {
+      $(this).attr('data-state', 'on');
+      $(this).text('code_off');
 
-            $contentAreaContainer.wrapInner('<pre><code class="theme-base16-gigavolt language-html"></code></pre>');
-            var $codeElement = $contentAreaContainer.find('pre code');
+      $contentAreaContainer.wrapInner('<pre><code class="language-html"></code></pre>');
+      var $codeElement = $contentAreaContainer.find('pre code');
 
-            $codeElement.html(function (_, oldHtml) {
-                return oldHtml.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-            });
-            hljs.initHighlightingOnLoad();
+      $codeElement.html(function (_, oldHtml) {
+        return oldHtml.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      });
+      hljs.initHighlightingOnLoad();
 
-        } else {
-            disableCodeHighlight();
-            $(this).attr('data-state', 'off');
-            $(this).text('code');
 
-            $contentAreaContainer.find('pre code').html(function (_, oldHtml) {
-                return oldHtml.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
-            });
+    } else {
 
-            $contentAreaContainer.find('pre code').contents().unwrap().unwrap();
-        }
-    });
+      $(this).attr('data-state', 'off');
+      $(this).text('code');
+      $contentAreaContainer.children().children().contents().unwrap().unwrap();
+      let collectText = $contentAreaContainer.text().replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+      $contentAreaContainer.html(collectText);
+      //$contentAreaContainer.find('pre code').html(function (_, oldHtml) {
+      //  return oldHtml.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+      //});
+
+      $contentAreaContainer.find('pre code').contents().unwrap().unwrap();
+    }
+  });
 
 
 
