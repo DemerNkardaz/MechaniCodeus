@@ -1,0 +1,10 @@
+{
+  "ru": {
+    "Article_id": "testing_article",
+    "Title": "Тестовый заголовок",
+    "Content": {
+      "Text": "Тестовый текст",
+      "Author": "Тестовый автор"
+    }
+  }
+}
