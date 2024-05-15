@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths-ignore:
-      - 'repository-info.json'
+      - "repository-info.json"
 
 jobs:
   get-repository-info:
@@ -27,7 +27,7 @@ jobs:
           cd core
           npm run get-repository-info
         env:
-          GITHUB_TOKEN: ${{ secrets.SUPER_SECRET }}
+          GITHUB_TOKEN: ${{ secrets.SUPER_SECRET2 }}
 
       - name: Check for changes
         run: |

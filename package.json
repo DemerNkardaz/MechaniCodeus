@@ -1,5 +1,5 @@
 {
-    "name": "MechaniCodeus",
+    "name": "mechanicodeus",
     "version": "1.0.0",
     "scripts": {
         "get-repository-info": "node core/get-repository-info.js"

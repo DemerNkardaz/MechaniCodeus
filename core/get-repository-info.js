@@ -6,7 +6,6 @@ const apiUrl = `https://api.github.com/repos/${repository}`;
 
 async function getRepositoryInfo() {
     try {
-        // Получаем информацию о репозитории
         const repoResponse = await axios.get(apiUrl, {
             headers: {
                 'User-Agent': 'GitHub Actions'
@@ -28,7 +27,6 @@ async function getRepositoryInfo() {
             updated_at: latestCommitDate
         };
 
-        // Записываем информацию в файл
         fs.writeFileSync('repository-info.json', JSON.stringify(info, null, 2));
 
         console.log('Repository info saved to repository-info.json:', info);
